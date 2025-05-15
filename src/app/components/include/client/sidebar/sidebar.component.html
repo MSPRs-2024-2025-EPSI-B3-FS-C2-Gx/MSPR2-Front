@@ -1,0 +1,144 @@
+<div class="sidebar bg-white w-64 flex-shrink-0 shadow-lg hidden md:flex md:flex-col h-full">
+  <div class="flex-1 overflow-y-auto">
+    <nav class="px-4 py-4">
+      <div class="space-y-1">
+        <a
+          #rla="routerLinkActive"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+          routerLink="/client"
+          routerLinkActive="active-menu-item text-blue-600"
+        >
+          <i
+            [ngClass]="rla.isActive ? 'text-blue-200' : 'text-gray-400'"
+            class="fas fa-chart-pie mr-3"
+          ></i>
+          Tableau de bord
+        </a>
+        <a
+          #rlaCarto="routerLinkActive"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+          routerLink="/client/cartography"
+          routerLinkActive="active-menu-item"
+        >
+          <i
+            [ngClass]="rlaCarto.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
+            class="fas fa-map-marked-alt mr-3"
+          ></i>
+          Cartographie
+        </a>
+
+        <a
+          #rlaData="routerLinkActive"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+          routerLink="/client/data"
+          routerLinkActive="active-menu-item"
+        >
+          <i
+            [ngClass]="rlaData.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
+            class="fas fa-table mr-3"
+          ></i>
+          Données brutes
+        </a>
+
+        <a
+          #rlaPred="routerLinkActive"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+          routerLink="/client/predictions"
+          routerLinkActive="active-menu-item"
+        >
+          <i
+            [ngClass]="rlaPred.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
+            class="fas fa-robot mr-3"
+          ></i>
+          Prédictions IA
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- Mobile sidebar (hidden by default) -->
+<div *ngIf="sbService.mobileMenuOpen" class="sidebar fixed inset-0 z-40 bg-gray-900 bg-opacity-75" id="mobile-sidebar">
+  <div class="relative flex flex-col w-80 max-w-xs h-full bg-white">
+    <div class="flex items-center justify-center h-16 px-4 border-b">
+      <div class="flex items-center">
+        <i class="fas fa-virus text-blue-500 text-2xl mr-2"></i>
+        <span class="text-xl font-bold text-gray-900">PandemicTracker</span>
+      </div>
+      <button (click)="sbService.toggleMobileMenu()" class="absolute right-4 text-gray-500 hover:text-gray-700"
+              id="close-mobile-sidebar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto">
+      <nav class="px-4 py-4">
+        <div class="space-y-1">
+          <a
+            #rlaDashboard="routerLinkActive"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+            routerLink="/client"
+            routerLinkActive="active-menu-item"
+          >
+            <i [ngClass]="rlaDashboard.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
+               class="fas fa-chart-pie mr-3"></i>
+            Tableau de bord
+          </a>
+
+          <a
+            #rlaCarto="routerLinkActive"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+            routerLink="/client/cartography"
+            routerLinkActive="active-menu-item"
+          >
+            <i [ngClass]="rlaCarto.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
+               class="fas fa-map-marked-alt mr-3"></i>
+            Cartographie
+          </a>
+
+          <a
+            #rlaData="routerLinkActive"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+            routerLink="/client/data"
+            routerLinkActive="active-menu-item"
+          >
+            <i [ngClass]="rlaData.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
+               class="fas fa-table mr-3"></i>
+            Données brutes
+          </a>
+
+          <a
+            #rlaPred="routerLinkActive"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+            routerLink="/client/predictions"
+            routerLinkActive="active-menu-item"
+          >
+            <i [ngClass]="rlaPred.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
+               class="fas fa-robot mr-3"></i>
+            Prédictions IA
+          </a>
+
+          <a
+            #rlaAlerts="routerLinkActive"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
+            routerLink="/client/alerts"
+            routerLinkActive="active-menu-item"
+          >
+            <i [ngClass]="rlaAlerts.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
+               class="fas fa-bell mr-3"></i>
+            Alertes
+            <span class="notification-dot"></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="flex h-screen overflow-hidden">
+  <app-sidebar></app-sidebar>
+
+  <div class="flex-1 overflow-auto">
+    <div class="px-4 sm:px-6 lg:px-8 py-6">
+
+      <!-- Page header -->
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">Données brutes</h1>
+          <p class="mt-1 text-sm text-gray-500">
+            Accédez aux données brutes COVID-19 par pays, date ou indicateur.
+          </p>
+        </div>
+        <div class="flex space-x-3">
+          <button (click)="dataService.export()"
+            class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-all">
+            <i class="fas fa-download mr-2 text-gray-500"></i>
+            Exporter CSV
+          </button>
+          <button (click)="this.dataService.refresh()"
+                  class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition">
+            <i class="fas fa-sync-alt mr-2"></i> Actualiser
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Pays</label>
+          <select
+            class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm">
+            <option selected>Tous les pays</option>
+            <option>France</option>
+            <option>États-Unis</option>
+            <option>Brésil</option>
+            <option>Inde</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Période</label>
+          <select
+            class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm">
+            <option>Dernières 24h</option>
+            <option selected>7 derniers jours</option>
+            <option>30 derniers jours</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Indicateur</label>
+          <select
+            class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm">
+            <option selected>Cas confirmés</option>
+            <option>Décès</option>
+            <option>Rétablissements</option>
+            <option>Vaccinations</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white shadow rounded-lg overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200 text-sm">
+          <thead class="bg-gray-50">
+          <tr>
+            <th class="px-4 py-3 text-left font-medium text-gray-500 uppercase">Date</th>
+            <th class="px-4 py-3 text-left font-medium text-gray-500 uppercase">Pays</th>
+            <th class="px-4 py-3 text-left font-medium text-gray-500 uppercase">Cas confirmés</th>
+            <th class="px-4 py-3 text-left font-medium text-gray-500 uppercase">Décès</th>
+            <th class="px-4 py-3 text-left font-medium text-gray-500 uppercase">Rétablissements</th>
+            <th class="px-4 py-3 text-left font-medium text-gray-500 uppercase">Vaccinations</th>
+          </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-100">
+          <tr>
+            <td class="px-4 py-3 whitespace-nowrap text-gray-700">2023-06-25</td>
+            <td class="px-4 py-3 whitespace-nowrap">France</td>
+            <td class="px-4 py-3 whitespace-nowrap">12,345</td>
+            <td class="px-4 py-3 whitespace-nowrap">123</td>
+            <td class="px-4 py-3 whitespace-nowrap">11,567</td>
+            <td class="px-4 py-3 whitespace-nowrap">3,456</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 whitespace-nowrap text-gray-700">2023-06-25</td>
+            <td class="px-4 py-3 whitespace-nowrap">Brésil</td>
+            <td class="px-4 py-3 whitespace-nowrap">22,154</td>
+            <td class="px-4 py-3 whitespace-nowrap">267</td>
+            <td class="px-4 py-3 whitespace-nowrap">18,230</td>
+            <td class="px-4 py-3 whitespace-nowrap">5,987</td>
+          </tr>
+          <!-- ...autres lignes... -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

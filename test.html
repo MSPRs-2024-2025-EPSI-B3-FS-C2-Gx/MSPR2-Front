@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Pandemic Data Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+    }
+
+    .sidebar {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+
+    .input-focus:focus {
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+
+    .active-menu-item {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .active-menu-item:hover {
+      background-color: #2563eb;
+    }
+
+    .notification-dot {
+      position: absolute;
+      top: -0.25rem;
+      right: -0.25rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      background-color: #ef4444;
+      border-radius: 9999px;
+    }
+
+    .map-container {
+      height: 100%;
+      min-height: 300px;
+      background-color: #e5e7eb;
+      border-radius: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+<div class="flex h-screen overflow-hidden">
+  <!-- Sidebar -->
+  <div class="sidebar bg-white w-64 flex-shrink-0 shadow-lg hidden md:flex md:flex-col">
+    <div class="flex items-center justify-center h-16 px-4 border-b">
+      <div class="flex items-center">
+        <i class="fas fa-virus text-blue-500 text-2xl mr-2"></i>
+        <span class="text-xl font-bold text-gray-900">PandemicTracker</span>
+      </div>
+    </div>
+    <div class="flex-1 overflow-y-auto">
+      <nav class="px-4 py-4">
+        <div class="space-y-1">
+          <a href="#" class="active-menu-item group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+            <i class="fas fa-chart-pie text-blue-200 mr-3"></i>
+            Tableau de bord
+          </a>
+          <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+            <i class="fas fa-map-marked-alt text-gray-400 group-hover:text-gray-500 mr-3"></i>
+            Cartographie
+          </a>
+          <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+            <i class="fas fa-table text-gray-400 group-hover:text-gray-500 mr-3"></i>
+            Données brutes
+          </a>
+          <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+            <i class="fas fa-robot text-gray-400 group-hover:text-gray-500 mr-3"></i>
+            Prédictions IA
+          </a>
+          <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+            <i class="fas fa-bell text-gray-400 group-hover:text-gray-500 mr-3"></i>
+            Alertes
+            <span class="notification-dot"></span>
+          </a>
+          <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+            <i class="fas fa-cog text-gray-400 group-hover:text-gray-500 mr-3"></i>
+            Paramètres
+          </a>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            Rapports
+          </h3>
+          <div class="mt-1 space-y-1">
+            <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+              <i class="fas fa-file-medical text-gray-400 group-hover:text-gray-500 mr-3"></i>
+              Hebdomadaire
+            </a>
+            <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+              <i class="fas fa-file-contract text-gray-400 group-hover:text-gray-500 mr-3"></i>
+              Mensuel
+            </a>
+            <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+              <i class="fas fa-file-export text-gray-400 group-hover:text-gray-500 mr-3"></i>
+              Exporter
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="p-4 border-t">
+      <div class="flex items-center">
+        <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User profile">
+        <div class="ml-3">
+          <p class="text-sm font-medium text-gray-900">Dr. Jean Martin</p>
+          <p class="text-xs font-medium text-gray-500">Épidémiologiste</p>
+        </div>
+        <div class="ml-auto">
+          <button class="text-gray-400 hover:text-gray-500 transition-all">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile sidebar (hidden by default) -->
+  <div class="sidebar fixed inset-0 z-40 bg-gray-900 bg-opacity-75 hidden" id="mobile-sidebar">
+    <div class="relative flex flex-col w-80 max-w-xs h-full bg-white">
+      <div class="flex items-center justify-center h-16 px-4 border-b">
+        <div class="flex items-center">
+          <i class="fas fa-virus text-blue-500 text-2xl mr-2"></i>
+          <span class="text-xl font-bold text-gray-900">PandemicTracker</span>
+        </div>
+        <button class="absolute right-4 text-gray-500 hover:text-gray-700" id="close-mobile-sidebar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        <nav class="px-4 py-4">
+          <div class="space-y-1">
+            <a href="#" class="active-menu-item group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+              <i class="fas fa-chart-pie text-blue-200 mr-3"></i>
+              Tableau de bord
+            </a>
+            <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+              <i class="fas fa-map-marked-alt text-gray-400 group-hover:text-gray-500 mr-3"></i>
+              Cartographie
+            </a>
+            <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+              <i class="fas fa-table text-gray-400 group-hover:text-gray-500 mr-3"></i>
+              Données brutes
+            </a>
+            <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+              <i class="fas fa-robot text-gray-400 group-hover:text-gray-500 mr-3"></i>
+              Prédictions IA
+            </a>
+            <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+              <i class="fas fa-bell text-gray-400 group-hover:text-gray-500 mr-3"></i>
+              Alertes
+              <span class="notification-dot"></span>
+            </a>
+            <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+              <i class="fas fa-cog text-gray-400 group-hover:text-gray-500 mr-3"></i>
+              Paramètres
+            </a>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              Rapports
+            </h3>
+            <div class="mt-1 space-y-1">
+              <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+                <i class="fas fa-file-medical text-gray-400 group-hover:text-gray-500 mr-3"></i>
+                Hebdomadaire
+              </a>
+              <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+                <i class="fas fa-file-contract text-gray-400 group-hover:text-gray-500 mr-3"></i>
+                Mensuel
+              </a>
+              <a href="#" class="text-gray-700 hover:bg-gray-100 group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all">
+                <i class="fas fa-file-export text-gray-400 group-hover:text-gray-500 mr-3"></i>
+                Exporter
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="p-4 border-t">
+        <div class="flex items-center">
+          <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User profile">
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-900">Dr. Jean Martin</p>
+            <p class="text-xs font-medium text-gray-500">Épidémiologiste</p>
+          </div>
+          <div class="ml-auto">
+            <button class="text-gray-400 hover:text-gray-500 transition-all">
+              <i class="fas fa-sign-out-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="flex-1 overflow-auto">
+    <!-- Top navigation -->
+    <div class="bg-white shadow-sm">
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <!-- Mobile sidebar button -->
+            <button class="md:hidden text-gray-500 hover:text-gray-700 focus:outline-none" id="open-mobile-sidebar">
+              <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Search bar -->
+            <div class="ml-4 relative md:ml-6">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-search text-gray-400"></i>
+              </div>
+              <input class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all" placeholder="Rechercher..." type="search">
+            </div>
+          </div>
+          <div class="flex items-center">
+            <button class="p-1 text-gray-400 hover:text-gray-500 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 relative">
+              <i class="fas fa-bell"></i>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="ml-4 relative">
+              <div>
+                <button type="button" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="user-menu-button">
+                  <span class="sr-only">Open user menu</span>
+                  <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User profile">
+                </button>
+              </div>
+
+              <!-- Dropdown menu (hidden by default) -->
+              <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="user-menu">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Votre profil</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Paramètres</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Déconnexion</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="px-4 sm:px-6 lg:px-8 py-6">
+      <!-- Page header -->
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">Tableau de bord COVID-19</h1>
+          <p class="mt-1 text-sm text-gray-500">Dernière mise à jour: <span id="last-updated">26 juin 2023, 14:30</span></p>
+        </div>
+        <div class="flex space-x-3">
+          <button class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
+            <i class="fas fa-download mr-2 text-gray-500"></i>
+            Exporter
+          </button>
+          <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
+            <i class="fas fa-sync-alt mr-2"></i>
+            Actualiser
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats cards -->
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+        <!-- Card 1 -->
+        <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-all">
+          <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-red-100 rounded-md p-3">
+                <i class="fas fa-procedures text-red-600 text-xl"></i>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dt class="text-sm font-medium text-gray-500 truncate">
+                  Nouveaux cas (24h)
+                </dt>
+                <dd class="flex items-baseline">
+                  <div class="text-2xl font-semibold text-gray-900">
+                    124,567
+                  </div>
+                  <div class="ml-2 flex items-baseline text-sm font-semibold text-red-600">
+                    <i class="fas fa-arrow-up text-xs"></i>
+                    <span class="sr-only">Increased by</span>
+                    3.2%
+                  </div>
+                </dd>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-all">
+          <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-blue-100 rounded-md p-3">
+                <i class="fas fa-syringe text-blue-600 text-xl"></i>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dt class="text-sm font-medium text-gray-500 truncate">
+                  Vaccinations (7j)
+                </dt>
+                <dd class="flex items-baseline">
+                  <div class="text-2xl font-semibold text-gray-900">
+                    42.8M
+                  </div>
+                  <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                    <i class="fas fa-arrow-up text-xs"></i>
+                    <span class="sr-only">Increased by</span>
+                    12.4%
+                  </div>
+                </dd>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-all">
+          <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+                <i class="fas fa-heartbeat text-green-600 text-xl"></i>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dt class="text-sm font-medium text-gray-500 truncate">
+                  Rétablissements (24h)
+                </dt>
+                <dd class="flex items-baseline">
+                  <div class="text-2xl font-semibold text-gray-900">
+                    89,432
+                  </div>
+                  <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                    <i class="fas fa-arrow-up text-xs"></i>
+                    <span class="sr-only">Increased by</span>
+                    1.8%
+                  </div>
+                </dd>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-all">
+          <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-gray-100 rounded-md p-3">
+                <i class="fas fa-cross text-gray-600 text-xl"></i>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dt class="text-sm font-medium text-gray-500 truncate">
+                  Décès (24h)
+                </dt>
+                <dd class="flex items-baseline">
+                  <div class="text-2xl font-semibold text-gray-900">
+                    1,243
+                  </div>
+                  <div class="ml-2 flex items-baseline text-sm font-semibold text-red-600">
+                    <i class="fas fa-arrow-up text-xs"></i>
+                    <span class="sr-only">Increased by</span>
+                    0.9%
+                  </div>
+                </dd>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main charts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <!-- Cases chart -->
+        <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-medium text-gray-900">Évolution des cas COVID-19</h2>
+            <div class="relative">
+              <select class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                <option>7 derniers jours</option>
+                <option>30 derniers jours</option>
+                <option selected>90 derniers jours</option>
+                <option>Cette année</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <i class="fas fa-chevron-down text-xs"></i>
+              </div>
+            </div>
+          </div>
+          <div class="h-80">
+            <canvas id="casesChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Vaccination chart -->
+        <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-medium text-gray-900">Progression des vaccinations</h2>
+            <div class="relative">
+              <select class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                <option>Par pays</option>
+                <option selected>Par continent</option>
+                <option>Par type de vaccin</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <i class="fas fa-chevron-down text-xs"></i>
+              </div>
+            </div>
+          </div>
+          <div class="h-80">
+            <canvas id="vaccinationChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map and table -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <!-- World map -->
+        <div class="bg-white shadow rounded-lg p-6 card-hover transition-all lg:col-span-2">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-medium text-gray-900">Répartition géographique</h2>
+            <div class="flex space-x-2">
+              <button class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-md transition-all">
+                Cas confirmés
+              </button>
+              <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all">
+                Taux de vaccination
+              </button>
+              <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all">
+                Décès
+              </button>
+            </div>
+          </div>
+          <div class="map-container">
+            <div class="map-placeholder">
+              <i class="fas fa-globe-americas text-4xl mb-2"></i>
+              <p>Carte interactive des données COVID-19</p>
+              <p class="text-sm mt-1">(En développement)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top countries -->
+        <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-medium text-gray-900">Pays les plus touchés</h2>
+            <div class="relative">
+              <select class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                <option>Cas confirmés</option>
+                <option selected>Décès</option>
+                <option>Taux d'incidence</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <i class="fas fa-chevron-down text-xs"></i>
+              </div>
+            </div>
+          </div>
+          <div class="overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Pays
+                </th>
+                <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Décès
+                </th>
+                <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Taux
+                </th>
+              </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-5 w-5">
+                      <img class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/us.png" alt="">
+                    </div>
+                    <div class="ml-2">
+                      <div class="text-sm font-medium text-gray-900">États-Unis</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
+                  1,128,367
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
+                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <span class="ml-2 text-xs text-gray-500">3.4%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-5 w-5">
+                      <img class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/br.png" alt="">
+                    </div>
+                    <div class="ml-2">
+                      <div class="text-sm font-medium text-gray-900">Brésil</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
+                  703,526
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
+                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 72%"></div>
+                    </div>
+                    <span class="ml-2 text-xs text-gray-500">2.8%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-5 w-5">
+                      <img class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/in.png" alt="">
+                    </div>
+                    <div class="ml-2">
+                      <div class="text-sm font-medium text-gray-900">Inde</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
+                  532,025
+                </td>
+                <td>
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
+                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 68%"></div>
+                    </div>
+                    <span class="ml-2 text-xs text-gray-500">1.2%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-5 w-5">
+                      <img class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/ru.png" alt="">
+                    </div>
+                    <div class="ml-2">
+                      <div class="text-sm font-medium text-gray-900">Russie</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
+                  392,425
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
+                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 55%"></div>
+                    </div>
+                    <span class="ml-2 text-xs text-gray-500">2.1%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-5 w-5">
+                      <img class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/mx.png" alt="">
+                    </div>
+                    <div class="ml-2">
+                      <div class="text-sm font-medium text-gray-900">Mexique</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
+                  331,573
+                </td>
+                <td class="px-3 py-3 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
+                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 45%"></div>
+                    </div>
+                    <span class="ml-2 text-xs text-gray-500">5.4%</span>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Predictions and alerts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Predictions -->
+        <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-medium text-gray-900">Prédictions IA</h2>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                Beta
+                            </span>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-sm font-medium text-gray-900">Prochaine vague en Europe</h3>
+              <p class="mt-1 text-sm text-gray-600">
+                Nos modèles prévoient une augmentation des cas dans les 4-6 semaines avec une probabilité de 78%.
+              </p>
+              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
+                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 78%"></div>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-gray-900">Nouveau variant</h3>
+              <p class="mt-1 text-sm text-gray-600">
+                Risque d'émergence d'un nouveau variant préoccupant dans les 3 mois : 42%.
+              </p>
+              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
+                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 42%"></div>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-gray-900">Impact vaccinal</h3>
+              <p class="mt-1 text-sm text-gray-600">
+                Efficacité attendue des vaccins actuels contre les nouveaux variants : 68%.
+              </p>
+              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
+                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 68%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <button class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
+              <i class="fas fa-robot mr-1"></i>
+              Exécuter une nouvelle analyse
+            </button>
+          </div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-medium text-gray-900">Alertes récentes</h2>
+            <span class="relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                <span class="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></span>
+                                3 nouvelles
+                            </span>
+          </div>
+          <div class="space-y-4">
+            <div class="border-l-4 border-red-400 pl-4 py-1">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-medium text-gray-900">Augmentation des cas en France</h3>
+                <span class="text-xs text-gray-500">Il y a 2h</span>
+              </div>
+              <p class="mt-1 text-sm text-gray-600">
+                Hausse de 23% des cas confirmés dans la région Île-de-France par rapport à la semaine dernière.
+              </p>
+            </div>
+            <div class="border-l-4 border-yellow-400 pl-4 py-1">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-medium text-gray-900">Nouvelle étude sur les vaccins</h3>
+                <span class="text-xs text-gray-500">Il y a 5h</span>
+              </div>
+              <p class="mt-1 text-sm text-gray-600">
+                Publication d'une nouvelle étude sur l'efficacité des vaccins contre le variant BA.5.
+              </p>
+            </div>
+            <div class="border-l-4 border-blue-400 pl-4 py-1">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-medium text-gray-900">Mise à jour des données</h3>
+                <span class="text-xs text-gray-500">Aujourd'hui</span>
+              </div>
+              <p class="mt-1 text-sm text-gray-600">
+                Les données pour le Royaume-Uni ont été mises à jour avec les derniers chiffres officiels.
+              </p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <button class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all">
+              <i class="fas fa-bell mr-1"></i>
+              Voir toutes les alertes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile sidebar toggle
+  document.getElementById('open-mobile-sidebar').addEventListener('click', function() {
+    document.getElementById('mobile-sidebar').classList.remove('hidden');
+  });
+
+  document.getElementById('close-mobile-sidebar').addEventListener('click', function() {
+    document.getElementById('mobile-sidebar').classList.add('hidden');
+  });
+
+  // User menu toggle
+  document.getElementById('user-menu-button').addEventListener('click', function() {
+    const menu = document.getElementById('user-menu');
+    if (menu.classList.contains('hidden')) {
+      menu.classList.remove('hidden');
+    } else {
+      menu.classList.add('hidden');
+    }
+  });
+
+  // Close menus when clicking outside
+  document.addEventListener('click', function(event) {
+    // Close user menu
+    const userMenu = document.getElementById('user-menu');
+    const userButton = document.getElementById('user-menu-button');
+    if (!userButton.contains(event.target) && !userMenu.contains(event.target)) {
+      userMenu.classList.add('hidden');
+    }
+
+    // Close mobile sidebar
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    const openButton = document.getElementById('open-mobile-sidebar');
+    if (!openButton.contains(event.target) && !mobileSidebar.contains(event.target)) {
+      mobileSidebar.classList.add('hidden');
+    }
+  });
+
+  // Charts
+  document.addEventListener('DOMContentLoaded', function() {
+    // Cases chart
+    const casesCtx = document.getElementById('casesChart').getContext('2d');
+    const casesChart = new Chart(casesCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'],
+        datasets: [
+          {
+            label: 'Cas confirmés',
+            data: [12500000, 9800000, 8500000, 7200000, 6800000, 5500000, 4800000, 4200000, 3800000, 3200000, 2800000, 2400000],
+            borderColor: '#3b82f6',
+            backgroundColor: 'rgba(59, 130, 246, 0.05)',
+            borderWidth: 2,
+            tension: 0.3,
+            fill: true
+          },
+          {
+            label: 'Décès',
+            data: [45000, 38000, 32000, 28000, 24000, 21000, 18000, 15000, 13000, 11000, 9000, 8000],
+            borderColor: '#ef4444',
+            backgroundColor: 'rgba(239, 68, 68, 0.05)',
+            borderWidth: 2,
+            tension: 0.3,
+            fill: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function(value) {
+                if (value >= 1000000) {
+                  return (value / 1000000) + 'M';
+                } else if (value >= 1000) {
+                  return (value / 1000) + 'K';
+                }
+                return value;
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Vaccination chart
+    const vaccinationCtx = document.getElementById('vaccinationChart').getContext('2d');
+    const vaccinationChart = new Chart(vaccinationCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Afrique', 'Amérique', 'Asie', 'Europe', 'Océanie'],
+        datasets: [
+          {
+            label: '1ère dose',
+            data: [35, 78, 65, 82, 75],
+            backgroundColor: '#93c5fd',
+            borderColor: '#3b82f6',
+            borderWidth: 1
+          },
+          {
+            label: 'Vaccination complète',
+            data: [28, 72, 58, 75, 68],
+            backgroundColor: '#3b82f6',
+            borderColor: '#1d4ed8',
+            borderWidth: 1
+          },
+          {
+            label: 'Dose de rappel',
+            data: [15, 42, 35, 48, 40],
+            backgroundColor: '#1d4ed8',
+            borderColor: '#1e40af',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+            callbacks: {
+              label: function(context) {
+                return context.dataset.label + ': ' + context.raw + '%';
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+  });
+
+  // Update last updated time
+  function updateLastUpdated() {
+    const now = new Date();
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    document.getElementById('last-updated').textContent = now.toLocaleDateString('fr-FR', options);
+  }
+
+  updateLastUpdated();
+</script>
+</body>
+</html>

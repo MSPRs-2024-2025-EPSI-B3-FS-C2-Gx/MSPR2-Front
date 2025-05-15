@@ -1,0 +1,143 @@
+<div class="flex h-screen overflow-hidden">
+  <app-sidebar></app-sidebar>
+
+  <div class="flex-1 overflow-auto">
+    <div class="px-4 sm:px-6 lg:px-8 py-6">
+      <!-- Page header -->
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">Prédictions IA</h1>
+          <p class="mt-1 text-sm text-gray-500">Dernière analyse : <span id="last-analyzed">15 mai 2025, 10:00</span></p>
+        </div>
+        <div class="flex space-x-3">
+          <button (click)="dataService.export()"
+            class="inline-flex cursor-pointer items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
+            <i class="fas fa-download mr-2 text-gray-500"></i>
+            Exporter les données
+          </button>
+          <button (click)="this.dataService.refresh()"
+                  class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition">
+            <i class="fas fa-sync-alt mr-2"></i> Actualiser
+          </button>
+        </div>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-5 mb-6">
+        <div class="bg-white overflow-hidden shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center space-x-4">
+            <div class="bg-indigo-100 p-3 rounded-md">
+              <i class="fas fa-chart-line text-indigo-600 text-2xl"></i>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500 truncate">Prédictions réussies</dt>
+              <dd class="mt-1 text-2xl font-semibold text-gray-900">87%</dd>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white overflow-hidden shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center space-x-4">
+            <div class="bg-green-100 p-3 rounded-md">
+              <i class="fas fa-robot text-green-600 text-2xl"></i>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500 truncate">Modèles entraînés</dt>
+              <dd class="mt-1 text-2xl font-semibold text-gray-900">12</dd>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white overflow-hidden shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center space-x-4">
+            <div class="bg-yellow-100 p-3 rounded-md">
+              <i class="fas fa-exclamation-triangle text-yellow-600 text-2xl"></i>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500 truncate">Alertes critiques</dt>
+              <dd class="mt-1 text-2xl font-semibold text-gray-900">3</dd>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white overflow-hidden shadow rounded-lg p-6 card-hover transition-all">
+          <div class="flex items-center space-x-4">
+            <div class="bg-red-100 p-3 rounded-md">
+              <i class="fas fa-clock text-red-600 text-2xl"></i>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500 truncate">Temps moyen d’analyse</dt>
+              <dd class="mt-1 text-2xl font-semibold text-gray-900">4.2 min</dd>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prediction trends chart -->
+      <div class="bg-white shadow rounded-lg p-6 card-hover transition-all mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg font-medium text-gray-900">Tendances des prédictions</h2>
+          <select
+            class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+            <option>7 derniers jours</option>
+            <option>30 derniers jours</option>
+            <option selected>90 derniers jours</option>
+            <option>Cette année</option>
+          </select>
+          <div class="pointer-events-none absolute right-4 top-2 text-gray-700">
+            <i class="fas fa-chevron-down text-xs"></i>
+          </div>
+        </div>
+        <div class="h-80">
+          <canvas id="predictionTrendChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Prédictions IA détaillées -->
+      <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-medium text-gray-900">Prédictions IA</h2>
+          <span
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            Beta
+          </span>
+        </div>
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-sm font-medium text-gray-900">Prochaine vague en Europe</h3>
+            <p class="mt-1 text-sm text-gray-600">
+              Nos modèles anticipent une hausse des cas dans les 4-6 semaines avec une probabilité de 78%.
+            </p>
+            <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
+              <div class="bg-blue-600 h-1.5 rounded-full" style="width: 78%"></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-medium text-gray-900">Nouveau variant détecté</h3>
+            <p class="mt-1 text-sm text-gray-600">
+              Probabilité d’apparition d’un variant préoccupant dans les 3 mois : 42%.
+            </p>
+            <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
+              <div class="bg-blue-600 h-1.5 rounded-full" style="width: 42%"></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-medium text-gray-900">Efficacité vaccinale</h3>
+            <p class="mt-1 text-sm text-gray-600">
+              Estimation de l’efficacité des vaccins actuels face aux nouveaux variants : 68%.
+            </p>
+            <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
+              <div class="bg-blue-600 h-1.5 rounded-full" style="width: 68%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <button
+            class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
+            <i class="fas fa-robot mr-2"></i> Lancer une nouvelle analyse
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
