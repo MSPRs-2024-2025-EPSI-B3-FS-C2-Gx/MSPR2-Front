@@ -3,7 +3,7 @@ import {SidebarComponent} from '../../../include/client/sidebar/sidebar.componen
 import {toast} from 'ngx-sonner';
 import {DataService} from '../../../../services/data/data.service';
 import {RouterLink} from '@angular/router';
-import {catchError, finalize, forkJoin} from 'rxjs';
+import {catchError, finalize, forkJoin, tap, throwError} from 'rxjs';
 import {
   CategoryScale,
   Chart,
@@ -206,25 +206,24 @@ export class DashboardComponent {
       top5: this.dataService.getTopFive()
     })
       .pipe(
+        tap(({cases, vaccines, deaths, evolution, vaccineEvo, top5}) => {
+          // @ts-ignore
+          this.totalCases = Number(cases[0].total_weekly_cases);
+          // @ts-ignore
+          this.totalVaccinations = Number(vaccines[0].total_reported_shots);
+          // @ts-ignore
+          this.totalDeaths = Number(deaths[0].total_weekly_deaths);
+          this.renderCasesChart(evolution.data);
+          this.renderVaccinationChart(vaccineEvo.data);
+          this.top5Cases = top5.top5_cases;
+          this.top5Deaths = top5.top5_deaths;
+          toast.success('Données chargées avec succès.', {id: toastId});
+        }),
         catchError(error => {
           toast.error('Erreur lors du chargement des données.', {id: toastId});
-          throw error;
-        }),
-        finalize(() => {
-          toast.success('Données chargées avec succès.', {id: toastId});
+          return throwError(() => error);
         })
       )
-      .subscribe(({cases, vaccines, deaths, evolution, vaccineEvo, top5}) => {
-        // @ts-ignore
-        this.totalCases = Number(cases[0].total_weekly_cases);
-        // @ts-ignore
-        this.totalVaccinations = Number(vaccines[0].total_reported_shots);
-        // @ts-ignore
-        this.totalDeaths = Number(deaths[0].total_weekly_deaths);
-        this.renderCasesChart(evolution.data);
-        this.renderVaccinationChart(vaccineEvo.data);
-        this.top5Cases = top5.top5_cases;
-        this.top5Deaths = top5.top5_deaths;
-      });
+      .subscribe();
   }
 }
