@@ -5,16 +5,16 @@ import {DataService} from '../../../../services/data/data.service';
 import {RouterLink} from '@angular/router';
 import {catchError, finalize, forkJoin} from 'rxjs';
 import {
+  CategoryScale,
   Chart,
+  Filler,
+  Legend,
+  LinearScale,
   LineController,
   LineElement,
   PointElement,
-  LinearScale,
   Title,
-  Tooltip,
-  Filler,
-  CategoryScale,
-  Legend
+  Tooltip
 } from 'chart.js';
 import {NgForOf} from '@angular/common';
 import {UtilService} from '../../../../services/util/util.service';
@@ -62,46 +62,6 @@ export class DashboardComponent {
   onLeaderMetricChange(event: any) {
     this.selectedMetric = event.target.value === 'cases' ? 'cases' : 'deaths';
     console.log('Métrique sélectionnée :', this.selectedMetric);
-  }
-
-  private async loadData(): Promise<void> {
-    const toastId = toast.loading('Chargement des données...');
-
-    await new Promise<void>((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 200)
-    });
-
-    forkJoin({
-      cases: this.dataService.getTotalCases(),
-      vaccines: this.dataService.getTotalVaccinations(),
-      deaths: this.dataService.getTotalDeaths(),
-      evolution: this.dataService.getEvolutionGraph(),
-      vaccineEvo: this.dataService.getVaccineEvoGraph(),
-      top5: this.dataService.getTopFive()
-    })
-      .pipe(
-        catchError(error => {
-          toast.error('Erreur lors du chargement des données.', {id: toastId});
-          throw error;
-        }),
-        finalize(() => {
-          toast.success('Données chargées avec succès.', {id: toastId});
-        })
-      )
-      .subscribe(({cases, vaccines, deaths, evolution, vaccineEvo, top5}) => {
-        // @ts-ignore
-        this.totalCases = Number(cases[0].total_weekly_cases);
-        // @ts-ignore
-        this.totalVaccinations = Number(vaccines[0].total_reported_shots);
-        // @ts-ignore
-        this.totalDeaths = Number(deaths[0].total_weekly_deaths);
-        this.renderCasesChart(evolution.data);
-        this.renderVaccinationChart(vaccineEvo.data);
-        this.top5Cases = top5.top5_cases;
-        this.top5Deaths = top5.top5_deaths;
-      });
   }
 
   renderCasesChart(data: { date: string, total_cases: number }[]) {
@@ -222,5 +182,45 @@ export class DashboardComponent {
         }
       }
     });
+  }
+
+  private async loadData(): Promise<void> {
+    const toastId = toast.loading('Chargement des données...');
+
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 200)
+    });
+
+    forkJoin({
+      cases: this.dataService.getTotalCases(),
+      vaccines: this.dataService.getTotalVaccinations(),
+      deaths: this.dataService.getTotalDeaths(),
+      evolution: this.dataService.getEvolutionGraph(),
+      vaccineEvo: this.dataService.getVaccineEvoGraph(),
+      top5: this.dataService.getTopFive()
+    })
+      .pipe(
+        catchError(error => {
+          toast.error('Erreur lors du chargement des données.', {id: toastId});
+          throw error;
+        }),
+        finalize(() => {
+          toast.success('Données chargées avec succès.', {id: toastId});
+        })
+      )
+      .subscribe(({cases, vaccines, deaths, evolution, vaccineEvo, top5}) => {
+        // @ts-ignore
+        this.totalCases = Number(cases[0].total_weekly_cases);
+        // @ts-ignore
+        this.totalVaccinations = Number(vaccines[0].total_reported_shots);
+        // @ts-ignore
+        this.totalDeaths = Number(deaths[0].total_weekly_deaths);
+        this.renderCasesChart(evolution.data);
+        this.renderVaccinationChart(vaccineEvo.data);
+        this.top5Cases = top5.top5_cases;
+        this.top5Deaths = top5.top5_deaths;
+      });
   }
 }

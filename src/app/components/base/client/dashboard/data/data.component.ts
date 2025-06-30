@@ -47,14 +47,14 @@ export class DataComponent implements OnInit {
         this.rawData = res.data || [];
         this.currentPage = page;
         this.totalPages = res.total_pages || 1;
-        toast.success('Données chargées avec succès.', { id: toastId });
+        toast.success('Données chargées avec succès.', {id: toastId});
       });
     } else {
       this.dataService.getAllBruteDataByCountry(this.selectedCountry).subscribe((res: any) => {
         this.rawData = res || [];
         this.currentPage = 1;
         this.totalPages = 1;
-        toast.success('Données chargées avec succès.', { id: toastId });
+        toast.success('Données chargées avec succès.', {id: toastId});
       });
     }
   }

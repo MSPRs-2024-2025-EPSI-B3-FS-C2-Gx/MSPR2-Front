@@ -147,8 +147,9 @@
               <button class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-md transition-all">
                 Cas confirmés
               </button>
-              <button class="px-3 py-1 cursor-pointer bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all"
-                      routerLink="/client/cartography">
+              <button
+                class="px-3 py-1 cursor-pointer bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all"
+                routerLink="/client/cartography">
                 Décès
               </button>
             </div>
@@ -195,8 +196,8 @@
                 <td class="px-3 py-3 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full"
-                           [src]="'https://flagcdn.com/w20/' + this.utilService.getCountryCode(country.country_name) + '.png'">
+                      <img [src]="'https://flagcdn.com/w20/' + this.utilService.getCountryCode(country.country_name) + '.png'" alt=""
+                           class="h-5 w-5 rounded-full">
                     </div>
                     <div class="ml-2">
                       <div class="text-sm font-medium text-gray-900">{{ country.country_name }}</div>
