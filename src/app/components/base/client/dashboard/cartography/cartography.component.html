@@ -8,7 +8,8 @@
       <div class="flex justify-between items-center mb-6">
         <div>
           <h1 class="text-2xl font-bold text-gray-900">Cartographie COVID-19</h1>
-          <p class="mt-1 text-sm text-gray-500">Dernière mise à jour : <span id="last-updated">26 juin 2023, 14:30</span></p>
+          <p class="mt-1 text-sm text-gray-500">Dernière mise à jour : <span
+            id="last-updated">26 juin 2023, 14:30</span></p>
         </div>
         <div class="flex space-x-3">
           <button (click)="dataService.export()"
@@ -27,27 +28,27 @@
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-medium text-gray-900">Carte interactive - Répartition géographique</h2>
           <div class="flex space-x-2">
-            <button [ngClass]="{'bg-blue-100 text-blue-700': selectedMetric === 'cases'}"
-                    class="px-3 py-1 text-xs font-medium rounded-md hover:bg-blue-100 hover:text-blue-800 transition"
-                    (click)="selectMetric('cases')">
+            <button (click)="selectMetric('cases')"
+                    [ngClass]="{'bg-blue-100 text-blue-700': selectedMetric === 'cases'}"
+                    class="px-3 py-1 text-xs font-medium rounded-md hover:bg-blue-100 hover:text-blue-800 transition">
               Cas confirmés
             </button>
-            <button [ngClass]="{'bg-red-100 text-red-700': selectedMetric === 'deaths'}"
-                    class="px-3 py-1 text-xs font-medium rounded-md hover:bg-red-100 hover:text-red-800 transition"
-                    (click)="selectMetric('deaths')">
+            <button (click)="selectMetric('deaths')"
+                    [ngClass]="{'bg-red-100 text-red-700': selectedMetric === 'deaths'}"
+                    class="px-3 py-1 text-xs font-medium rounded-md hover:bg-red-100 hover:text-red-800 transition">
               Décès
             </button>
           </div>
         </div>
-        <div class="h-[600px] relative rounded-lg overflow-hidden">
-          <!-- Carte interactive ici -->
-          <div id="map" class="absolute inset-0 z-0"></div>
+        <div class="relative rounded-lg overflow-hidden" style="height: 600px;">
+          <div id="map" style="height: 100%; width: 100%;"></div>
         </div>
       </div>
 
       <!-- Description -->
       <div class="text-sm text-gray-600 mb-6">
-        <p>Survolez un pays pour voir ses statistiques actuelles selon l’indicateur sélectionné. Les données sont mises à jour automatiquement toutes les 24h.</p>
+        <p>Survolez un pays pour voir ses statistiques actuelles selon l’indicateur sélectionné. Les données sont mises
+          à jour automatiquement toutes les 24h.</p>
       </div>
 
     </div>

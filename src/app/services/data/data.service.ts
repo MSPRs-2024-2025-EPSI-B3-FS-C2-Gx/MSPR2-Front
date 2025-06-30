@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  API_URL: string = 'http://localhost:8000';
+  API_URL: string = 'http://127.0.0.1:5001/api';
   isRefreshing = false;
 
   constructor(private http: HttpClient) { }
@@ -35,10 +35,26 @@ export class DataService {
   }
 
   getTotalVaccinations(): Observable<number> {
-    return this.http.get<number>(`${this.API_URL}/total_vaccinations`);
+    return this.http.get<number>(`${this.API_URL}/total_vaccines`);
   }
 
   getTotalDeaths(): Observable<number> {
     return this.http.get<number>(`${this.API_URL}/total_deaths`);
+  }
+
+  getEvolutionGraph(): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/covid_cases_evolution`);
+  }
+
+  getVaccineEvoGraph(): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/vaccinations_evolution`);
+  }
+
+  getTopFive(): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/top5_summary`);
+  }
+
+  getMapData(): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/country_covid_rates`);
   }
 }

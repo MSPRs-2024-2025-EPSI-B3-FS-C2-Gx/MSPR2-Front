@@ -40,7 +40,7 @@
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    {{ totalCases }}
+                    {{ formatNumber(totalCases) }}
                   </div>
                 </dd>
               </div>
@@ -61,7 +61,7 @@
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    {{ totalVaccinations }}
+                    {{ formatNumber(totalVaccinations) }}
                   </div>
                 </dd>
               </div>
@@ -82,7 +82,7 @@
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    {{ totalDeaths }}
+                    {{ formatNumber(totalDeaths) }}
                   </div>
                 </dd>
               </div>
@@ -147,7 +147,8 @@
               <button class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-md transition-all">
                 Cas confirmés
               </button>
-              <button routerLink="/client/cartography" class="px-3 py-1 cursor-pointer bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all">
+              <button class="px-3 py-1 cursor-pointer bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all"
+                      routerLink="/client/cartography">
                 Décès
               </button>
             </div>
@@ -170,7 +171,7 @@
                 (change)="onLeaderMetricChange($event)"
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
                 <option value="cases">Cas confirmés</option>
-                <option value="deaths" selected>Décès</option>
+                <option selected value="deaths">Décès</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <i class="fas fa-chevron-down text-xs"></i>
@@ -190,79 +191,20 @@
               </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-              <tr>
+              <tr *ngFor="let country of (selectedMetric === 'cases' ? top5Cases : top5Deaths)">
                 <td class="px-3 py-3 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/us.png">
+                      <img alt="" class="h-5 w-5 rounded-full"
+                           [src]="'https://flagcdn.com/w20/' + this.utilService.getCountryCode(country.country_name) + '.png'">
                     </div>
                     <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">États-Unis</div>
+                      <div class="text-sm font-medium text-gray-900">{{ country.country_name }}</div>
                     </div>
                   </div>
                 </td>
                 <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  1,128,367
-                </td>
-              </tr>
-              <tr>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/br.png">
-                    </div>
-                    <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">Brésil</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  703,526
-                </td>
-              </tr>
-              <tr>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/in.png">
-                    </div>
-                    <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">Inde</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  532,025
-                </td>
-              </tr>
-              <tr>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/ru.png">
-                    </div>
-                    <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">Russie</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  392,425
-                </td>
-              </tr>
-              <tr>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/mx.png">
-                    </div>
-                    <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">Mexique</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  331,573
+                  {{ formatNumber(selectedMetric === 'cases' ? country.total_cases : country.total_deaths) }}
                 </td>
               </tr>
               </tbody>
