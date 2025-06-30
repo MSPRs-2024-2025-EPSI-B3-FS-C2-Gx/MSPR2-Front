@@ -5,6 +5,7 @@ import {DataService} from '../../../../../services/data/data.service';
 import {UtilService} from '../../../../../services/util/util.service';
 import * as L from 'leaflet';
 import {toast} from 'ngx-sonner';
+import {catchError, from, tap, throwError} from 'rxjs';
 
 @Component({
   selector: 'app-cartography',
@@ -54,91 +55,94 @@ export class CartographyComponent implements OnInit, AfterViewInit {
 
     await new Promise<void>((resolve) => setTimeout(resolve, 500));
 
-    this.dataService.getMapData().subscribe((res: any) => {
-      const data = res.data;
+    this.dataService.getMapData().pipe(
+      tap((res: any) => {
+        const data = res.data;
 
-      if (this.geoJsonLayer) {
-        this.geoJsonLayer.remove();
-      }
-      if (this.circlesLayer) {
-        this.circlesLayer.clearLayers();
-      }
+        if (this.geoJsonLayer) {
+          this.geoJsonLayer.remove();
+        }
+        if (this.circlesLayer) {
+          this.circlesLayer.clearLayers();
+        }
 
-      this.circlesLayer = L.layerGroup().addTo(this.map!);
+        this.circlesLayer = L.layerGroup().addTo(this.map!);
 
-      fetch('assets/custom.geo.json')
-        .then(res => res.json())
-        .then(geoData => {
+        return from(fetch('assets/custom.geo.json').then(res => res.json())).pipe(
+          tap(geoData => {
+            if (!geoData.features?.length) {
+              throw new Error('GeoJSON features missing or empty');
+            }
 
-          if (!geoData.features || !geoData.features.length) {
-            console.warn('GeoJSON features missing or empty');
-          }
+            this.geoJsonLayer = L.geoJSON(geoData, {
+              style: (feature: any) => {
+                const countryCode = feature.properties.iso_a2_eh?.toUpperCase();
+                const countryData = data.find((d: any) => d.country_code === countryCode);
+                const value = this.selectedMetric === 'cases'
+                  ? countryData?.case_rate_percent
+                  : countryData?.death_rate_percent;
 
-          this.geoJsonLayer = L.geoJSON(geoData, {
-            style: (feature: any) => {
+                return {
+                  fillColor: this.utilService.getColor(value),
+                  fillOpacity: 0.7,
+                  weight: 1,
+                  color: '#ccc'
+                };
+              }
+            }).addTo(this.map!);
+
+            geoData.features.forEach((feature: any) => {
               const countryCode = feature.properties.iso_a2_eh?.toUpperCase();
               const countryData = data.find((d: any) => d.country_code === countryCode);
-              const value = this.selectedMetric === 'cases'
-                ? countryData?.case_rate_percent
-                : countryData?.death_rate_percent;
 
-              return {
-                fillColor: this.utilService.getColor(value),
-                fillOpacity: 0.7,
-                weight: 1,
-                color: '#ccc'
-              };
-            }
-          }).addTo(this.map!);
-
-          geoData.features.forEach((feature: any) => {
-            const countryCode = feature.properties.iso_a2_eh?.toUpperCase();
-            const countryData = data.find((d: any) => d.country_code === countryCode);
-
-            if (!countryData) {
-              console.warn(`No data for country code: ${countryCode}`);
-              return;
-            }
-
-            if (
-              feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon'
-            ) {
-              const center = this.utilService.getFeatureCenter(feature);
-              const radius = this.selectedMetric === 'cases'
-                ? this.utilService.scaleRadius(countryData.total_cases)
-                : this.utilService.scaleRadius(countryData.total_deaths);
-
-              if (radius > 0) {
-                const tooltipContent = this.selectedMetric === 'cases'
-                  ? `
-      <strong>${countryData.country_name}</strong><br>
-      Cas confirmés : ${countryData.total_cases.toLocaleString()}<br>
-      Population : ${countryData.population?.toLocaleString()}<br>
-      Taux de cas : ${countryData.case_rate_percent?.toFixed(2)}%
-    `
-                  : `
-      <strong>${countryData.country_name}</strong><br>
-      Décès : ${countryData.total_deaths.toLocaleString()}<br>
-      Population : ${countryData.population?.toLocaleString()}<br>
-      Taux de décès : ${countryData.death_rate_percent?.toFixed(2)}%
-    `;
-
-
-                const circle = L.circleMarker(center, {
-                  radius,
-                  fillColor: 'blue',
-                  fillOpacity: 0.5,
-                  color: '#0033cc',
-                  weight: 1
-                }).bindTooltip(tooltipContent);
-
-                this.circlesLayer!.addLayer(circle);
+              if (!countryData) {
+                console.warn(`No data for country code: ${countryCode}`);
+                return;
               }
-            }
-          });
-        });
-    });
 
-    toast.success('Données chargées avec succès.', {id: toastId});
+              if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+                const center = this.utilService.getFeatureCenter(feature);
+                const radius = this.selectedMetric === 'cases'
+                  ? this.utilService.scaleRadius(countryData.total_cases)
+                  : this.utilService.scaleRadius(countryData.total_deaths);
+
+                if (radius > 0) {
+                  const tooltipContent = this.selectedMetric === 'cases'
+                    ? `
+                    <strong>${countryData.country_name}</strong><br>
+                    Cas confirmés : ${countryData.total_cases.toLocaleString()}<br>
+                    Population : ${countryData.population?.toLocaleString()}<br>
+                    Taux de cas : ${countryData.case_rate_percent?.toFixed(2)}%
+                  `
+                    : `
+                    <strong>${countryData.country_name}</strong><br>
+                    Décès : ${countryData.total_deaths.toLocaleString()}<br>
+                    Population : ${countryData.population?.toLocaleString()}<br>
+                    Taux de décès : ${countryData.death_rate_percent?.toFixed(2)}%
+                  `;
+
+                  const circle = L.circleMarker(center, {
+                    radius,
+                    fillColor: 'blue',
+                    fillOpacity: 0.5,
+                    color: '#0033cc',
+                    weight: 1
+                  }).bindTooltip(tooltipContent);
+
+                  this.circlesLayer!.addLayer(circle);
+                }
+              }
+            });
+
+            toast.success('Données chargées avec succès.', {id: toastId});
+          })
+        ).toPromise();
+      }),
+      catchError(error => {
+        console.error('Error loading map data:', error);
+        toast.error('Erreur lors du chargement des données.', {id: toastId});
+        return throwError(() => error);
+      })
+    ).subscribe();
   }
 }

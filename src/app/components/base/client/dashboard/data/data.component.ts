@@ -4,6 +4,7 @@ import {DataService} from '../../../../../services/data/data.service';
 import {NgForOf, NgIf} from '@angular/common';
 import {toast} from 'ngx-sonner';
 import {FormsModule} from '@angular/forms';
+import {catchError, tap, throwError} from 'rxjs';
 
 @Component({
   selector: 'app-data',
@@ -44,21 +45,29 @@ export class DataComponent implements OnInit {
 
     await new Promise<void>((resolve) => setTimeout(resolve, 100));
 
-    if (this.selectedCountry === 'all') {
-      this.dataService.getAllBruteData(page, this.limit).subscribe((res: any) => {
-        this.rawData = res.data || [];
-        this.currentPage = page;
-        this.totalPages = res.total_pages || 1;
+    const data$ = this.selectedCountry === 'all'
+      ? this.dataService.getAllBruteData(page, this.limit)
+      : this.dataService.getAllBruteDataByCountry(this.selectedCountry);
+
+    data$.pipe(
+      tap((res: any) => {
+        if (this.selectedCountry === 'all') {
+          this.rawData = res.data || [];
+          this.currentPage = page;
+          this.totalPages = res.total_pages || 1;
+        } else {
+          this.rawData = res || [];
+          this.currentPage = 1;
+          this.totalPages = 1;
+        }
         toast.success('Données chargées avec succès.', {id: toastId});
-      });
-    } else {
-      this.dataService.getAllBruteDataByCountry(this.selectedCountry).subscribe((res: any) => {
-        this.rawData = res || [];
-        this.currentPage = 1;
-        this.totalPages = 1;
-        toast.success('Données chargées avec succès.', {id: toastId});
-      });
-    }
+      }),
+      catchError(error => {
+        console.error('Error loading data:', error);
+        toast.error('Erreur lors du chargement des données.', {id: toastId});
+        return throwError(() => error);
+      })
+    ).subscribe();
   }
 
   async goToPreviousPage(): Promise<void> {
