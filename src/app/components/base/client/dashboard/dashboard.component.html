@@ -154,11 +154,11 @@
               </button>
             </div>
           </div>
-          <div class="map-container">
+          <div class="map-container cursor-pointer" routerLink="/client/cartography">
             <div class="map-placeholder">
               <i class="fas fa-globe-americas text-4xl mb-2"></i>
               <p>Carte interactive des données COVID-19</p>
-              <p class="text-sm mt-1">(En développement)</p>
+              <p class="text-sm mt-1">(Cliquez pour voir)</p>
             </div>
           </div>
         </div>
@@ -196,8 +196,10 @@
                 <td class="px-3 py-3 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-5 w-5">
-                      <img [src]="'https://flagcdn.com/w20/' + this.utilService.getCountryCode(country.country_name) + '.png'" alt=""
-                           class="h-5 w-5 rounded-full">
+                      <img
+                        [src]="'https://flagcdn.com/w20/' + this.utilService.getCountryCode(country.country_name) + '.png'"
+                        alt=""
+                        class="h-5 w-5 rounded-full">
                     </div>
                     <div class="ml-2">
                       <div class="text-sm font-medium text-gray-900">{{ country.country_name }}</div>

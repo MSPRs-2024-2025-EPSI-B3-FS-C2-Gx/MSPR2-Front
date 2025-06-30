@@ -12,8 +12,7 @@ import * as L from 'leaflet';
     NgClass,
     SidebarComponent
   ],
-  templateUrl: './cartography.component.html',
-  styleUrls: ['./cartography.component.css']
+  templateUrl: './cartography.component.html'
 })
 export class CartographyComponent implements OnInit, AfterViewInit {
   selectedMetric: 'cases' | 'deaths' = 'cases';
@@ -28,6 +27,7 @@ export class CartographyComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
   ngAfterViewInit(): void {

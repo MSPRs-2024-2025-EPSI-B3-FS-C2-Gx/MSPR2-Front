@@ -27,6 +27,8 @@ export class DataComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
+
     this.loadCountries();
     this.loadData();
   }

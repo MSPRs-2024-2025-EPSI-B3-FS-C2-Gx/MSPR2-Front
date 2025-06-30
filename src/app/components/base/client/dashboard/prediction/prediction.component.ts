@@ -12,4 +12,8 @@ import {DataService} from '../../../../../services/data/data.service';
 export class PredictionComponent {
   constructor(public dataService: DataService) {
   }
+
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
 }

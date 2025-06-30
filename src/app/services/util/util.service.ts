@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getCountryCode(name: string): string {
     const countryCodes: { [key: string]: string } = {

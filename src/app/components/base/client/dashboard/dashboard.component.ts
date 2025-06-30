@@ -55,6 +55,10 @@ export class DashboardComponent {
     this.loadData();
   }
 
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
+
   formatNumber(num: number): string {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   }
