@@ -6,26 +6,43 @@ import {Router} from '@angular/router';
 })
 export class SearchService {
   private searchData = [
-    {title: 'Tableau de bord', route: '/client', keywords: 'dashboard tableau bord accueil client overview'},
+    {
+      title: 'Tableau de bord',
+      route: '/client',
+      keywords: 'tableau bord dashboard accueil client overview synthèse résumé statistiques globales vue générale monitoring'
+    },
     {
       title: 'Profil',
       route: '/client/profile',
-      keywords: 'profil profile utilisateur user compte informations personnelles'
+      keywords: 'profil profile utilisateur user compte informations personnelles identité paramètres accès sécurité'
     },
-    {title: 'Paramètres', route: '/client/settings', keywords: 'paramètres settings configuration préférences options'},
+    {
+      title: 'Paramètres',
+      route: '/client/settings',
+      keywords: 'paramètres settings configuration préférences options système interface personnalisation langue thème'
+    },
     {
       title: 'Cartographie',
       route: '/client/cartography',
-      keywords: 'cartographie carte map géographie localisation zones régions'
+      keywords: 'cartographie carte map géographie localisation pays régions zones territoires visualisation spatial covid monde'
     },
-    {title: 'Données', route: '/client/data', keywords: 'données data statistiques chiffres informations analytics'},
+    {
+      title: 'Données',
+      route: '/client/data',
+      keywords: 'données data statistiques chiffres informations analytics export table historique csv json sources'
+    },
     {
       title: 'Prédictions',
       route: '/client/predictions',
-      keywords: 'prédictions predictions analyse tendances futur modèles'
+      keywords: 'prédictions predictions prévisions analyse tendances futur projection modèles machine learning IA courbes'
     },
-    {title: 'Contact', route: '/contact', keywords: 'contact support aide assistance message'}
+    {
+      title: 'Contact',
+      route: '/contact',
+      keywords: 'contact support aide assistance message question formulaire email téléphone bug problème retour'
+    }
   ];
+
 
   constructor(private router: Router) {
   }

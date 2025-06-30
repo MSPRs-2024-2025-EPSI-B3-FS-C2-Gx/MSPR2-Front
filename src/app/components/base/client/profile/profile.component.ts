@@ -10,4 +10,7 @@ import {SidebarComponent} from '../../../include/client/sidebar/sidebar.componen
 })
 export class ProfileComponent {
 
+  getEmail(): string {
+    return localStorage.getItem('email') || '';
+  }
 }
