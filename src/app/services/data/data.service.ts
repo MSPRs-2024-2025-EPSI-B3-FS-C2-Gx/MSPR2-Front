@@ -57,4 +57,16 @@ export class DataService {
   getMapData(): Observable<any> {
     return this.http.get<any>(`${this.API_URL}/country_covid_rates`);
   }
+
+  getAllBruteData(page: number, limit: number): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/weekly_statistics_total?limit=${limit}&page=${page}`);
+  }
+
+  getAllBruteDataByCountry(country: string): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/weekly_statistics_by_country?country_code=${country}`);
+  }
+
+  getAllCountry(): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/country`);
+  }
 }
