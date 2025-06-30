@@ -89,13 +89,42 @@
             <i class="fas fa-bars"></i>
           </button>
 
-          <div class="ml-4 relative md:ml-6">
+          <!-- Dans votre template, modifiez la partie recherche -->
+          <div class="ml-4 relative md:ml-6 z-50 w-full max-w-md">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <i class="fas fa-search text-gray-400"></i>
             </div>
             <input
+              [(ngModel)]="searchQuery"
+              (input)="onSearch()"
+              (focus)="onSearch()"
               class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
-              placeholder="Rechercher..." type="search">
+              placeholder="Rechercher..."
+              type="search"
+            >
+
+            <!-- Résultats de recherche -->
+            <div *ngIf="showResults && searchResults.length > 0"
+                 class="absolute z-[9999] mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto max-h-60"
+                 style="position: fixed; width: inherit; max-width: inherit;">
+              <ul>
+                <li
+                  *ngFor="let result of searchResults"
+                  (click)="selectResult(result)"
+                  class="cursor-pointer select-none relative py-2 pl-3 pr-9 hover:bg-gray-100"
+                >
+                  <div class="flex items-center">
+                    <span class="font-normal block truncate">{{ result.title }}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div *ngIf="showResults && searchQuery.length > 2 && searchResults.length === 0"
+                 class="absolute z-[9999] mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base ring-1 ring-black ring-opacity-5"
+                 style="position: fixed; width: inherit; max-width: inherit;">
+              <div class="px-4 py-2 text-sm text-gray-700">Aucun résultat trouvé pour "{{ searchQuery }}"</div>
+            </div>
           </div>
         </div>
 

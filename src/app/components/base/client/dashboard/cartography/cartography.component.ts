@@ -13,7 +13,7 @@ import {DataService} from '../../../../../services/data/data.service';
   styleUrls: ['./cartography.component.css']
 })
 export class CartographyComponent {
-  selectedMetric: 'cases' | 'vaccination' | 'deaths' = 'cases';
+  selectedMetric: 'cases' | 'deaths' = 'cases';
 
   constructor(public dataService: DataService) {
   }
@@ -22,7 +22,7 @@ export class CartographyComponent {
     this.loadMap();
   }
 
-  selectMetric(metric: 'cases' | 'vaccination' | 'deaths') {
+  selectMetric(metric: 'cases' | 'deaths') {
     this.selectedMetric = metric;
     this.updateMapData(metric);
   }

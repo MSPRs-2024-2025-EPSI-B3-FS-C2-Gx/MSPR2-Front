@@ -40,7 +40,7 @@
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    124,567
+                    {{ totalCases }}
                   </div>
                 </dd>
               </div>
@@ -61,7 +61,7 @@
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    42.8M
+                    {{ totalVaccinations }}
                   </div>
                 </dd>
               </div>
@@ -82,7 +82,7 @@
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    1,243
+                    {{ totalDeaths }}
                   </div>
                 </dd>
               </div>
@@ -97,7 +97,7 @@
         <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-medium text-gray-900">Évolution des cas COVID-19</h2>
-            <div class="relative">
+            <div class="relative hidden">
               <select
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
                 <option>7 derniers jours</option>
@@ -119,7 +119,7 @@
         <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-medium text-gray-900">Progression des vaccinations</h2>
-            <div class="relative">
+            <div class="relative hidden">
               <select
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
                 <option>Par pays</option>
@@ -147,10 +147,7 @@
               <button class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-md transition-all">
                 Cas confirmés
               </button>
-              <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all">
-                Taux de vaccination
-              </button>
-              <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all">
+              <button routerLink="/client/cartography" class="px-3 py-1 cursor-pointer bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all">
                 Décès
               </button>
             </div>
@@ -170,10 +167,10 @@
             <h2 class="text-lg font-medium text-gray-900">Pays les plus touchés</h2>
             <div class="relative">
               <select
+                (change)="onLeaderMetricChange($event)"
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
-                <option>Cas confirmés</option>
-                <option selected>Décès</option>
-                <option>Taux d'incidence</option>
+                <option value="cases">Cas confirmés</option>
+                <option value="deaths" selected>Décès</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <i class="fas fa-chevron-down text-xs"></i>
@@ -188,7 +185,7 @@
                   Pays
                 </th>
                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
-                  Décès
+                  {{ selectedMetric === 'cases' ? 'Cas confirmés' : 'Décès' }}
                 </th>
               </tr>
               </thead>
