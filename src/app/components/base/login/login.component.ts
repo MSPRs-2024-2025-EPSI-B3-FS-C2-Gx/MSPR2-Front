@@ -61,7 +61,7 @@ export class LoginComponent {
     setTimeout(() => {
       this.loading = false;
 
-      this.authService.login().then(() => {
+      this.authService.login(this.loginForm.value.email).then(() => {
         toast.success('Connexion réussie !');
         this.router.navigate(['/client']);
       });

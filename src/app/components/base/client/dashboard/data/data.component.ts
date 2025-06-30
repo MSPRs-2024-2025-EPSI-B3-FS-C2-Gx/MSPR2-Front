@@ -33,13 +33,13 @@ export class DataComponent implements OnInit {
     this.loadData();
   }
 
-  loadCountries() {
+  loadCountries(): void {
     this.dataService.getAllCountry().subscribe((res: any) => {
       this.countries = res || [];
     });
   }
 
-  async loadData(page: number = 1) {
+  async loadData(page: number = 1): Promise<void> {
     const toastId = toast.loading('Chargement des données...');
 
     await new Promise<void>((resolve) => setTimeout(resolve, 100));

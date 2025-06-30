@@ -55,7 +55,7 @@ export class DashboardComponent {
     this.loadData();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     window.scrollTo(0, 0);
   }
 
@@ -63,12 +63,12 @@ export class DashboardComponent {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   }
 
-  onLeaderMetricChange(event: any) {
+  onLeaderMetricChange(event: any): void {
     this.selectedMetric = event.target.value === 'cases' ? 'cases' : 'deaths';
     console.log('Métrique sélectionnée :', this.selectedMetric);
   }
 
-  renderCasesChart(data: { date: string, total_cases: number }[]) {
+  renderCasesChart(data: { date: string, total_cases: number }[]): void {
     const labels = data.map(d => d.date);
     const values = data.map(d => d.total_cases);
 
@@ -76,7 +76,7 @@ export class DashboardComponent {
     const ctx = canvas.getContext('2d');
 
     if (this.casesChart) {
-      this.casesChart.destroy(); // détruit le précédent si existant
+      this.casesChart.destroy();
     }
 
     this.casesChart = new Chart(ctx!, {
@@ -86,7 +86,7 @@ export class DashboardComponent {
         datasets: [{
           label: 'Total de cas',
           data: values,
-          borderColor: 'rgb(59, 130, 246)', // bleu
+          borderColor: 'rgb(59, 130, 246)',
           backgroundColor: 'rgba(59, 130, 246, 0.1)',
           fill: true,
           tension: 0.3,
@@ -128,7 +128,7 @@ export class DashboardComponent {
     });
   }
 
-  renderVaccinationChart(data: { date: string, total_daily_vaccinations: number }[]) {
+  renderVaccinationChart(data: { date: string, total_daily_vaccinations: number }[]): void {
     const labels = data.map(d => d.date);
     const values = data.map(d => d.total_daily_vaccinations);
 
@@ -146,7 +146,7 @@ export class DashboardComponent {
         datasets: [{
           label: 'Vaccinations journalières',
           data: values,
-          borderColor: 'rgb(16, 185, 129)', // vert
+          borderColor: 'rgb(16, 185, 129)',
           backgroundColor: 'rgba(16, 185, 129, 0.1)',
           fill: true,
           tension: 0.3,
