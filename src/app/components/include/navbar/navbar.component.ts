@@ -1,12 +1,14 @@
 import {Component, HostListener} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
-import {NgIf, NgStyle} from '@angular/common';
+import {NgFor, NgIf, NgStyle} from '@angular/common';
 import {AuthService} from '../../../services/auth/auth.service';
 import {SidebarService} from '../../../services/sidebar/sidebar.service';
+import {SearchService} from '../../../services/search/search.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, NgIf, RouterLinkActive, NgStyle],
+  imports: [RouterLink, NgIf, RouterLinkActive, NgStyle, FormsModule, NgFor],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
@@ -14,7 +16,35 @@ export class NavbarComponent {
   clientDropdownOpen = false;
   dropdownStyles = {};
 
-  constructor(public authService: AuthService, public sbService: SidebarService) {
+  searchQuery = '';
+  searchResults: any[] = [];
+  showResults = false;
+
+  constructor(public authService: AuthService, public sbService: SidebarService, private searchService: SearchService) {
+  }
+
+  onSearch(): void {
+    if (this.searchQuery.length > 2) {
+      this.searchResults = this.searchService.search(this.searchQuery);
+      this.showResults = true;
+    } else {
+      this.searchResults = [];
+      this.showResults = false;
+    }
+  }
+
+  selectResult(result: any): void {
+    this.searchService.navigateToResult(result);
+    this.searchQuery = '';
+    this.showResults = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.search-container')) {
+      this.showResults = false;
+    }
   }
 
   toggleMobileMenu() {

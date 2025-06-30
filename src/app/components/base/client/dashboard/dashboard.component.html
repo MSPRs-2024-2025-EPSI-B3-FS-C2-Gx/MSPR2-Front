@@ -40,12 +40,7 @@
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    124,567
-                  </div>
-                  <div class="ml-2 flex items-baseline text-sm font-semibold text-red-600">
-                    <i class="fas fa-arrow-up text-xs"></i>
-                    <span class="sr-only">Increased by</span>
-                    3.2%
+                    {{ formatNumber(totalCases) }}
                   </div>
                 </dd>
               </div>
@@ -62,16 +57,11 @@
               </div>
               <div class="ml-5 w-0 flex-1">
                 <dt class="text-sm font-medium text-gray-500 truncate">
-                  Vaccinations (7j)
+                  Vaccinations
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    42.8M
-                  </div>
-                  <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
-                    <i class="fas fa-arrow-up text-xs"></i>
-                    <span class="sr-only">Increased by</span>
-                    12.4%
+                    {{ formatNumber(totalVaccinations) }}
                   </div>
                 </dd>
               </div>
@@ -88,16 +78,11 @@
               </div>
               <div class="ml-5 w-0 flex-1">
                 <dt class="text-sm font-medium text-gray-500 truncate">
-                  Décès (24h)
+                  Décès
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
-                    1,243
-                  </div>
-                  <div class="ml-2 flex items-baseline text-sm font-semibold text-red-600">
-                    <i class="fas fa-arrow-up text-xs"></i>
-                    <span class="sr-only">Increased by</span>
-                    0.9%
+                    {{ formatNumber(totalDeaths) }}
                   </div>
                 </dd>
               </div>
@@ -112,7 +97,7 @@
         <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-medium text-gray-900">Évolution des cas COVID-19</h2>
-            <div class="relative">
+            <div class="relative hidden">
               <select
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
                 <option>7 derniers jours</option>
@@ -134,7 +119,7 @@
         <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-medium text-gray-900">Progression des vaccinations</h2>
-            <div class="relative">
+            <div class="relative hidden">
               <select
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
                 <option>Par pays</option>
@@ -162,19 +147,18 @@
               <button class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-md transition-all">
                 Cas confirmés
               </button>
-              <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all">
-                Taux de vaccination
-              </button>
-              <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all">
+              <button
+                class="px-3 py-1 cursor-pointer bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all"
+                routerLink="/client/cartography">
                 Décès
               </button>
             </div>
           </div>
-          <div class="map-container">
+          <div class="map-container cursor-pointer" routerLink="/client/cartography">
             <div class="map-placeholder">
               <i class="fas fa-globe-americas text-4xl mb-2"></i>
               <p>Carte interactive des données COVID-19</p>
-              <p class="text-sm mt-1">(En développement)</p>
+              <p class="text-sm mt-1">(Cliquez pour voir)</p>
             </div>
           </div>
         </div>
@@ -185,10 +169,10 @@
             <h2 class="text-lg font-medium text-gray-900">Pays les plus touchés</h2>
             <div class="relative">
               <select
+                (change)="onLeaderMetricChange($event)"
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
-                <option>Cas confirmés</option>
-                <option selected>Décès</option>
-                <option>Taux d'incidence</option>
+                <option value="cases">Cas confirmés</option>
+                <option selected value="deaths">Décès</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <i class="fas fa-chevron-down text-xs"></i>
@@ -203,127 +187,27 @@
                   Pays
                 </th>
                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
-                  Décès
-                </th>
-                <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
-                  A ENLEVER
+                  {{ selectedMetric === 'cases' ? 'Cas confirmés' : 'Décès' }}
                 </th>
               </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-              <tr>
+              <tr *ngFor="let country of (selectedMetric === 'cases' ? top5Cases : top5Deaths)">
                 <td class="px-3 py-3 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/us.png">
+                      <img
+                        [src]="'https://flagcdn.com/w20/' + this.utilService.getCountryCode(country.country_name) + '.png'"
+                        alt=""
+                        class="h-5 w-5 rounded-full">
                     </div>
                     <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">États-Unis</div>
+                      <div class="text-sm font-medium text-gray-900">{{ country.country_name }}</div>
                     </div>
                   </div>
                 </td>
                 <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  1,128,367
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
-                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 85%"></div>
-                    </div>
-                    <span class="ml-2 text-xs text-gray-500">3.4%</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/br.png">
-                    </div>
-                    <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">Brésil</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  703,526
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
-                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 72%"></div>
-                    </div>
-                    <span class="ml-2 text-xs text-gray-500">2.8%</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/in.png">
-                    </div>
-                    <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">Inde</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  532,025
-                </td>
-                <td>
-                  <div class="flex items-center">
-                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
-                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 68%"></div>
-                    </div>
-                    <span class="ml-2 text-xs text-gray-500">1.2%</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/ru.png">
-                    </div>
-                    <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">Russie</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  392,425
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
-                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 55%"></div>
-                    </div>
-                    <span class="ml-2 text-xs text-gray-500">2.1%</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-5 w-5">
-                      <img alt="" class="h-5 w-5 rounded-full" src="https://flagcdn.com/w20/mx.png">
-                    </div>
-                    <div class="ml-2">
-                      <div class="text-sm font-medium text-gray-900">Mexique</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">
-                  331,573
-                </td>
-                <td class="px-3 py-3 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
-                      <div class="bg-red-600 h-1.5 rounded-full" style="width: 45%"></div>
-                    </div>
-                    <span class="ml-2 text-xs text-gray-500">5.4%</span>
-                  </div>
+                  {{ formatNumber(selectedMetric === 'cases' ? country.total_cases : country.total_deaths) }}
                 </td>
               </tr>
               </tbody>
@@ -332,56 +216,6 @@
         </div>
       </div>
 
-      <!-- Predictions and alerts -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- Predictions -->
-        <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-medium text-gray-900">Prédictions IA</h2>
-            <span
-              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                  Beta
-                              </span>
-          </div>
-          <div class="space-y-4">
-            <div>
-              <h3 class="text-sm font-medium text-gray-900">Prochaine vague en Europe</h3>
-              <p class="mt-1 text-sm text-gray-600">
-                Nos modèles prévoient une augmentation des cas dans les 4-6 semaines avec une probabilité de 78%.
-              </p>
-              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
-                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 78%"></div>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-sm font-medium text-gray-900">Nouveau variant</h3>
-              <p class="mt-1 text-sm text-gray-600">
-                Risque d'émergence d'un nouveau variant préoccupant dans les 3 mois : 42%.
-              </p>
-              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
-                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 42%"></div>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-sm font-medium text-gray-900">Impact vaccinal</h3>
-              <p class="mt-1 text-sm text-gray-600">
-                Efficacité attendue des vaccins actuels contre les nouveaux variants : 68%.
-              </p>
-              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
-                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 68%"></div>
-              </div>
-            </div>
-          </div>
-          <div class="mt-4">
-            <button
-              class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
-              <i class="fas fa-robot mr-1"></i>
-              Exécuter une nouvelle analyse
-            </button>
-          </div>
-        </div>
-
-      </div>
     </div>
 
   </div>

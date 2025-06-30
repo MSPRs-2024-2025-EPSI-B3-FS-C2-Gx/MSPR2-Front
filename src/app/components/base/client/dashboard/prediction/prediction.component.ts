@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {SidebarComponent} from '../../../../include/client/sidebar/sidebar.component';
 import {DataService} from '../../../../../services/data/data.service';
 
@@ -11,5 +11,9 @@ import {DataService} from '../../../../../services/data/data.service';
 })
 export class PredictionComponent {
   constructor(public dataService: DataService) {
+  }
+
+  ngOnInit() {
+    window.scrollTo(0, 0);
   }
 }
