@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  API_URL: string = 'http://127.0.0.1:5001/api';
+  API_URL: string = 'https://api-mspr-2-kldok.gaetandev.fr/api';
   isRefreshing = false;
 
   constructor(private http: HttpClient) {
