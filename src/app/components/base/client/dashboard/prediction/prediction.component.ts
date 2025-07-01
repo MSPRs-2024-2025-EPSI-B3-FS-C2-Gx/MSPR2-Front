@@ -21,6 +21,8 @@ export class PredictionComponent implements OnInit {
   selectedCountry: string = '';
   startDate: string = '';
 
+  predictionData: any[] = [];
+
   constructor(public dataService: DataService) {
   }
 
@@ -53,7 +55,7 @@ export class PredictionComponent implements OnInit {
 
     this.dataService.getPredictedData(this.selectedCountry, this.startDate).subscribe({
       next: (result) => {
-        console.log(result);
+        this.predictionData = result;
         toast.success('Prediction effectuée avec succès.', {id: toastId});
       },
       error: (err) => {
