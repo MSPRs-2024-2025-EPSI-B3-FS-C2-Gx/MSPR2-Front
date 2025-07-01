@@ -5,6 +5,9 @@ import {FormsModule} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
 import {toast} from 'ngx-sonner';
 import { forkJoin } from 'rxjs';
+import { Chart, registerables } from 'chart.js';
+
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-prediction',
@@ -60,7 +63,7 @@ export class PredictionComponent implements OnInit {
     const toastId = toast.loading('Lancement de la prédiction...');
     this.closeModal();
 
-    await new Promise<void>((resolve) => setTimeout(resolve, 300));
+    await new Promise<void>((resolve) => setTimeout(resolve, 1000));
 
     forkJoin({
       prediction: this.dataService.getPredictedData(this.selectedCountry, this.startDate),
@@ -69,6 +72,9 @@ export class PredictionComponent implements OnInit {
       next: ({ prediction, realData }) => {
         this.predictionData = prediction;
         this.realData = realData;
+
+        setTimeout(() => this.renderChart(), 0);
+
         toast.success('Prédiction effectuée avec succès.', { id: toastId });
       },
       error: () => {
@@ -77,6 +83,82 @@ export class PredictionComponent implements OnInit {
       complete: () => {
         this.selectedCountry = '';
         this.startDate = '';
+      }
+    });
+  }
+
+  renderChart(): void {
+    // @ts-ignore
+    if (!this.predictionData?.predictions || !this.realData?.length) return;
+
+    // @ts-ignore
+    const predicted = this.predictionData.predictions;
+    const real = this.realData;
+
+    const allDatesSet = new Set<string>([
+      ...predicted.map((p: any) => p.date),
+      ...real.map(r => r.date)
+    ]);
+
+    const allDates = Array.from(allDatesSet).sort();
+
+    const realCases = allDates.map(date => {
+      const found = real.find((r: any) => r.date === date);
+      return found ? found.confirmed_cases : null;
+    });
+
+    const predictedCases = allDates.map(date => {
+      const found = predicted.find((p: any) => p.date === date);
+      return found ? found.predicted_cases : null;
+    });
+
+    const ctx = document.getElementById('combinedChart') as HTMLCanvasElement;
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: allDates,
+        datasets: [
+          {
+            label: 'Cas réels',
+            data: realCases,
+            borderColor: '#3B82F6',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            tension: 0.3,
+            spanGaps: true
+          },
+          {
+            label: 'Cas prédits',
+            data: predictedCases,
+            borderColor: '#F97316',
+            backgroundColor: 'rgba(249, 115, 22, 0.1)',
+            tension: 0.3,
+            spanGaps: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: {
+              maxRotation: 45,
+              minRotation: 45
+            }
+          },
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            display: true
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        }
       }
     });
   }
