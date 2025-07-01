@@ -58,6 +58,10 @@ export class PredictionComponent implements OnInit {
       },
       error: (err) => {
         toast.error('Erreur lors de la prédiction.', {id: toastId});
+      },
+      complete: () => {
+        this.selectedCountry = '';
+        this.startDate = '';
       }
     });
   }

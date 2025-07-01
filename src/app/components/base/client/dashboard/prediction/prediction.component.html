@@ -74,33 +74,15 @@
       <!-- Prediction trends chart -->
       <div class="bg-white shadow rounded-lg p-6 card-hover transition-all mb-6">
         <div class="flex justify-between items-center mb-4">
-          <h2 class="text-lg font-medium text-gray-900">Tendances des prédictions</h2>
-          <select
-            class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
-            <option>7 derniers jours</option>
-            <option>30 derniers jours</option>
-            <option selected>90 derniers jours</option>
-            <option>Cette année</option>
-          </select>
-          <div class="pointer-events-none absolute right-4 top-2 text-gray-700">
-            <i class="fas fa-chevron-down text-xs"></i>
-          </div>
-        </div>
-        <div class="h-80">
-          <canvas id="predictionTrendChart"></canvas>
-        </div>
-      </div>
-
-      <!-- Prédictions IA détaillées -->
-      <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-lg font-medium text-gray-900">Prédictions IA</h2>
+          <h2 class="text-lg font-medium text-gray-900">Prédiction</h2>
           <span
             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
             Beta
           </span>
         </div>
-
+        <div class="h-80">
+          <canvas id="predictionTrendChart"></canvas>
+        </div>
         <div class="mt-6">
           <button
             (click)="openModal()"
