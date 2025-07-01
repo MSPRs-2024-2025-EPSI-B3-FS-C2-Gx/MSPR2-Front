@@ -70,4 +70,8 @@ export class DataService {
   getAllCountry(): Observable<any> {
     return this.http.get<any>(`${this.API_URL}/country`);
   }
+
+  getPredictedData(country: string, date: string): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/predict_cases?country=${country}&start_date=${date}`);
+  }
 }

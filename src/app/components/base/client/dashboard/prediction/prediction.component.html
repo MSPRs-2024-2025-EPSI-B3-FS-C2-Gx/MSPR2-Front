@@ -100,45 +100,62 @@
             Beta
           </span>
         </div>
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-sm font-medium text-gray-900">Prochaine vague en Europe</h3>
-            <p class="mt-1 text-sm text-gray-600">
-              Nos modèles anticipent une hausse des cas dans les 4-6 semaines avec une probabilité de 78%.
-            </p>
-            <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
-              <div class="bg-blue-600 h-1.5 rounded-full" style="width: 78%"></div>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="text-sm font-medium text-gray-900">Nouveau variant détecté</h3>
-            <p class="mt-1 text-sm text-gray-600">
-              Probabilité d’apparition d’un variant préoccupant dans les 3 mois : 42%.
-            </p>
-            <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
-              <div class="bg-blue-600 h-1.5 rounded-full" style="width: 42%"></div>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="text-sm font-medium text-gray-900">Efficacité vaccinale</h3>
-            <p class="mt-1 text-sm text-gray-600">
-              Estimation de l’efficacité des vaccins actuels face aux nouveaux variants : 68%.
-            </p>
-            <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
-              <div class="bg-blue-600 h-1.5 rounded-full" style="width: 68%"></div>
-            </div>
-          </div>
-        </div>
 
         <div class="mt-6">
           <button
+            (click)="openModal()"
             class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
             <i class="fas fa-robot mr-2"></i> Lancer une nouvelle analyse
           </button>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  *ngIf="modalOpen"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50"
+>
+  <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-xl">
+    <h2 class="text-lg font-semibold mb-4">Nouvelle analyse</h2>
+
+    <form (ngSubmit)="launchAnalysis()">
+      <label class="block mb-2 text-sm font-medium text-gray-700">Pays</label>
+      <select
+        [(ngModel)]="selectedCountry"
+        name="country"
+        required
+        class="w-full border border-gray-300 rounded-md p-2 mb-4 focus:ring-blue-500 focus:border-blue-500"
+      >
+        <option *ngFor="let c of countries" [value]="c.country_name">{{ c.country_name }}</option>
+      </select>
+
+      <label class="block mb-2 text-sm font-medium text-gray-700">Date de démarrage</label>
+      <input
+        [(ngModel)]="startDate"
+        name="startDate"
+        required
+        type="date"
+        class="w-full border border-gray-300 rounded-md p-2 mb-4 focus:ring-blue-500 focus:border-blue-500"
+      />
+
+      <div class="flex justify-end space-x-2">
+        <button
+          type="button"
+          (click)="closeModal()"
+          class="px-4 py-2 text-sm bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+        >
+          Annuler
+        </button>
+        <button
+          type="submit"
+          class="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
+          Analyser
+        </button>
+      </div>
+    </form>
   </div>
 </div>
