@@ -107,7 +107,12 @@
                  style="position: fixed; width: inherit; max-width: inherit;">
               <ul>
                 <li
+                  role="option"
+                  tabindex="0"
+                  [attr.aria-selected]="searchQuery === result"
                   (click)="selectResult(result)"
+                  (keydown.enter)="selectResult(result)"
+                  (keydown.space)="selectResult(result)"
                   *ngFor="let result of searchResults"
                   class="cursor-pointer select-none relative py-2 pl-3 pr-9 hover:bg-gray-100"
                 >

@@ -9,6 +9,5 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent {
-  constructor(public sbService: SidebarService) {
-  }
+  constructor(public sbService: SidebarService) {}
 }

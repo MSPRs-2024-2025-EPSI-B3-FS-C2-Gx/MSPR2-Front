@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SidebarComponent} from '../../../include/client/sidebar/sidebar.component';
 import {toast} from 'ngx-sonner';
 import {DataService} from '../../../../services/data/data.service';
 import {RouterLink} from '@angular/router';
-import {catchError, finalize, forkJoin, tap, throwError} from 'rxjs';
+import {catchError, forkJoin, tap, throwError} from 'rxjs';
 import {
   CategoryScale,
   Chart,
@@ -40,7 +40,7 @@ Chart.register(
   ],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   totalCases: number = 0;
   totalVaccinations: number = 0;
   totalDeaths: number = 0;
@@ -207,11 +207,11 @@ export class DashboardComponent {
     })
       .pipe(
         tap(({cases, vaccines, deaths, evolution, vaccineEvo, top5}) => {
-          // @ts-ignore
+          // @ts-expect-error Cast to number
           this.totalCases = Number(cases[0].total_weekly_cases);
-          // @ts-ignore
+          // @ts-expect-error Cast to number
           this.totalVaccinations = Number(vaccines[0].total_reported_shots);
-          // @ts-ignore
+          // @ts-expect-error Cast to number
           this.totalDeaths = Number(deaths[0].total_weekly_deaths);
           this.renderCasesChart(evolution.data);
           this.renderVaccinationChart(vaccineEvo.data);

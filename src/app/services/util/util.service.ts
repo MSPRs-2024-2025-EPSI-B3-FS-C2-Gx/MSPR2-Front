@@ -5,11 +5,8 @@ import {Injectable} from '@angular/core';
 })
 export class UtilService {
 
-  constructor() {
-  }
-
   getCountryCode(name: string): string {
-    const countryCodes: { [key: string]: string } = {
+    const countryCodes: Record<string, string> = {
       'United States of America': 'us',
       'Brazil': 'br',
       'India': 'in',

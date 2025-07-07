@@ -52,8 +52,9 @@
     <h2 class="text-lg font-semibold mb-4">Nouvelle analyse</h2>
 
     <form (ngSubmit)="launchAnalysis()">
-      <label class="block mb-2 text-sm font-medium text-gray-700">Pays</label>
+      <label for="countrySelect" class="block mb-2 text-sm font-medium text-gray-700">Pays</label>
       <select
+        id="countrySelect"
         [(ngModel)]="selectedCountry"
         name="country"
         required
@@ -62,8 +63,9 @@
         <option *ngFor="let c of countries" [value]="c.country_name">{{ c.country_name }}</option>
       </select>
 
-      <label class="block mb-2 text-sm font-medium text-gray-700">Date de démarrage</label>
+      <label for="startDate" class="block mb-2 text-sm font-medium text-gray-700">Date de démarrage</label>
       <input
+        id="startDate"
         [(ngModel)]="startDate"
         name="startDate"
         required

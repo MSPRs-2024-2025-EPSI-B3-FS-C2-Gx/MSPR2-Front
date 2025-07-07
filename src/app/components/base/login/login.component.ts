@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {toast} from 'ngx-sonner';
 import {AuthService} from '../../../services/auth/auth.service';
@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
   standalone: true,
   templateUrl: './login.component.html'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loading = false;
 

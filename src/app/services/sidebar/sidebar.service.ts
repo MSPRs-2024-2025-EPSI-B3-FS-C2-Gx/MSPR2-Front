@@ -6,9 +6,6 @@ import {Injectable} from '@angular/core';
 export class SidebarService {
   mobileMenuOpen = false;
 
-  constructor() {
-  }
-
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
