@@ -20,7 +20,7 @@ module.exports = {
     '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular',
   },
   roots: [
-    '<rootDir>/src/app/core'
+    '<rootDir>/src'
   ],
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {

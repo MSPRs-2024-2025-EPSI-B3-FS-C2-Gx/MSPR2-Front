@@ -35,6 +35,7 @@ export class UtilService {
     const coords = feature.geometry.coordinates;
 
     if (feature.geometry.type === 'Polygon') {
+      // Pour un Polygon, les coordonnées sont déjà au bon niveau
       return this.getPolygonCenter(coords[0]);
     } else if (feature.geometry.type === 'MultiPolygon') {
       let totalArea = 0;
@@ -42,6 +43,8 @@ export class UtilService {
       let weightedLng = 0;
 
       coords.forEach((polygonGroup: number[][][]) => {
+        // Pour un MultiPolygon, chaque groupe contient un tableau de polygones,
+        // où le premier polygone est l'extérieur et les suivants sont des trous
         const polygon = polygonGroup[0];
         const area = this.getPolygonArea(polygon);
         const center = this.getPolygonCenter(polygon);
@@ -60,13 +63,33 @@ export class UtilService {
   }
 
   getPolygonCenter(polygon: number[][]): [number, number] {
-    const total = polygon.reduce(
-      (acc, coord) => [acc[0] + coord[1], acc[1] + coord[0]],
-      [0, 0]
-    );
-    const lat = total[0] / polygon.length;
-    const lng = total[1] / polygon.length;
-    return [lat, lng];
+    // Calcul du centre de gravité du polygone
+    // Utilisation de la formule du centre de gravité d'un polygone
+    let x = 0;
+    let y = 0;
+    let signedArea = 0;
+    
+    // Le polygone doit être fermé (premier point = dernier point)
+    const n = polygon.length - 1;
+    
+    for (let i = 0; i < n; i++) {
+      const x0 = polygon[i][0];
+      const y0 = polygon[i][1];
+      const x1 = polygon[i + 1][0];
+      const y1 = polygon[i + 1][1];
+      
+      const a = x0 * y1 - x1 * y0;
+      signedArea += a;
+      x += (x0 + x1) * a;
+      y += (y0 + y1) * a;
+    }
+    
+    signedArea *= 0.5;
+    x /= (6 * signedArea);
+    y /= (6 * signedArea);
+    
+    // Retourne [lat, lng]
+    return [y, x];
   }
 
   getPolygonArea(polygon: number[][]): number {
