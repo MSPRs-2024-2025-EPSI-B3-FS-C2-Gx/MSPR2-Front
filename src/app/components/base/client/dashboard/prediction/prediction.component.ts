@@ -88,10 +88,10 @@ export class PredictionComponent implements OnInit {
   }
 
   renderChart(): void {
-    // @ts-ignore
+    // @ts-expect-error Error check
     if (!this.predictionData?.predictions || !this.realData?.length) return;
 
-    // @ts-ignore
+    // @ts-expect-error Error check
     const predicted = this.predictionData.predictions;
     const real = this.realData;
 
