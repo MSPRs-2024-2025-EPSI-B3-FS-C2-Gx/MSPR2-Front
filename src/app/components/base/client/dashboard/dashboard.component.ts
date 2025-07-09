@@ -18,6 +18,7 @@ import {
 } from 'chart.js';
 import {NgForOf} from '@angular/common';
 import {UtilService} from '../../../../services/util/util.service';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 Chart.register(
   LineController,
@@ -33,10 +34,12 @@ Chart.register(
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
   imports: [
     SidebarComponent,
     RouterLink,
-    NgForOf
+    NgForOf,
+    TranslateModule
   ],
   templateUrl: './dashboard.component.html',
 })
@@ -51,7 +54,11 @@ export class DashboardComponent implements OnInit {
   casesChart: Chart | null = null;
   vaccinationChart: Chart | null = null;
 
-  constructor(public dataService: DataService, public utilService: UtilService) {
+  constructor(
+    public dataService: DataService,
+    public utilService: UtilService,
+    private translate: TranslateService
+  ) {
     this.loadData();
   }
 
@@ -84,7 +91,7 @@ export class DashboardComponent implements OnInit {
       data: {
         labels,
         datasets: [{
-          label: 'Total de cas',
+          label: this.translate.instant('DASHBOARD.CHARTS.CASES_TITLE'),
           data: values,
           borderColor: 'rgb(59, 130, 246)',
           backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -144,7 +151,7 @@ export class DashboardComponent implements OnInit {
       data: {
         labels,
         datasets: [{
-          label: 'Vaccinations journalières',
+          label: this.translate.instant('DASHBOARD.CHARTS.VACCINATIONS_TITLE'),
           data: values,
           borderColor: 'rgb(16, 185, 129)',
           backgroundColor: 'rgba(16, 185, 129, 0.1)',
@@ -189,7 +196,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private async loadData(): Promise<void> {
-    const toastId = toast.loading('Chargement des données...');
+    const toastId = toast.loading(this.translate.instant('COMMON.LOADING'));
 
     await new Promise<void>((resolve) => {
       setTimeout(() => {
@@ -217,10 +224,10 @@ export class DashboardComponent implements OnInit {
           this.renderVaccinationChart(vaccineEvo.data);
           this.top5Cases = top5.top5_cases;
           this.top5Deaths = top5.top5_deaths;
-          toast.success('Données chargées avec succès.', {id: toastId});
+          toast.success(this.translate.instant('COMMON.LOADED'), {id: toastId});
         }),
         catchError(error => {
-          toast.error('Erreur lors du chargement des données.', {id: toastId});
+          toast.error(this.translate.instant('COMMON.ERROR'), {id: toastId});
           return throwError(() => error);
         })
       )

@@ -13,7 +13,7 @@
             [ngClass]="rla.isActive ? 'text-blue-200' : 'text-gray-400'"
             class="fas fa-chart-pie mr-3"
           ></i>
-          Tableau de bord
+          {{ 'SIDEBAR.DASHBOARD' | translate }}
         </a>
         <a
           #rlaCarto="routerLinkActive"
@@ -26,7 +26,7 @@
             [ngClass]="rlaCarto.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
             class="fas fa-map-marked-alt mr-3"
           ></i>
-          Cartographie
+          {{ 'SIDEBAR.MAPPING' | translate }}
         </a>
 
         <a
@@ -40,7 +40,7 @@
             [ngClass]="rlaData.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
             class="fas fa-table mr-3"
           ></i>
-          Données brutes
+          {{ 'SIDEBAR.RAW_DATA' | translate }}
         </a>
 
         <a
@@ -54,7 +54,7 @@
             [ngClass]="rlaPred.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
             class="fas fa-robot mr-3"
           ></i>
-          Prédictions IA
+          {{ 'SIDEBAR.AI_PREDICTIONS' | translate }}
         </a>
       </div>
     </nav>
@@ -67,7 +67,7 @@
     <div class="flex items-center justify-center h-16 px-4 border-b">
       <div class="flex items-center">
         <i class="fas fa-virus text-blue-500 text-2xl mr-2"></i>
-        <span class="text-xl font-bold text-gray-900">PandemicTracker</span>
+        <span class="text-xl font-bold text-gray-900">{{ 'SIDEBAR.APP_TITLE' | translate }}</span>
       </div>
       <button (click)="sbService.toggleMobileMenu()" class="absolute right-4 text-gray-500 hover:text-gray-700"
               id="close-mobile-sidebar">
@@ -86,7 +86,7 @@
           >
             <i [ngClass]="rlaDashboard.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
                class="fas fa-chart-pie mr-3"></i>
-            Tableau de bord
+            {{ 'SIDEBAR.DASHBOARD' | translate }}
           </a>
 
           <a
@@ -98,7 +98,7 @@
           >
             <i [ngClass]="rlaCarto.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
                class="fas fa-map-marked-alt mr-3"></i>
-            Cartographie
+            {{ 'SIDEBAR.MAPPING' | translate }}
           </a>
 
           <a
@@ -110,7 +110,7 @@
           >
             <i [ngClass]="rlaData.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
                class="fas fa-table mr-3"></i>
-            Données brutes
+            {{ 'SIDEBAR.RAW_DATA' | translate }}
           </a>
 
           <a
@@ -122,7 +122,7 @@
           >
             <i [ngClass]="rlaPred.isActive ? 'text-blue-200' : 'text-gray-400 group-hover:text-gray-500'"
                class="fas fa-robot mr-3"></i>
-            Prédictions IA
+            {{ 'SIDEBAR.AI_PREDICTIONS' | translate }}
           </a>
         </div>
       </nav>

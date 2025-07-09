@@ -6,47 +6,49 @@
 
       <div class="flex justify-between items-center mb-6">
         <div>
-          <h1 class="text-2xl font-bold text-gray-900">Cartographie COVID-19</h1>
-          <p class="mt-1 text-sm text-gray-500 hidden md:block">
-            Visualisation interactive de la propagation du COVID-19 à l’échelle mondiale, pays par pays.
+          <h1 class="text-2xl font-bold text-gray-900" translate>CARTOGRAPHY.TITLE</h1>
+          <p class="mt-1 text-sm text-gray-500 hidden md:block" [translate]="'CARTOGRAPHY.SUBTITLE'">
           </p>
         </div>
         <div class="flex space-x-3">
           <button (click)="dataService.export()"
                   class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition">
-            <i class="fas fa-download mr-2"></i> Exporter
+            <i class="fas fa-download mr-2"></i> {{ 'CARTOGRAPHY.BUTTONS.EXPORT' | translate }}
           </button>
           <button (click)="this.dataService.refresh()"
                   class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition">
-            <i class="fas fa-sync-alt mr-2"></i> Actualiser
+            <i class="fas fa-sync-alt mr-2"></i> {{ 'CARTOGRAPHY.BUTTONS.REFRESH' | translate }}
           </button>
         </div>
       </div>
 
       <div class="bg-white shadow rounded-lg p-6 card-hover transition-all mb-6">
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-lg font-medium text-gray-900">Carte interactive - Répartition géographique</h2>
+          <h2 class="text-lg font-medium text-gray-900" [innerHTML]="'CARTOGRAPHY.INTERACTIVE_MAP.TITLE' | translate"></h2>
           <div class="flex space-x-2">
             <button (click)="selectMetric('cases')"
                     [ngClass]="{'bg-blue-100 text-blue-700': selectedMetric === 'cases'}"
                     class="px-3 py-1 text-xs font-medium rounded-md hover:bg-blue-100 hover:text-blue-800 transition">
-              Cas confirmés
+              {{ 'CARTOGRAPHY.INTERACTIVE_MAP.CONFIRMED_CASES' | translate }}
             </button>
             <button (click)="selectMetric('deaths')"
                     [ngClass]="{'bg-red-100 text-red-700': selectedMetric === 'deaths'}"
                     class="px-3 py-1 text-xs font-medium rounded-md hover:bg-red-100 hover:text-red-800 transition">
-              Décès
+              {{ 'CARTOGRAPHY.INTERACTIVE_MAP.DEATHS' | translate }}
             </button>
           </div>
         </div>
         <div class="relative rounded-lg overflow-hidden z-0" style="height: 600px;">
-          <div id="map" style="height: 100%; width: 100%;"></div>
+          <div id="map" style="height: 100%; width: 100%;">
+            <div class="flex items-center justify-center h-full">
+              <p class="text-gray-500">{{ 'CARTOGRAPHY.INTERACTIVE_MAP.LOADING' | translate }}</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="text-sm text-gray-600 mb-6">
-        <p>Survolez un pays pour voir ses statistiques actuelles selon l’indicateur sélectionné. Les données sont mises
-          à jour automatiquement toutes les 24h.</p>
+        <p [innerHTML]="'CARTOGRAPHY.INTERACTIVE_MAP.INFO_TEXT' | translate"></p>
       </div>
 
     </div>

@@ -1,26 +1,49 @@
 import {Component, HostListener} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
-import {NgFor, NgIf, NgStyle} from '@angular/common';
+import {NgClass, NgFor, NgIf, NgStyle} from '@angular/common';
 import {AuthService} from '../../../services/auth/auth.service';
 import {SidebarService} from '../../../services/sidebar/sidebar.service';
 import {SearchService} from '../../../services/search/search.service';
 import {FormsModule} from '@angular/forms';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {LanguageOption, TranslationService} from '../../../services/translation/translation.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, NgIf, RouterLinkActive, NgStyle, FormsModule, NgFor],
+  imports: [RouterLink, NgIf, RouterLinkActive, NgStyle, FormsModule, NgFor, NgClass, TranslateModule],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
   mobileMenuOpen = false;
   clientDropdownOpen = false;
   dropdownStyles = {};
+  languageDropdownOpen = false;
 
   searchQuery = '';
   searchResults: any[] = [];
   showResults = false;
 
-  constructor(public authService: AuthService, public sbService: SidebarService, private searchService: SearchService) {
+  currentLanguage: string = 'fr';
+  languages: LanguageOption[] = [];
+
+  constructor(
+    public authService: AuthService,
+    public sbService: SidebarService,
+    private searchService: SearchService,
+    private translate: TranslateService,
+    private translationService: TranslationService
+  ) {
+    console.log('Initialisation de la navbar');
+    this.languages = this.translationService.getLanguages();
+    this.currentLanguage = this.translationService.getCurrentLanguage();
+
+    console.log('Langues disponibles:', this.languages);
+    console.log('Langue courante:', this.currentLanguage);
+
+    // Vérifier si le service de traduction est bien initialisé
+    this.translate.get('LANGUAGE.FRENCH').subscribe((res: string) => {
+      console.log('Test de traduction:', res);
+    });
   }
 
   onSearch(): void {
@@ -45,10 +68,32 @@ export class NavbarComponent {
     if (!target.closest('.search-container')) {
       this.showResults = false;
     }
+
+    // Fermer les menus déroulants si on clique en dehors
+    if (!target.closest('.language-selector') && !target.closest('#language-dropdown-button')) {
+      this.languageDropdownOpen = false;
+    }
+
+    if (!target.closest('#user-menu-button') && !target.closest('#user-menu')) {
+      this.clientDropdownOpen = false;
+    }
   }
 
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  toggleLanguageDropdown(event: Event) {
+    event.stopPropagation();
+    this.languageDropdownOpen = !this.languageDropdownOpen;
+    this.clientDropdownOpen = false; // Fermer l'autre menu
+  }
+
+  changeLanguage(languageCode: string, event: Event) {
+    event.preventDefault();
+    this.translationService.useLanguage(languageCode);
+    this.currentLanguage = languageCode;
+    this.languageDropdownOpen = false;
   }
 
   toggleClientDropdown(button?: HTMLElement) {

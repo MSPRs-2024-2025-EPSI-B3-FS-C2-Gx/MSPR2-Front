@@ -1,0 +1,111 @@
+{
+  "TITLE": "Bienvenue sur notre application",
+  "LANGUAGE": {
+    "ENGLISH": "Anglais",
+    "FRENCH": "Français",
+    "GERMAN": "Allemand"
+  },
+  "COMMON": {
+    "WELCOME": "Bienvenue",
+    "SETTINGS": "Paramètres",
+    "PROFILE": "Profil",
+    "LOGOUT": "Déconnexion",
+    "LOADING": "Chargement...",
+    "LOADED": "Chargé",
+    "ERROR": "Une erreur s'est produite"
+  },
+  "CARTOGRAPHY": {
+    "TITLE": "Cartographie COVID-19",
+    "SUBTITLE": "Visualisation interactive de la propagation du COVID-19 à l'échelle mondiale, pays par pays.",
+    "BUTTONS": {
+      "EXPORT": "Exporter",
+      "REFRESH": "Actualiser"
+    },
+    "INTERACTIVE_MAP": {
+      "TITLE": "Carte interactive - Répartition géographique",
+      "CONFIRMED_CASES": "Cas confirmés",
+      "DEATHS": "Décès",
+      "INFO_TEXT": "Survolez un pays pour voir ses statistiques actuelles selon l'indicateur sélectionné. Les données sont mises à jour automatiquement toutes les 24h.",
+      "LOADING": "Chargement de la carte..."
+    },
+    "LEGEND": {
+      "TITLE": "Légende",
+      "CASES": "Cas",
+      "DEATHS": "Décès"
+    },
+    "TOOLTIP": {
+      "CONFIRMED_CASES": "Cas confirmés",
+      "DEATHS": "Décès",
+      "POPULATION": "Population",
+      "CASE_RATE": "Taux de cas",
+      "DEATH_RATE": "Taux de décès",
+      "PERCENT_SIGN": "%"
+    }
+  },
+  "NAVBAR": {
+    "SEARCH": "Rechercher",
+    "PROFILE": "Votre profil",
+    "SETTINGS": "Paramètres",
+    "LOGOUT": "Déconnexion",
+    "NO_RESULTS": "Aucun résultat trouvé pour '{{query}}'."
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "Tableau de bord",
+    "MAPPING": "Cartographie",
+    "RAW_DATA": "Données brutes",
+    "AI_PREDICTIONS": "Prédictions IA",
+    "APP_TITLE": "PandemicTracker"
+  },
+  "DASHBOARD": {
+    "TITLE": "Tableau de bord COVID-19",
+    "SUBTITLE": "Suivi global de la pandémie de COVID-19 à travers des données actualisées et des visualisations interactives.",
+    "BUTTONS": {
+      "EXPORT": "Exporter",
+      "REFRESH": "Actualiser"
+    },
+    "STATS": {
+      "TOTAL_CASES": "Total des cas",
+      "TOTAL_DEATHS": "Total des décès",
+      "TOTAL_VACCINATIONS": "Total des vaccinations"
+    },
+    "CHARTS": {
+      "CASES_TITLE": "Évolution des cas COVID-19",
+      "VACCINATIONS_TITLE": "Progression des vaccinations",
+      "TIME_RANGES": {
+        "LAST_7_DAYS": "7 derniers jours",
+        "LAST_30_DAYS": "30 derniers jours",
+        "LAST_90_DAYS": "90 derniers jours",
+        "THIS_YEAR": "Cette année"
+      },
+      "VIEW_OPTIONS": {
+        "BY_COUNTRY": "Par pays",
+        "BY_CONTINENT": "Par continent",
+        "BY_VACCINE_TYPE": "Par type de vaccin"
+      }
+    },
+    "MAP": {
+      "TITLE": "Répartition géographique",
+      "CONFIRMED_CASES": "Cas confirmés",
+      "DEATHS": "Décès",
+      "INTERACTIVE_MAP": "Carte interactive des données COVID-19",
+      "CLICK_TO_VIEW": "(Cliquez pour voir)"
+    },
+    "TOP_COUNTRIES": {
+      "TITLE": "Pays les plus touchés",
+      "CONFIRMED_CASES": "Cas confirmés",
+      "DEATHS": "Décès",
+      "COUNTRY": "Pays",
+      "CASES": "Cas",
+      "DEATHS_COUNT": "Décès"
+    },
+    "TOP_5": {
+      "TITLE": "Top 5 des pays par {{metric}}",
+      "CASES": "cas",
+      "DEATHS": "décès",
+      "COUNTRY": "Pays",
+      "COUNT": "Nombre",
+      "SHOW_DEATHS": "Afficher les décès",
+      "SHOW_CASES": "Afficher les cas"
+    }
+  }
+}

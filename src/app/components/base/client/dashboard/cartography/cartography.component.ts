@@ -6,13 +6,15 @@ import {UtilService} from '../../../../../services/util/util.service';
 import * as L from 'leaflet';
 import {toast} from 'ngx-sonner';
 import {catchError, from, tap, throwError} from 'rxjs';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cartography',
   standalone: true,
   imports: [
     NgClass,
-    SidebarComponent
+    SidebarComponent,
+    TranslateModule
   ],
   templateUrl: './cartography.component.html'
 })
@@ -24,7 +26,8 @@ export class CartographyComponent implements OnInit, AfterViewInit {
 
   constructor(
     public dataService: DataService,
-    private utilService: UtilService
+    private utilService: UtilService,
+    private translate: TranslateService
   ) {
   }
 
@@ -51,7 +54,7 @@ export class CartographyComponent implements OnInit, AfterViewInit {
   }
 
   async loadMapData(): Promise<void> {
-    const toastId = toast.loading('Chargement des données...');
+    const toastId = toast.loading(this.translate.instant('COMMON.LOADING'));
 
     await new Promise<void>((resolve) => setTimeout(resolve, 500));
 
@@ -110,15 +113,15 @@ export class CartographyComponent implements OnInit, AfterViewInit {
                   const tooltipContent = this.selectedMetric === 'cases'
                     ? `
                     <strong>${countryData.country_name}</strong><br>
-                    Cas confirmés : ${countryData.total_cases.toLocaleString()}<br>
-                    Population : ${countryData.population?.toLocaleString()}<br>
-                    Taux de cas : ${countryData.case_rate_percent?.toFixed(2)}%
+                    ${this.translate.instant('CARTOGRAPHY.TOOLTIP.CONFIRMED_CASES')}: ${countryData.total_cases.toLocaleString()}<br>
+                    ${this.translate.instant('CARTOGRAPHY.TOOLTIP.POPULATION')}: ${countryData.population?.toLocaleString()}<br>
+                    ${this.translate.instant('CARTOGRAPHY.TOOLTIP.CASE_RATE')}: ${countryData.case_rate_percent?.toFixed(2)}${this.translate.instant('CARTOGRAPHY.TOOLTIP.PERCENT_SIGN')}
                   `
                     : `
                     <strong>${countryData.country_name}</strong><br>
-                    Décès : ${countryData.total_deaths.toLocaleString()}<br>
-                    Population : ${countryData.population?.toLocaleString()}<br>
-                    Taux de décès : ${countryData.death_rate_percent?.toFixed(2)}%
+                    ${this.translate.instant('CARTOGRAPHY.TOOLTIP.DEATHS')}: ${countryData.total_deaths.toLocaleString()}<br>
+                    ${this.translate.instant('CARTOGRAPHY.TOOLTIP.POPULATION')}: ${countryData.population?.toLocaleString()}<br>
+                    ${this.translate.instant('CARTOGRAPHY.TOOLTIP.DEATH_RATE')}: ${countryData.death_rate_percent?.toFixed(2)}${this.translate.instant('CARTOGRAPHY.TOOLTIP.PERCENT_SIGN')}
                   `;
 
                   const circle = L.circleMarker(center, {
@@ -134,13 +137,13 @@ export class CartographyComponent implements OnInit, AfterViewInit {
               }
             });
 
-            toast.success('Données chargées avec succès.', {id: toastId});
+            toast.success(this.translate.instant('COMMON.LOADED'), {id: toastId});
           })
         ).toPromise();
       }),
       catchError(error => {
         console.error('Error loading map data:', error);
-        toast.error('Erreur lors du chargement des données.', {id: toastId});
+        toast.error(this.translate.instant('COMMON.ERROR'), {id: toastId});
         return throwError(() => error);
       })
     ).subscribe();
