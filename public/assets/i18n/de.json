@@ -9,6 +9,157 @@
     "WELCOME": "Willkommen",
     "SETTINGS": "Einstellungen",
     "PROFILE": "Profil",
-    "LOGOUT": "Abmelden"
+    "LOGOUT": "Abmelden",
+    "LOADING": "Lade...",
+    "LOADED": "Geladen",
+    "ERROR": "Ein Fehler ist aufgetreten",
+    "REFRESHING": "Aktualisiere...",
+    "REFRESH_SUCCESS": "Erfolgreich aktualisiert!",
+    "NO_AVAILABLE_FEATURE": "Funktion nicht verfügbar."
+  },
+  "PROFILE": {
+    "AUTH": "Kunde authentifiziert",
+    "INFORMATION": "Kontoinformationen",
+    "COMPLETE_NAME": "Vollständiger Name",
+    "ROLE": "Rolle",
+    "SUBSCRIPTION": "Abonnement",
+    "ACTIVE": "Aktiv",
+    "INACTIVE": "Inaktiv"
+  },
+  "CARTOGRAPHY": {
+    "TITLE": "COVID-19 Kartographie",
+    "SUBTITLE": "Interaktive Visualisierung der weltweiten Verbreitung von COVID-19, Land für Land.",
+    "BUTTONS": {
+      "EXPORT": "Exportieren",
+      "REFRESH": "Aktualisieren"
+    },
+    "INTERACTIVE_MAP": {
+      "TITLE": "Interaktive Karte – Geografische Verteilung",
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "INFO_TEXT": "Fahren Sie mit der Maus über ein Land, um die aktuellen Statistiken zum ausgewählten Indikator anzuzeigen. Die Daten werden automatisch alle 24 Stunden aktualisiert.",
+      "LOADING": "Lade Karte..."
+    },
+    "LEGEND": {
+      "TITLE": "Legende",
+      "CASES": "Fälle",
+      "DEATHS": "Todesfälle"
+    },
+    "TOOLTIP": {
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "POPULATION": "Bevölkerung",
+      "CASE_RATE": "Fallrate",
+      "DEATH_RATE": "Sterblichkeitsrate",
+      "PERCENT_SIGN": "%"
+    }
+  },
+  "RAW_DATA": {
+    "TITLE": "Rohdaten",
+    "SUBTITLE": "Zugriff auf COVID-19-Rohdaten nach Land.",
+    "BUTTONS": {
+      "EXPORT": "Exportieren",
+      "REFRESH": "Aktualisieren"
+    },
+    "TABLE": {
+      "ALL_COUNTRIES": "Alle Länder",
+      "DATE": "Datum",
+      "COUNTRY": "Land",
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "VACCINATIONS": "Impfungen",
+      "PAGE_SIZE": "Ergebnisse pro Seite",
+      "PAGE_PREVIOUS": "Zurück",
+      "PAGE_NEXT": "Weiter"
+    }
+  },
+  "AI_PREDICTIONS": {
+    "TITLE": "KI-Prognosen",
+    "SUBTITLE": "Analyse und Visualisierung der vorhergesagten Fälle durch künstliche Intelligenz, Land für Land.",
+    "BUTTONS": {
+      "EXPORT": "Exportieren",
+      "REFRESH": "Aktualisieren"
+    },
+    "GRAPH": {
+      "TITLE": "Prognose",
+      "LAUNCH_ANALYSIS": "Neue Analyse starten"
+    },
+    "FORM": {
+      "TITLE": "Neue Analyse",
+      "COUNTRY": "Land",
+      "START_DATE": "Startdatum",
+      "CANCEL": "Abbrechen",
+      "SUBMIT": "Analysieren"
+    },
+    "CHART": {
+      "REAL_CASES": "Reale Fälle",
+      "PREDICTED_CASES": "Vorhergesagte Fälle"
+    }
+  },
+  "NAVBAR": {
+    "SEARCH": "Suche",
+    "PROFILE": "Dein Profil",
+    "SETTINGS": "Einstellungen",
+    "LOGOUT": "Abmelden",
+    "NO_RESULTS": "Keine Ergebnisse gefunden für '{{query}}'."
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "Dashboard",
+    "MAPPING": "Kartierung",
+    "RAW_DATA": "Rohdaten",
+    "AI_PREDICTIONS": "KI-Prognosen",
+    "APP_TITLE": "PandemieTracker"
+  },
+  "DASHBOARD": {
+    "TITLE": "COVID-19 Dashboard",
+    "SUBTITLE": "Globale Verfolgung der COVID-19-Pandemie durch aktuelle Daten und interaktive Visualisierungen.",
+    "BUTTONS": {
+      "EXPORT": "Exportieren",
+      "REFRESH": "Aktualisieren"
+    },
+    "STATS": {
+      "TOTAL_CASES": "Gesamtfälle",
+      "TOTAL_DEATHS": "Gesamttodesfälle",
+      "TOTAL_VACCINATIONS": "Gesamtimpfungen"
+    },
+    "TOP_5": {
+      "TITLE": "Top 5 Länder nach {{metric}}",
+      "CASES": "Fälle",
+      "DEATHS": "Todesfälle",
+      "COUNTRY": "Land",
+      "COUNT": "Anzahl",
+      "SHOW_DEATHS": "Todesfälle anzeigen",
+      "SHOW_CASES": "Fälle anzeigen"
+    },
+    "CHARTS": {
+      "CASES_TITLE": "Entwicklung der COVID-19-Fälle",
+      "VACCINATIONS_TITLE": "Impfverlauf",
+      "TIME_RANGES": {
+        "LAST_7_DAYS": "Letzte 7 Tage",
+        "LAST_30_DAYS": "Letzte 30 Tage",
+        "LAST_90_DAYS": "Letzte 90 Tage",
+        "THIS_YEAR": "Dieses Jahr"
+      },
+      "VIEW_OPTIONS": {
+        "BY_COUNTRY": "Nach Land",
+        "BY_CONTINENT": "Nach Kontinent",
+        "BY_VACCINE_TYPE": "Nach Impfstofftyp"
+      }
+    },
+    "MAP": {
+      "TITLE": "Geografische Verteilung",
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "INTERACTIVE_MAP": "Interaktive COVID-19-Datenkarte",
+      "CLICK_TO_VIEW": "(Zum Anzeigen klicken)"
+    },
+    "TOP_COUNTRIES": {
+      "TITLE": "Am stärksten betroffene Länder",
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "COUNTRY": "Land",
+      "CASES": "Fälle",
+      "DEATHS_COUNT": "Todesfälle"
+    }
   }
 }
