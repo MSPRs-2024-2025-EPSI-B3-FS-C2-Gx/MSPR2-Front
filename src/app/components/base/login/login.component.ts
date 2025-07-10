@@ -3,11 +3,13 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {toast} from 'ngx-sonner';
 import {AuthService} from '../../../services/auth/auth.service';
 import {Router} from '@angular/router';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ],
   standalone: true,
   templateUrl: './login.component.html'
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loading = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private translate: TranslateService) {
   }
 
   get f() {
@@ -42,14 +44,14 @@ export class LoginComponent implements OnInit {
 
       if (controls['email'].errors) {
         if (controls['email'].errors['required']) {
-          toast.error('Adresse email obligatoire');
+          toast.error(this.translate.instant('LOGIN.ERROR.NEED_EMAIL'));
         } else if (controls['email'].errors['email']) {
-          toast.error('Adresse email invalide');
+          toast.error(this.translate.instant('LOGIN.ERROR.INVALID_EMAIL'));
         }
       }
 
       if (controls['password'].errors) {
-        toast.error('Mot de passe obligatoire');
+        toast.error(this.translate.instant('LOGIN.ERROR.NEED_PASSWORD'));
       }
 
       return;
@@ -62,7 +64,7 @@ export class LoginComponent implements OnInit {
       this.loading = false;
 
       this.authService.login(this.loginForm.value.email).then(() => {
-        toast.success('Connexion réussie !');
+        toast.success(this.translate.instant('LOGIN.SUCCESS'));
         this.router.navigate(['/client']);
       });
     }, 1000);

@@ -96,6 +96,28 @@
       "PREDICTED_CASES": "Predicted Cases"
     }
   },
+  "LOGIN": {
+    "TITLE": "Sign in to your account",
+    "OR": "Or",
+    "START_TRIAL": "start your free trial",
+    "EMAIL_PLACEHOLDER": "Email address",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "SUBMIT_BUTTON": "Sign in",
+    "SOCIAL_LOGIN": "Or continue with",
+    "SOCIAL": {
+      "GOOGLE": "Sign in with Google",
+      "FACEBOOK": "Sign in with Facebook",
+      "TWITTER": "Sign in with Twitter"
+    },
+    "ERROR": {
+      "NEED_EMAIL": "Email address required.",
+      "NEED_PASSWORD": "Password required.",
+      "INVALID_EMAIL": "Invalid email address."
+    },
+    "SUCCESS": "Sign in successful!"
+  },
   "NAVBAR": {
     "SEARCH": "Search",
     "PROFILE": "Your profile",

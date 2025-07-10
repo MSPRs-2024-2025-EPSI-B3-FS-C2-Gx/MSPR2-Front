@@ -96,6 +96,28 @@
       "PREDICTED_CASES": "Cas prédits"
     }
   },
+  "LOGIN": {
+    "TITLE": "Connectez-vous à votre compte",
+    "OR": "Ou",
+    "START_TRIAL": "commencez votre essai gratuit",
+    "EMAIL_PLACEHOLDER": "Adresse email",
+    "PASSWORD_PLACEHOLDER": "Mot de passe",
+    "REMEMBER_ME": "Se souvenir de moi",
+    "FORGOT_PASSWORD": "Mot de passe oublié ?",
+    "SUBMIT_BUTTON": "Connexion",
+    "SOCIAL_LOGIN": "Ou connectez-vous avec",
+    "SOCIAL": {
+      "GOOGLE": "Se connecter avec Google",
+      "FACEBOOK": "Se connecter avec Facebook",
+      "TWITTER": "Se connecter avec Twitter"
+    },
+    "ERROR": {
+      "NEED_EMAIL": "Adresse email requise.",
+      "NEED_PASSWORD": "Mot de passe requis.",
+      "INVALID_EMAIL": "Adresse email invalide."
+    },
+    "SUCCESS": "Connexion reussie !",
+  },
   "NAVBAR": {
     "SEARCH": "Rechercher",
     "PROFILE": "Votre profil",

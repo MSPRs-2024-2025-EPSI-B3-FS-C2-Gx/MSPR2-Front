@@ -4,13 +4,13 @@
       <div class="flex justify-center">
         <i class="fas fa-virus text-blue-500 text-4xl"></i>
       </div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Connectez-vous à votre compte
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900" translate>
+        LOGIN.TITLE
       </h2>
       <p class="mt-2 text-center text-sm text-gray-600">
-        Ou
+        {{ 'LOGIN.OR' | translate }}
         <a class="font-medium text-blue-600 hover:text-blue-500 transition-all" href="#">
-          commencez votre essai gratuit
+          {{ 'LOGIN.START_TRIAL' | translate }}
         </a>
       </p>
     </div>
@@ -25,7 +25,8 @@
             </div>
             <input autocomplete="email"
                    class="pl-10 block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm input-focus"
-                   formControlName="email" id="email-address" name="email" placeholder="Adresse email"
+                   formControlName="email" id="email-address" 
+                   [placeholder]="'LOGIN.EMAIL_PLACEHOLDER' | translate"
                    required
                    type="email">
           </div>
@@ -39,7 +40,7 @@
             <input autocomplete="current-password"
                    class="pl-10 block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm input-focus"
                    formControlName="password" id="password"
-                   name="password" placeholder="Mot de passe"
+                   [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate"
                    required
                    type="password">
           </div>
@@ -52,13 +53,13 @@
                  id="remember-me" name="remember-me"
                  type="checkbox">
           <label class="ml-2 block text-sm text-gray-900" for="remember-me">
-            Se souvenir de moi
+            {{ 'LOGIN.REMEMBER_ME' | translate }}
           </label>
         </div>
 
         <div class="text-sm">
-          <a class="font-medium text-blue-600 hover:text-blue-500 transition-all" href="#">
-            Mot de passe oublié ?
+          <a class="font-medium text-blue-600 hover:text-blue-500 transition-all" href="#" [attr.aria-label]="'LOGIN.FORGOT_PASSWORD' | translate">
+            {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
           </a>
         </div>
       </div>
@@ -71,7 +72,7 @@
         >                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                             <i class="fas fa-sign-in-alt text-blue-300 group-hover:text-blue-200"></i>
                         </span>
-          Connexion
+          {{ 'LOGIN.SUBMIT_BUTTON' | translate }}
         </button>
       </div>
     </form>
@@ -83,7 +84,7 @@
         </div>
         <div class="relative flex justify-center text-sm">
                         <span class="px-2 bg-white text-gray-500">
-                            Ou connectez-vous avec
+                            {{ 'LOGIN.SOCIAL_LOGIN' | translate }}
                         </span>
         </div>
       </div>
@@ -92,24 +93,27 @@
         <div>
           <a
             class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all"
-            href="#">
-            <i class="fab fa-google text-blue-500"></i>
+            href="#"
+            [attr.aria-label]="'LOGIN.SOCIAL.GOOGLE' | translate">
+            <i class="fab fa-google text-blue-500" [attr.title]="'LOGIN.SOCIAL.GOOGLE' | translate"></i>
           </a>
         </div>
 
         <div>
           <a
             class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all"
-            href="#">
-            <i class="fab fa-facebook-f text-blue-600"></i>
+            href="#"
+            [attr.aria-label]="'LOGIN.SOCIAL.FACEBOOK' | translate">
+            <i class="fab fa-facebook-f text-blue-600" [attr.title]="'LOGIN.SOCIAL.FACEBOOK' | translate"></i>
           </a>
         </div>
 
         <div>
-          <a
+            <a
             class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all"
-            href="#">
-            <i class="fab fa-twitter text-blue-400"></i>
+            href="#"
+            [attr.aria-label]="'LOGIN.SOCIAL.TWITTER' | translate">
+            <i class="fab fa-twitter text-blue-400" [attr.title]="'LOGIN.SOCIAL.TWITTER' | translate"></i>
           </a>
         </div>
       </div>

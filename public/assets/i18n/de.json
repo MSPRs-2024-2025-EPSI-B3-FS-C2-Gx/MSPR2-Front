@@ -96,6 +96,28 @@
       "PREDICTED_CASES": "Vorhergesagte Fälle"
     }
   },
+  "LOGIN": {
+    "TITLE": "Melden Sie sich bei Ihrem Konto an",
+    "OR": "Oder",
+    "START_TRIAL": "starten Sie Ihre kostenlose Testversion",
+    "EMAIL_PLACEHOLDER": "E-Mail-Adresse",
+    "PASSWORD_PLACEHOLDER": "Passwort",
+    "REMEMBER_ME": "Angemeldet bleiben",
+    "FORGOT_PASSWORD": "Passwort vergessen?",
+    "SUBMIT_BUTTON": "Anmelden",
+    "SOCIAL_LOGIN": "Oder fahren Sie fort mit",
+    "SOCIAL": {
+      "GOOGLE": "Mit Google anmelden",
+      "FACEBOOK": "Mit Facebook anmelden",
+      "TWITTER": "Mit Twitter anmelden"
+    },
+    "ERROR": {
+      "NEED_EMAIL": "E-Mail-Adresse erforderlich.",
+      "NEED_PASSWORD": "Passwort erforderlich.",
+      "INVALID_EMAIL": "Ungültige E-Mail-Adresse."
+    },
+    "SUCCESS": "Anmeldung erfolgreich!"
+  },
   "NAVBAR": {
     "SEARCH": "Suche",
     "PROFILE": "Dein Profil",
