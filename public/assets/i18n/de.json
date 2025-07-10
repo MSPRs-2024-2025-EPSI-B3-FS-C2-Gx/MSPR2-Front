@@ -101,7 +101,12 @@
     "PROFILE": "Dein Profil",
     "SETTINGS": "Einstellungen",
     "LOGOUT": "Abmelden",
-    "NO_RESULTS": "Keine Ergebnisse gefunden für '{{query}}'."
+    "NO_RESULTS": "Keine Ergebnisse gefunden für '{{query}}'.",
+    "NO_AUTH": {
+      "HOME": "Startseite",
+      "LOGIN": "Anmeldung",
+      "FREE_TRIAL": "Gratisprobe"
+    }
   },
   "SIDEBAR": {
     "DASHBOARD": "Dashboard",
@@ -109,6 +114,89 @@
     "RAW_DATA": "Rohdaten",
     "AI_PREDICTIONS": "KI-Prognosen",
     "APP_TITLE": "PandemieTracker"
+  },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Pandemie-Daten visualisieren",
+      "SUBTITLE": "Zugang zu Statistiken, Vorhersagen und Analysen zu COVID-19 und zukünftigen Pandemien.",
+      "EXPLORE_BUTTON": "Daten erkunden",
+      "DEMO_BUTTON": "Demo ansehen"
+    },
+    "FEATURES": {
+      "TITLE": "Funktionen",
+      "SUBTITLE": "Eine umfassende Plattform zur Pandemieverfolgung",
+      "ITEMS": {
+        "STATS": {
+          "TITLE": "Globale Statistiken",
+          "DESC": "Betrachten Sie COVID-19-Daten nach Ländern mit interaktiven Diagrammen und detaillierten Tabellen.",
+          "ICON": "fas fa-chart-line"
+        },
+        "AI": {
+          "TITLE": "KI-Vorhersagen",
+          "DESC": "Unsere KI-Modelle sagen zukünftige Trends mit hoher Genauigkeit voraus.",
+          "ICON": "fas fa-robot"
+        },
+        "MAPPING": {
+          "TITLE": "Interaktive Karten",
+          "DESC": "Erkunden Sie geografische Daten mit unserer interaktiven und anpassbaren Weltkarte.",
+          "ICON": "fas fa-map-marked-alt"
+        },
+        "ALERTS": {
+          "TITLE": "Benutzerdefinierte Benachrichtigungen",
+          "DESC": "Erhalten Sie Benachrichtigungen über wichtige Änderungen in Ihren Interessensgebieten.",
+          "ICON": "fas fa-bell"
+        },
+        "HISTORY": {
+          "TITLE": "Historische Daten",
+          "DESC": "Zugriff auf vollständige historische Pandemiedaten seit Beginn der COVID-19-Krise.",
+          "ICON": "fas fa-database"
+        },
+        "EXPORT": {
+          "TITLE": "Datenexport",
+          "DESC": "Laden Sie Daten in verschiedenen Formaten (CSV, JSON, Excel) für Ihre Analysen herunter.",
+          "ICON": "fas fa-file-export"
+        }
+      }
+    },
+    "STATS": {
+      "TITLE": "Echtzeit-COVID-19-Daten",
+      "SUBTITLE": "Täglich aktualisierte globale Statistiken",
+      "CONFIRMED": "Bestätigte Fälle",
+      "VACCINATIONS": "Impfungen",
+      "RECOVERED": "Genesene",
+      "DEATHS": "Todesfälle",
+      "SEE_ALL_STATS": "Alle Statistiken anzeigen"
+    },
+    "TESTIMONIALS": {
+      "TITLE": "Erfahrungsberichte",
+      "SUBTITLE": "Was unsere Nutzer sagen",
+      "ITEMS": {
+        "EPIDEMIOLOGIST": {
+          "NAME": "Dr. Sophie Martin",
+          "ROLE": "Epidemiologin, INSERM",
+          "QUOTE": "Diese Plattform hat revolutioniert, wie wir Pandemiedaten analysieren. Die Vorhersagen sind bemerkenswert genau und helfen uns, Epidemiewellen vorherzusehen.",
+          "IMAGE": "women/32"
+        },
+        "JOURNALIST": {
+          "NAME": "Jean Dupont",
+          "ROLE": "Wissenschaftsjournalist",
+          "QUOTE": "Als Journalist schätze ich besonders die Klarheit der Visualisierungen und den einfachen Zugang zu den données. Es ist mein bevorzugtes Werkzeug für meine COVID-Artikel geworden.",
+          "IMAGE": "men/54"
+        },
+        "HEALTH_OFFICER": {
+          "NAME": "Pierre Lambert",
+          "ROLE": "Gesundheitsbeamter",
+          "QUOTE": "Durch individuelle Benachrichtigungen können wir schnell auf epidemiologische Veränderungen reagieren. Ein unverzichtbares Werkzeug für unseren Dienst.",
+          "IMAGE": "men/67"
+        }
+      }
+    },
+    "CTA": {
+      "TITLE": "Bereit, die Daten zu erkunden?",
+      "SUBTITLE": "Erstellen Sie jetzt Ihr kostenloses Konto.",
+      "SIGN_UP": "Jetzt registrieren",
+      "CONTACT": "Kontakt"
+    }
   },
   "FOOTER": {
     "SOLUTIONS": "Lösungen",

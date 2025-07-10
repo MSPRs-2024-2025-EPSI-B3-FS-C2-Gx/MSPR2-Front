@@ -101,7 +101,12 @@
     "PROFILE": "Your profile",
     "SETTINGS": "Settings",
     "LOGOUT": "Logout",
-    "NO_RESULTS": "No results found for '{{query}}'."
+    "NO_RESULTS": "No results found for '{{query}}'.",
+    "NO_AUTH": {
+      "HOME": "Home",
+      "LOGIN": "Login",
+      "FREE_TRIAL": "Free Trial"
+    }
   },
   "SIDEBAR": {
     "DASHBOARD": "Dashboard",
@@ -109,6 +114,89 @@
     "RAW_DATA": "Raw Data",
     "AI_PREDICTIONS": "AI Predictions",
     "APP_TITLE": "PandemicTracker"
+  },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Visualize Pandemic Data",
+      "SUBTITLE": "Access statistics, predictions, and analysis on COVID-19 and future pandemics.",
+      "EXPLORE_BUTTON": "Explore Data",
+      "DEMO_BUTTON": "Watch Demo"
+    },
+    "FEATURES": {
+      "TITLE": "Features",
+      "SUBTITLE": "A comprehensive pandemic tracking platform",
+      "ITEMS": {
+        "STATS": {
+          "TITLE": "Global Statistics",
+          "DESC": "View COVID-19 data by country with interactive charts and detailed tables.",
+          "ICON": "fas fa-chart-line"
+        },
+        "AI": {
+          "TITLE": "AI Predictions",
+          "DESC": "Our AI models predict future trends with high accuracy.",
+          "ICON": "fas fa-robot"
+        },
+        "MAPPING": {
+          "TITLE": "Interactive Mapping",
+          "DESC": "Explore geographical data with our interactive and customizable world map.",
+          "ICON": "fas fa-map-marked-alt"
+        },
+        "ALERTS": {
+          "TITLE": "Custom Alerts",
+          "DESC": "Get notified about important changes in areas that interest you.",
+          "ICON": "fas fa-bell"
+        },
+        "HISTORY": {
+          "TITLE": "Historical Data",
+          "DESC": "Access complete historical pandemic data since the beginning of the COVID-19 crisis.",
+          "ICON": "fas fa-database"
+        },
+        "EXPORT": {
+          "TITLE": "Data Export",
+          "DESC": "Download data in various formats (CSV, JSON, Excel) for your analysis.",
+          "ICON": "fas fa-file-export"
+        }
+      }
+    },
+    "STATS": {
+      "TITLE": "Real-time COVID-19 Data",
+      "SUBTITLE": "Some global statistics updated daily",
+      "CONFIRMED": "Confirmed Cases",
+      "VACCINATIONS": "Vaccinations",
+      "RECOVERED": "Recovered",
+      "DEATHS": "Deaths",
+      "SEE_ALL_STATS": "View All Statistics"
+    },
+    "TESTIMONIALS": {
+      "TITLE": "Testimonials",
+      "SUBTITLE": "What Our Users Say",
+      "ITEMS": {
+        "EPIDEMIOLOGIST": {
+          "NAME": "Dr. Sophie Martin",
+          "ROLE": "Epidemiologist, INSERM",
+          "QUOTE": "This platform has revolutionized how we analyze pandemic data. The predictions are remarkably accurate and help us anticipate epidemic waves.",
+          "IMAGE": "women/32"
+        },
+        "JOURNALIST": {
+          "NAME": "Jean Dupont",
+          "ROLE": "Science Journalist",
+          "QUOTE": "As a journalist, I particularly appreciate the clarity of the visualizations and the ease of access to data. It has become my go-to tool for my COVID-related articles.",
+          "IMAGE": "men/54"
+        },
+        "HEALTH_OFFICER": {
+          "NAME": "Pierre Lambert",
+          "ROLE": "Public Health Officer",
+          "QUOTE": "Custom alerts allow us to react quickly to epidemiological changes. An essential tool for our service.",
+          "IMAGE": "men/67"
+        }
+      }
+    },
+    "CTA": {
+      "TITLE": "Ready to explore the data?",
+      "SUBTITLE": "Create your free account.",
+      "SIGN_UP": "Sign Up Now",
+      "CONTACT": "Contact Us"
+    }
   },
   "FOOTER": {
     "SOLUTIONS": "Solutions",
