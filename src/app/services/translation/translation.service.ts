@@ -42,7 +42,17 @@ export class TranslationService {
     return this.translate.currentLang || this.translate.defaultLang || 'en';
   }
 
+  public getCurrentFlag(): string {
+    const currentLanguage = this.getCurrentLanguage();
+    const language = this.languages.find((lang) => lang.code === currentLanguage);
+    return language ? language.flag : '🇺🇸';
+  }
+
   public getLanguages(): LanguageOption[] {
-    return this.languages;
+    // Retourne les langues avec les noms traduits
+    return this.languages.map(lang => ({
+      ...lang,
+      name: this.translate.instant(lang.name) // Traduit le nom de la langue
+    }));
   }
 }
