@@ -16,7 +16,7 @@ export class TranslationService {
   public languages: LanguageOption[] = [
     { code: 'en', name: 'LANGUAGE.ENGLISH', flag: '🇺🇸' },
     { code: 'fr', name: 'LANGUAGE.FRENCH', flag: '🇫🇷' },
-    { code: 'de', name: 'LANGUAGE.GERMAN', flag: '🇨🇭' },
+    { code: 'de', name: 'LANGUAGE.GERMAN', flag: '🇩🇪' },
     { code: 'it', name: 'LANGUAGE.ITALIAN', flag: '🇮🇹' },
     { code: 'es', name: 'LANGUAGE.SPANISH', flag: '🇪🇸' },
   ];
