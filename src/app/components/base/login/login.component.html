@@ -9,14 +9,15 @@
       </h2>
       <p class="mt-2 text-center text-sm text-gray-600">
         {{ 'LOGIN.OR' | translate }}
-        <a class="font-medium text-blue-600 hover:text-blue-500 transition-all" href="#">
+        <a class="font-medium text-blue-600 hover:text-blue-500 transition-all" routerLink="/register">
           {{ 'LOGIN.START_TRIAL' | translate }}
         </a>
       </p>
     </div>
     <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="mt-8 space-y-6">
       <input name="remember" type="hidden" value="true">
-      <div class="rounded-md shadow-sm space-y-4">
+      <div class="rounded-md space-y-4">
+        <!-- Email -->
         <div>
           <label class="sr-only" for="email-address">Adresse email</label>
           <div class="relative">
@@ -25,12 +26,18 @@
             </div>
             <input autocomplete="email"
                    class="pl-10 block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm input-focus"
+                   [ngClass]="{'border-red-500': f['email'].invalid && (f['email'].dirty || f['email'].touched || submitted)}"
                    formControlName="email" id="email-address" 
                    [placeholder]="'LOGIN.EMAIL_PLACEHOLDER' | translate"
                    required
                    type="email">
           </div>
+          <div class="text-red-500 text-xs mt-1">
+            {{ getErrorMessage('email') }}
+          </div>
         </div>
+        
+        <!-- Mot de passe -->
         <div>
           <label class="sr-only" for="password">Mot de passe</label>
           <div class="relative">
@@ -39,10 +46,14 @@
             </div>
             <input autocomplete="current-password"
                    class="pl-10 block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm input-focus"
+                   [ngClass]="{'border-red-500': f['password'].invalid && (f['password'].dirty || f['password'].touched || submitted)}"
                    formControlName="password" id="password"
                    [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate"
                    required
                    type="password">
+          </div>
+          <div class="text-red-500 text-xs mt-1">
+            {{ getErrorMessage('password') }}
           </div>
         </div>
       </div>

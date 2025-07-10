@@ -97,26 +97,27 @@
     }
   },
   "LOGIN": {
-    "TITLE": "Log in to your account",
+    "TITLE": "Sign in to your account",
     "OR": "Or",
     "START_TRIAL": "start your free trial",
+    "NO_ACCOUNT": "Don't have an account?",
+    "SIGN_UP": "Sign up",
     "EMAIL_PLACEHOLDER": "Email address",
     "PASSWORD_PLACEHOLDER": "Password",
     "REMEMBER_ME": "Remember me",
-    "FORGOT_PASSWORD": "Forgot password?",
-    "SUBMIT_BUTTON": "Login",
-    "SOCIAL_LOGIN": "Or log in with",
-    "SOCIAL": {
-      "GOOGLE": "Log in with Google",
-      "FACEBOOK": "Log in with Facebook",
-      "TWITTER": "Log in with Twitter"
-    },
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "SUBMIT_BUTTON": "Sign in",
+    "SOCIAL_LOGIN": "Or continue with",
+    "GOOGLE": "Sign in with Google",
+    "FACEBOOK": "Sign in with Facebook",
+    "TWITTER": "Sign in with Twitter",
     "ERROR": {
-      "NEED_EMAIL": "Email address required.",
-      "NEED_PASSWORD": "Password required.",
-      "INVALID_EMAIL": "Invalid email address."
+      "INVALID_CREDENTIALS": "Incorrect email or password.",
+      "ACCOUNT_LOCKED": "Your account is locked. Please try again later.",
+      "ACCOUNT_DISABLED": "Your account is disabled. Please contact the administrator."
     },
-    "SUCCESS": "Login successful!"
+    "SUCCESS": "Login successful!",
+    "LOADING": "Signing in..."
   },
   "ERROR": {
     "TITLE": "404 - Page not found",
@@ -133,6 +134,7 @@
     "NO_AUTH": {
       "HOME": "Home",
       "LOGIN": "Login",
+      "REGISTER": "Register",
       "FREE_TRIAL": "Free Trial"
     }
   },
@@ -247,6 +249,39 @@
     "TERMS": "Terms",
     "LICENSES": "Licenses",
     "COPYRIGHT": "© 2025 PandemicTracker. All rights reserved."
+  },
+  "REGISTER": {
+    "TITLE": "Create an account",
+    "OR": "Already have an account?",
+    "SIGN_IN": "Sign in here",
+    "FULL_NAME": "Full name",
+    "EMAIL_PLACEHOLDER": "Email address",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "I_AGREE_TO": "I agree to the",
+    "TERMS": "terms of service",
+    "SUBMIT_BUTTON": "Sign up",
+    "SOCIAL_SIGNUP": "Or sign up with",
+    "SOCIAL": {
+      "GOOGLE": "Sign up with Google",
+      "FACEBOOK": "Sign up with Facebook",
+      "TWITTER": "Sign up with Twitter"
+    },
+    "ERROR": {
+      "INVALID_FORM": "Please correct the errors in the form.",
+      "FORM_SUBMISSION": "An error occurred while submitting the form."
+    },
+    "SUCCESS": "Registration successful!",
+    "LOADING": "Processing..."
+  },
+  "VALIDATION": {
+    "REQUIRED": "This field is required.",
+    "INVALID_EMAIL": "Please enter a valid email address.",
+    "MIN_LENGTH": "Must be at least {{min}} characters long.",
+    "PASSWORD_MISMATCH": "Passwords do not match.",
+    "INVALID_PATTERN": "Invalid format.",
+    "TERMS_REQUIRED": "You must accept the terms of service.",
+    "FORM_INVALID": "Please check the form for errors."
   },
   "DASHBOARD": {
     "TITLE": "COVID-19 Dashboard",
