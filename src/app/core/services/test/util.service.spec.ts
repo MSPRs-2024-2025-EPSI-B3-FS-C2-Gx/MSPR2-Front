@@ -37,9 +37,9 @@ describe('UtilService', () => {
     });
 
     it('should return #ccc for null or undefined values', () => {
-      // @ts-ignore - Testing with null/undefined
+      // @ts-expect-error - Testing with null/undefined
       expect(service.getColor(null)).toBe('#ccc');
-      // @ts-ignore - Testing with null/undefined
+      // @ts-expect-error - Testing with null/undefined
       expect(service.getColor(undefined)).toBe('#ccc');
     });
   });
@@ -142,9 +142,9 @@ describe('UtilService', () => {
 
   describe('scaleRadius', () => {
     it('should return 0 for falsy values', () => {
-      // @ts-ignore - Testing with null/undefined
+      // @ts-expect-error - Testing with null/undefined
       expect(service.scaleRadius(null)).toBe(0);
-      // @ts-ignore - Testing with null/undefined
+      // @ts-expect-error - Testing with null/undefined
       expect(service.scaleRadius(undefined)).toBe(0);
       expect(service.scaleRadius(0)).toBe(0);
     });

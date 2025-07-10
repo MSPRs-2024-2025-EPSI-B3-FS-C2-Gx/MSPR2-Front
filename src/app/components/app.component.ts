@@ -29,6 +29,4 @@ import {TranslateModule} from '@ngx-translate/core';
 export class AppComponent {
   title = 'MSPR2';
 
-  constructor() {
-  }
 }

@@ -155,13 +155,18 @@
               <ul class="py-1">
                 <li
                   *ngFor="let lang of languages"
+                  tabindex="0"
+                  role="button"
                   (click)="changeLanguage(lang.code, $event)"
+                  (keydown.enter)="changeLanguage(lang.code, $event)"
+                  (keydown.space)="changeLanguage(lang.code, $event)"
                   class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
                   [ngClass]="{ 'bg-gray-100 font-semibold': currentLanguage === lang.code }"
                 >
                   <span class="mr-2">{{ lang.flag }}</span>
                   <span>{{ lang.code }}</span>
                 </li>
+
               </ul>
             </div>
           </div>
