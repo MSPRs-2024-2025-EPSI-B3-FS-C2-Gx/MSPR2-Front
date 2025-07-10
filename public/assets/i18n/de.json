@@ -3,7 +3,9 @@
   "LANGUAGE": {
     "ENGLISH": "Englisch",
     "FRENCH": "Französisch",
-    "GERMAN": "Deutsch"
+    "GERMAN": "Deutsch",
+    "ITALIAN": "Italienisch",
+    "SPANISH": "Spanisch"
   },
   "COMMON": {
     "WELCOME": "Willkommen",
