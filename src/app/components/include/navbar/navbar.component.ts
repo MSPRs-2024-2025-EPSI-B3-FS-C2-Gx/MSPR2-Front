@@ -24,6 +24,7 @@ export class NavbarComponent {
   showResults = false;
 
   currentLanguage: string = 'fr';
+  currentFlag: string = '🇫🇷';
   languages: LanguageOption[] = [];
 
   constructor(
@@ -34,16 +35,21 @@ export class NavbarComponent {
     private translationService: TranslationService
   ) {
     console.log('Initialisation de la navbar');
-    this.languages = this.translationService.getLanguages();
+    this.updateLanguages();
     this.currentLanguage = this.translationService.getCurrentLanguage();
+    this.currentFlag = this.translationService.getCurrentFlag();
 
-    console.log('Langues disponibles:', this.languages);
-    console.log('Langue courante:', this.currentLanguage);
-
-    // Vérifier si le service de traduction est bien initialisé
-    this.translate.get('LANGUAGE.FRENCH').subscribe((res: string) => {
-      console.log('Test de traduction:', res);
+    // S'abonner aux changements de langue
+    this.translate.onLangChange.subscribe(() => {
+      this.updateLanguages();
+      this.currentLanguage = this.translationService.getCurrentLanguage();
+      this.currentFlag = this.translationService.getCurrentFlag();
     });
+  }
+
+  private updateLanguages(): void {
+    this.languages = this.translationService.getLanguages();
+    console.log('Langues disponibles mises à jour:', this.languages);
   }
 
   onSearch(): void {
@@ -93,6 +99,7 @@ export class NavbarComponent {
     event.preventDefault();
     this.translationService.useLanguage(languageCode);
     this.currentLanguage = languageCode;
+    this.currentFlag = this.translationService.getCurrentFlag();
     this.languageDropdownOpen = false;
   }
 
