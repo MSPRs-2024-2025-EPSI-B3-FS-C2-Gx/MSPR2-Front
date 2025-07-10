@@ -28,7 +28,7 @@ export class TranslationService {
     // Get the saved language from localStorage or use browser language
     const savedLanguage = localStorage.getItem(this.STORAGE_KEY);
     const browserLang = translate.getBrowserLang() || 'en';
-    const languageToUse = savedLanguage || (['en', 'fr', 'de'].includes(browserLang) ? browserLang : 'en');
+    const languageToUse = savedLanguage || (['en', 'fr', 'de', 'it', 'es'].includes(browserLang) ? browserLang : 'en');
 
     this.useLanguage(languageToUse);
   }
