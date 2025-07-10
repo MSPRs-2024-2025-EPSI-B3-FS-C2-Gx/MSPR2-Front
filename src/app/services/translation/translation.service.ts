@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 export interface LanguageOption {
   code: string;
   name: string;
-  goodName: string;
   flag: string;
 }
 
@@ -15,9 +14,9 @@ export class TranslationService {
   private readonly STORAGE_KEY = 'user_language';
 
   public languages: LanguageOption[] = [
-    { code: 'en', name: 'LANGUAGE.ENGLISH', goodName: 'English', flag: '🇺🇸' },
-    { code: 'fr', name: 'LANGUAGE.FRENCH', goodName: 'French', flag: '🇫🇷' },
-    { code: 'de', name: 'LANGUAGE.GERMAN', goodName: 'German', flag: '🇨🇭' }
+    { code: 'en', name: 'LANGUAGE.ENGLISH', flag: '🇺🇸' },
+    { code: 'fr', name: 'LANGUAGE.FRENCH', flag: '🇫🇷' },
+    { code: 'de', name: 'LANGUAGE.GERMAN', flag: '🇨🇭' }
   ];
 
   constructor(private translate: TranslateService) {
