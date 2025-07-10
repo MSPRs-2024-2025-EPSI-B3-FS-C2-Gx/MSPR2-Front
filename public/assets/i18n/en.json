@@ -110,6 +110,28 @@
     "AI_PREDICTIONS": "AI Predictions",
     "APP_TITLE": "PandemicTracker"
   },
+  "FOOTER": {
+    "SOLUTIONS": "Solutions",
+    "ANALYTICS": "Analytics",
+    "PREDICTIONS": "Predictions",
+    "MONITORING": "Monitoring",
+    "ALERTS": "Alerts",
+    "SUPPORT": "Support",
+    "DOCUMENTATION": "Documentation",
+    "GUIDES": "Guides",
+    "API": "API",
+    "FORUM": "Forum",
+    "COMPANY": "Company",
+    "ABOUT": "About",
+    "BLOG": "Blog",
+    "CAREERS": "Careers",
+    "PRESS": "Press",
+    "LEGAL": "Legal",
+    "PRIVACY": "Privacy",
+    "TERMS": "Terms",
+    "LICENSES": "Licenses",
+    "COPYRIGHT": "© 2025 PandemicTracker. All rights reserved."
+  },
   "DASHBOARD": {
     "TITLE": "COVID-19 Dashboard",
     "SUBTITLE": "Global tracking of the COVID-19 pandemic through updated data and interactive visualizations.",

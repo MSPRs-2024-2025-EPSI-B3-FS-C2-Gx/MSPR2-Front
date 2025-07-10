@@ -110,6 +110,28 @@
     "AI_PREDICTIONS": "KI-Prognosen",
     "APP_TITLE": "PandemieTracker"
   },
+  "FOOTER": {
+    "SOLUTIONS": "Lösungen",
+    "ANALYTICS": "Analysen",
+    "PREDICTIONS": "Prognosen",
+    "MONITORING": "Überwachung",
+    "ALERTS": "Warnungen",
+    "SUPPORT": "Support",
+    "DOCUMENTATION": "Dokumentation",
+    "GUIDES": "Anleitungen",
+    "API": "API",
+    "FORUM": "Forum",
+    "COMPANY": "Unternehmen",
+    "ABOUT": "Über uns",
+    "BLOG": "Blog",
+    "CAREERS": "Karriere",
+    "PRESS": "Presse",
+    "LEGAL": "Rechtliches",
+    "PRIVACY": "Datenschutz",
+    "TERMS": "Nutzungsbedingungen",
+    "LICENSES": "Lizenzen",
+    "COPYRIGHT": "© 2025 PandemicTracker. Alle Rechte vorbehalten."
+  },
   "DASHBOARD": {
     "TITLE": "COVID-19 Dashboard",
     "SUBTITLE": "Globale Verfolgung der COVID-19-Pandemie durch aktuelle Daten und interaktive Visualisierungen.",

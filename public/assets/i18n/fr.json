@@ -110,6 +110,28 @@
     "AI_PREDICTIONS": "Prédictions IA",
     "APP_TITLE": "PandemicTracker"
   },
+  "FOOTER": {
+    "SOLUTIONS": "Solutions",
+    "ANALYTICS": "Analyse",
+    "PREDICTIONS": "Prédictions",
+    "MONITORING": "Surveillance",
+    "ALERTS": "Alertes",
+    "SUPPORT": "Support",
+    "DOCUMENTATION": "Documentation",
+    "GUIDES": "Guides",
+    "API": "API",
+    "FORUM": "Forum",
+    "COMPANY": "Entreprise",
+    "ABOUT": "À propos",
+    "BLOG": "Blog",
+    "CAREERS": "Carrières",
+    "PRESS": "Presse",
+    "LEGAL": "Légal",
+    "PRIVACY": "Confidentialité",
+    "TERMS": "Conditions",
+    "LICENSES": "Licences",
+    "COPYRIGHT": "© 2025 PandemicTracker. Tous droits réservés."
+  },
   "DASHBOARD": {
     "TITLE": "Tableau de bord COVID-19",
     "SUBTITLE": "Suivi global de la pandémie de COVID-19 à travers des données actualisées et des visualisations interactives.",
