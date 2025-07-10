@@ -11,25 +11,59 @@
             [routerLinkActiveOptions]="{ exact: true }"
             class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium"
             routerLink="/"
-            routerLinkActive="border-b-2 border-blue-500 text-gray-900"
+            routerLinkActive="border-b-2 border-blue-500 text-gray-900" translate
           >
-            Accueil
+            NAVBAR.NO_AUTH.HOME
           </a>
 
           <a
             class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium"
             routerLink="/login"
-            routerLinkActive="border-b-2 border-blue-500 text-gray-900"
+            routerLinkActive="border-b-2 border-blue-500 text-gray-900" translate
           >
-            Connexion
+            NAVBAR.NO_AUTH.LOGIN
           </a>
 
         </div>
       </div>
-      <div class="hidden sm:ml-6 sm:flex sm:items-center">
+      <div class="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-3">
+        <div class="relative ml-4">
+          <!-- Bouton principal -->
+          <button
+            (click)="toggleLanguageDropdown($event)"
+            class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <i class="fas fa-language mr-2 text-blue-500"></i>
+            {{ currentLanguage.toUpperCase() }}
+            <i class="fas fa-chevron-down ml-2 text-xs text-gray-500"></i>
+          </button>
+
+          <!-- Menu déroulant -->
+          <div
+            *ngIf="languageDropdownOpen"
+            class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-[9999]"
+          >
+            <ul class="py-1">
+              <li
+                *ngFor="let lang of languages"
+                tabindex="0"
+                role="button"
+                (click)="changeLanguage(lang.code, $event)"
+                (keydown.enter)="changeLanguage(lang.code, $event)"
+                (keydown.space)="changeLanguage(lang.code, $event)"
+                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                [ngClass]="{ 'bg-gray-100 font-semibold': currentLanguage === lang.code }"
+              >
+                <span class="mr-2">{{ lang.flag }}</span>
+                <span>{{ lang.code }}</span>
+              </li>
+
+            </ul>
+          </div>
+        </div>
         <a class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
-           routerLink="/login">
-          Essai gratuit
+           routerLink="/login" translate>
+          NAVBAR.NO_AUTH.FREE_TRIAL
         </a>
       </div>
       <div class="-mr-2 flex items-center sm:hidden">

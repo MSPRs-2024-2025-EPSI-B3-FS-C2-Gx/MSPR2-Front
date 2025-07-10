@@ -9,6 +9,294 @@
     "WELCOME": "Willkommen",
     "SETTINGS": "Einstellungen",
     "PROFILE": "Profil",
-    "LOGOUT": "Abmelden"
+    "LOGOUT": "Abmelden",
+    "LOADING": "Lade...",
+    "LOADED": "Geladen",
+    "ERROR": "Ein Fehler ist aufgetreten",
+    "REFRESHING": "Aktualisiere...",
+    "REFRESH_SUCCESS": "Erfolgreich aktualisiert!",
+    "NO_AVAILABLE_FEATURE": "Funktion nicht verfügbar."
+  },
+  "PROFILE": {
+    "AUTH": "Kunde authentifiziert",
+    "INFORMATION": "Kontoinformationen",
+    "COMPLETE_NAME": "Vollständiger Name",
+    "ROLE": "Rolle",
+    "SUBSCRIPTION": "Abonnement",
+    "ACTIVE": "Aktiv",
+    "INACTIVE": "Inaktiv"
+  },
+  "CARTOGRAPHY": {
+    "TITLE": "COVID-19 Kartographie",
+    "SUBTITLE": "Interaktive Visualisierung der weltweiten Verbreitung von COVID-19, Land für Land.",
+    "BUTTONS": {
+      "EXPORT": "Exportieren",
+      "REFRESH": "Aktualisieren"
+    },
+    "INTERACTIVE_MAP": {
+      "TITLE": "Interaktive Karte – Geografische Verteilung",
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "INFO_TEXT": "Fahren Sie mit der Maus über ein Land, um die aktuellen Statistiken zum ausgewählten Indikator anzuzeigen. Die Daten werden automatisch alle 24 Stunden aktualisiert.",
+      "LOADING": "Lade Karte..."
+    },
+    "LEGEND": {
+      "TITLE": "Legende",
+      "CASES": "Fälle",
+      "DEATHS": "Todesfälle"
+    },
+    "TOOLTIP": {
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "POPULATION": "Bevölkerung",
+      "CASE_RATE": "Fallrate",
+      "DEATH_RATE": "Sterblichkeitsrate",
+      "PERCENT_SIGN": "%"
+    }
+  },
+  "RAW_DATA": {
+    "TITLE": "Rohdaten",
+    "SUBTITLE": "Zugriff auf COVID-19-Rohdaten nach Land.",
+    "BUTTONS": {
+      "EXPORT": "Exportieren",
+      "REFRESH": "Aktualisieren"
+    },
+    "TABLE": {
+      "ALL_COUNTRIES": "Alle Länder",
+      "DATE": "Datum",
+      "COUNTRY": "Land",
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "VACCINATIONS": "Impfungen",
+      "PAGE_SIZE": "Ergebnisse pro Seite",
+      "PAGE_PREVIOUS": "Zurück",
+      "PAGE_NEXT": "Weiter"
+    }
+  },
+  "AI_PREDICTIONS": {
+    "TITLE": "KI-Prognosen",
+    "SUBTITLE": "Analyse und Visualisierung der vorhergesagten Fälle durch künstliche Intelligenz, Land für Land.",
+    "BUTTONS": {
+      "EXPORT": "Exportieren",
+      "REFRESH": "Aktualisieren"
+    },
+    "GRAPH": {
+      "TITLE": "Prognose",
+      "LAUNCH_ANALYSIS": "Neue Analyse starten"
+    },
+    "FORM": {
+      "TITLE": "Neue Analyse",
+      "COUNTRY": "Land",
+      "START_DATE": "Startdatum",
+      "CANCEL": "Abbrechen",
+      "SUBMIT": "Analysieren"
+    },
+    "CHART": {
+      "REAL_CASES": "Reale Fälle",
+      "PREDICTED_CASES": "Vorhergesagte Fälle"
+    }
+  },
+  "LOGIN": {
+    "TITLE": "Melden Sie sich bei Ihrem Konto an",
+    "OR": "Oder",
+    "START_TRIAL": "starten Sie Ihre kostenlose Testversion",
+    "EMAIL_PLACEHOLDER": "E-Mail-Adresse",
+    "PASSWORD_PLACEHOLDER": "Passwort",
+    "REMEMBER_ME": "Angemeldet bleiben",
+    "FORGOT_PASSWORD": "Passwort vergessen?",
+    "SUBMIT_BUTTON": "Anmelden",
+    "SOCIAL_LOGIN": "Oder fahren Sie fort mit",
+    "SOCIAL": {
+      "GOOGLE": "Mit Google anmelden",
+      "FACEBOOK": "Mit Facebook anmelden",
+      "TWITTER": "Mit Twitter anmelden"
+    },
+    "ERROR": {
+      "NEED_EMAIL": "E-Mail-Adresse erforderlich.",
+      "NEED_PASSWORD": "Passwort erforderlich.",
+      "INVALID_EMAIL": "Ungültige E-Mail-Adresse."
+    },
+    "SUCCESS": "Anmeldung erfolgreich!"
+  },
+  "ERROR": {
+    "TITLE": "404 - Seite nicht gefunden",
+    "MESSAGE": "Entschuldigung, die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "BACK_HOME": "Zurück zur Startseite"
+  },
+  "NAVBAR": {
+    "SEARCH": "Suche",
+    "PROFILE": "Dein Profil",
+    "SETTINGS": "Einstellungen",
+    "LOGOUT": "Abmelden",
+    "NO_RESULTS": "Keine Ergebnisse gefunden für '{{query}}'.",
+    "NO_AUTH": {
+      "HOME": "Startseite",
+      "LOGIN": "Anmeldung",
+      "FREE_TRIAL": "Gratisprobe"
+    }
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "Dashboard",
+    "MAPPING": "Kartierung",
+    "RAW_DATA": "Rohdaten",
+    "AI_PREDICTIONS": "KI-Prognosen",
+    "APP_TITLE": "PandemieTracker"
+  },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Pandemie-Daten visualisieren",
+      "SUBTITLE": "Zugang zu Statistiken, Vorhersagen und Analysen zu COVID-19 und zukünftigen Pandemien.",
+      "EXPLORE_BUTTON": "Daten erkunden",
+      "DEMO_BUTTON": "Demo ansehen"
+    },
+    "FEATURES": {
+      "TITLE": "Funktionen",
+      "SUBTITLE": "Eine umfassende Plattform zur Pandemieverfolgung",
+      "ITEMS": {
+        "STATS": {
+          "TITLE": "Globale Statistiken",
+          "DESC": "Betrachten Sie COVID-19-Daten nach Ländern mit interaktiven Diagrammen und detaillierten Tabellen.",
+          "ICON": "fas fa-chart-line"
+        },
+        "AI": {
+          "TITLE": "KI-Vorhersagen",
+          "DESC": "Unsere KI-Modelle sagen zukünftige Trends mit hoher Genauigkeit voraus.",
+          "ICON": "fas fa-robot"
+        },
+        "MAPPING": {
+          "TITLE": "Interaktive Karten",
+          "DESC": "Erkunden Sie geografische Daten mit unserer interaktiven und anpassbaren Weltkarte.",
+          "ICON": "fas fa-map-marked-alt"
+        },
+        "ALERTS": {
+          "TITLE": "Benutzerdefinierte Benachrichtigungen",
+          "DESC": "Erhalten Sie Benachrichtigungen über wichtige Änderungen in Ihren Interessensgebieten.",
+          "ICON": "fas fa-bell"
+        },
+        "HISTORY": {
+          "TITLE": "Historische Daten",
+          "DESC": "Zugriff auf vollständige historische Pandemiedaten seit Beginn der COVID-19-Krise.",
+          "ICON": "fas fa-database"
+        },
+        "EXPORT": {
+          "TITLE": "Datenexport",
+          "DESC": "Laden Sie Daten in verschiedenen Formaten (CSV, JSON, Excel) für Ihre Analysen herunter.",
+          "ICON": "fas fa-file-export"
+        }
+      }
+    },
+    "STATS": {
+      "TITLE": "Echtzeit-COVID-19-Daten",
+      "SUBTITLE": "Täglich aktualisierte globale Statistiken",
+      "CONFIRMED": "Bestätigte Fälle",
+      "VACCINATIONS": "Impfungen",
+      "RECOVERED": "Genesene",
+      "DEATHS": "Todesfälle",
+      "SEE_ALL_STATS": "Alle Statistiken anzeigen"
+    },
+    "TESTIMONIALS": {
+      "TITLE": "Erfahrungsberichte",
+      "SUBTITLE": "Was unsere Nutzer sagen",
+      "ITEMS": {
+        "EPIDEMIOLOGIST": {
+          "NAME": "Dr. Sophie Martin",
+          "ROLE": "Epidemiologin, INSERM",
+          "QUOTE": "Diese Plattform hat revolutioniert, wie wir Pandemiedaten analysieren. Die Vorhersagen sind bemerkenswert genau und helfen uns, Epidemiewellen vorherzusehen.",
+          "IMAGE": "women/32"
+        },
+        "JOURNALIST": {
+          "NAME": "Jean Dupont",
+          "ROLE": "Wissenschaftsjournalist",
+          "QUOTE": "Als Journalist schätze ich besonders die Klarheit der Visualisierungen und den einfachen Zugang zu den données. Es ist mein bevorzugtes Werkzeug für meine COVID-Artikel geworden.",
+          "IMAGE": "men/54"
+        },
+        "HEALTH_OFFICER": {
+          "NAME": "Pierre Lambert",
+          "ROLE": "Gesundheitsbeamter",
+          "QUOTE": "Durch individuelle Benachrichtigungen können wir schnell auf epidemiologische Veränderungen reagieren. Ein unverzichtbares Werkzeug für unseren Dienst.",
+          "IMAGE": "men/67"
+        }
+      }
+    },
+    "CTA": {
+      "TITLE": "Bereit, die Daten zu erkunden?",
+      "SUBTITLE": "Erstellen Sie jetzt Ihr kostenloses Konto.",
+      "SIGN_UP": "Jetzt registrieren",
+      "CONTACT": "Kontakt"
+    }
+  },
+  "FOOTER": {
+    "SOLUTIONS": "Lösungen",
+    "ANALYTICS": "Analysen",
+    "PREDICTIONS": "Prognosen",
+    "MONITORING": "Überwachung",
+    "ALERTS": "Warnungen",
+    "SUPPORT": "Support",
+    "DOCUMENTATION": "Dokumentation",
+    "GUIDES": "Anleitungen",
+    "API": "API",
+    "FORUM": "Forum",
+    "COMPANY": "Unternehmen",
+    "ABOUT": "Über uns",
+    "BLOG": "Blog",
+    "CAREERS": "Karriere",
+    "PRESS": "Presse",
+    "LEGAL": "Rechtliches",
+    "PRIVACY": "Datenschutz",
+    "TERMS": "Nutzungsbedingungen",
+    "LICENSES": "Lizenzen",
+    "COPYRIGHT": "© 2025 PandemicTracker. Alle Rechte vorbehalten."
+  },
+  "DASHBOARD": {
+    "TITLE": "COVID-19 Dashboard",
+    "SUBTITLE": "Globale Verfolgung der COVID-19-Pandemie durch aktuelle Daten und interaktive Visualisierungen.",
+    "BUTTONS": {
+      "EXPORT": "Exportieren",
+      "REFRESH": "Aktualisieren"
+    },
+    "STATS": {
+      "TOTAL_CASES": "Gesamtfälle",
+      "TOTAL_DEATHS": "Gesamttodesfälle",
+      "TOTAL_VACCINATIONS": "Gesamtimpfungen"
+    },
+    "TOP_5": {
+      "TITLE": "Top 5 Länder nach {{metric}}",
+      "CASES": "Fälle",
+      "DEATHS": "Todesfälle",
+      "COUNTRY": "Land",
+      "COUNT": "Anzahl",
+      "SHOW_DEATHS": "Todesfälle anzeigen",
+      "SHOW_CASES": "Fälle anzeigen"
+    },
+    "CHARTS": {
+      "CASES_TITLE": "Entwicklung der COVID-19-Fälle",
+      "VACCINATIONS_TITLE": "Impfverlauf",
+      "TIME_RANGES": {
+        "LAST_7_DAYS": "Letzte 7 Tage",
+        "LAST_30_DAYS": "Letzte 30 Tage",
+        "LAST_90_DAYS": "Letzte 90 Tage",
+        "THIS_YEAR": "Dieses Jahr"
+      },
+      "VIEW_OPTIONS": {
+        "BY_COUNTRY": "Nach Land",
+        "BY_CONTINENT": "Nach Kontinent",
+        "BY_VACCINE_TYPE": "Nach Impfstofftyp"
+      }
+    },
+    "MAP": {
+      "TITLE": "Geografische Verteilung",
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "INTERACTIVE_MAP": "Interaktive COVID-19-Datenkarte",
+      "CLICK_TO_VIEW": "(Zum Anzeigen klicken)"
+    },
+    "TOP_COUNTRIES": {
+      "TITLE": "Am stärksten betroffene Länder",
+      "CONFIRMED_CASES": "Bestätigte Fälle",
+      "DEATHS": "Todesfälle",
+      "COUNTRY": "Land",
+      "CASES": "Fälle",
+      "DEATHS_COUNT": "Todesfälle"
+    }
   }
 }

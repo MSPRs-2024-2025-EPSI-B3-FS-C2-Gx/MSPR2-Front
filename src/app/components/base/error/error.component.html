@@ -1,15 +1,17 @@
 <div class="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-12">
   <div class="text-center">
     <i class="fas fa-exclamation-triangle text-blue-500 text-6xl mb-4"></i>
-    <h1 class="text-4xl font-bold text-gray-900 mb-2">404 - Page introuvable</h1>
+    <h1 class="text-4xl font-bold text-gray-900 mb-2" translate>
+      ERROR.TITLE
+    </h1>
     <p class="text-gray-600 mb-6">
-      Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+      {{ 'ERROR.MESSAGE' | translate }}
     </p>
     <button
       (click)="redirect()"
       class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md text-sm font-medium transition-all"
     >
-      Retour à l'accueil
+      {{ 'ERROR.BACK_HOME' | translate }}
     </button>
   </div>
 </div>

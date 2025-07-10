@@ -96,12 +96,44 @@
       "PREDICTED_CASES": "Cas prédits"
     }
   },
+  "LOGIN": {
+    "TITLE": "Connectez-vous à votre compte",
+    "OR": "Ou",
+    "START_TRIAL": "commencez votre essai gratuit",
+    "EMAIL_PLACEHOLDER": "Adresse email",
+    "PASSWORD_PLACEHOLDER": "Mot de passe",
+    "REMEMBER_ME": "Se souvenir de moi",
+    "FORGOT_PASSWORD": "Mot de passe oublié ?",
+    "SUBMIT_BUTTON": "Connexion",
+    "SOCIAL_LOGIN": "Ou connectez-vous avec",
+    "SOCIAL": {
+      "GOOGLE": "Se connecter avec Google",
+      "FACEBOOK": "Se connecter avec Facebook",
+      "TWITTER": "Se connecter avec Twitter"
+    },
+    "ERROR": {
+      "NEED_EMAIL": "Adresse email requise.",
+      "NEED_PASSWORD": "Mot de passe requis.",
+      "INVALID_EMAIL": "Adresse email invalide."
+    },
+    "SUCCESS": "Connexion reussie !"
+  },
+  "ERROR": {
+    "TITLE": "404 - Page introuvable",
+    "MESSAGE": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+    "BACK_HOME": "Retour à l'accueil"
+  },
   "NAVBAR": {
     "SEARCH": "Rechercher",
     "PROFILE": "Votre profil",
     "SETTINGS": "Paramètres",
     "LOGOUT": "Déconnexion",
-    "NO_RESULTS": "Aucun résultat trouvé pour '{{query}}'."
+    "NO_RESULTS": "Aucun résultat trouvé pour '{{query}}'.",
+    "NO_AUTH": {
+      "HOME": "Accueil",
+      "LOGIN": "Connexion",
+      "FREE_TRIAL": "Essai gratuit"
+    }
   },
   "SIDEBAR": {
     "DASHBOARD": "Tableau de bord",
@@ -109,6 +141,111 @@
     "RAW_DATA": "Données brutes",
     "AI_PREDICTIONS": "Prédictions IA",
     "APP_TITLE": "PandemicTracker"
+  },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Visualisez les données pandémiques",
+      "SUBTITLE": "Accédez aux statistiques, prédictions et analyses sur le COVID-19 et futures pandémies.",
+      "EXPLORE_BUTTON": "Explorer les données",
+      "DEMO_BUTTON": "Vidéo de démo"
+    },
+    "FEATURES": {
+      "TITLE": "Fonctionnalités",
+      "SUBTITLE": "Une plateforme complète pour suivre les pandémies",
+      "ITEMS": {
+        "STATS": {
+          "TITLE": "Statistiques mondiales",
+          "DESC": "Visualisez les données COVID-19 par pays avec des graphiques interactifs et des tableaux détaillés.",
+          "ICON": "fas fa-chart-line"
+        },
+        "AI": {
+          "TITLE": "Prédictions IA",
+          "DESC": "Nos modèles d'intelligence artificielle prédisent les tendances futures avec une grande précision.",
+          "ICON": "fas fa-robot"
+        },
+        "MAPPING": {
+          "TITLE": "Cartographie interactive",
+          "DESC": "Explorez les données géographiques avec notre carte mondiale interactive et personnalisable.",
+          "ICON": "fas fa-map-marked-alt"
+        },
+        "ALERTS": {
+          "TITLE": "Alertes personnalisées",
+          "DESC": "Recevez des notifications pour les changements importants dans les zones qui vous intéressent.",
+          "ICON": "fas fa-bell"
+        },
+        "HISTORY": {
+          "TITLE": "Données historiques",
+          "DESC": "Accédez à l'historique complet des données pandémiques depuis le début de la crise COVID-19.",
+          "ICON": "fas fa-database"
+        },
+        "EXPORT": {
+          "TITLE": "Export de données",
+          "DESC": "Téléchargez les données dans différents formats (CSV, JSON, Excel) pour vos analyses.",
+          "ICON": "fas fa-file-export"
+        }
+      }
+    },
+    "STATS": {
+      "TITLE": "Données COVID-19 en temps réel",
+      "SUBTITLE": "Quelques statistiques mondiales actualisées quotidiennement",
+      "CONFIRMED": "Cas confirmés",
+      "VACCINATIONS": "Vaccinations",
+      "RECOVERED": "Rétablis",
+      "DEATHS": "Décès",
+      "SEE_ALL_STATS": "Voir toutes les statistiques"
+    },
+    "TESTIMONIALS": {
+      "TITLE": "Témoignages",
+      "SUBTITLE": "Ce que disent nos utilisateurs",
+      "ITEMS": {
+        "EPIDEMIOLOGIST": {
+          "NAME": "Dr. Sophie Martin",
+          "ROLE": "Épidémiologiste, INSERM",
+          "QUOTE": "Cette plateforme a révolutionné notre façon d'analyser les données pandémiques. Les prédictions sont remarquablement précises et nous aident à anticiper les vagues épidémiques.",
+          "IMAGE": "women/32"
+        },
+        "JOURNALIST": {
+          "NAME": "Jean Dupont",
+          "ROLE": "Journaliste scientifique",
+          "QUOTE": "En tant que journaliste, j'apprécie particulièrement la clarté des visualisations et la facilité d'accès aux données. C'est devenu mon outil de référence pour mes articles sur le COVID.",
+          "IMAGE": "men/54"
+        },
+        "HEALTH_OFFICER": {
+          "NAME": "Pierre Lambert",
+          "ROLE": "Responsable santé publique",
+          "QUOTE": "Les alertes personnalisées nous permettent de réagir rapidement aux changements épidémiologiques. Un outil indispensable pour notre service.",
+          "IMAGE": "men/67"
+        }
+      }
+    },
+    "CTA": {
+      "TITLE": "Prêt à explorer les données ?",
+      "SUBTITLE": "Créez votre compte gratuitement.",
+      "SIGN_UP": "S'inscrire maintenant",
+      "CONTACT": "Nous contacter"
+    }
+  },
+  "FOOTER": {
+    "SOLUTIONS": "Solutions",
+    "ANALYTICS": "Analyse",
+    "PREDICTIONS": "Prédictions",
+    "MONITORING": "Surveillance",
+    "ALERTS": "Alertes",
+    "SUPPORT": "Support",
+    "DOCUMENTATION": "Documentation",
+    "GUIDES": "Guides",
+    "API": "API",
+    "FORUM": "Forum",
+    "COMPANY": "Entreprise",
+    "ABOUT": "À propos",
+    "BLOG": "Blog",
+    "CAREERS": "Carrières",
+    "PRESS": "Presse",
+    "LEGAL": "Légal",
+    "PRIVACY": "Confidentialité",
+    "TERMS": "Conditions",
+    "LICENSES": "Licences",
+    "COPYRIGHT": "© 2025 PandemicTracker. Tous droits réservés."
   },
   "DASHBOARD": {
     "TITLE": "Tableau de bord COVID-19",

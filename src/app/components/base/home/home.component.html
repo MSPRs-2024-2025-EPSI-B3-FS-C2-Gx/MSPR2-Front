@@ -4,23 +4,23 @@
     <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
       <div class="text-center">
         <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-          Visualisez les données pandémiques
+          {{ 'HOME.HERO.TITLE' | translate }}
         </h1>
         <p class="mt-6 max-w-lg mx-auto text-xl">
-          Accédez aux statistiques, prédictions et analyses sur le COVID-19 et futures pandémies.
+          {{ 'HOME.HERO.SUBTITLE' | translate }}
         </p>
         <div class="mt-10 flex justify-center space-x-4">
           <a
             class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-600 bg-white hover:bg-gray-50 transition-all pulse-animation"
             routerLink="/login">
-            Explorer les données
+            {{ 'HOME.HERO.EXPLORE_BUTTON' | translate }}
             <i class="fas fa-arrow-right ml-2"></i>
           </a>
           <a
             class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-800 bg-opacity-60 hover:bg-opacity-70 transition-all"
             href="#">
             <i class="fas fa-play mr-2"></i>
-            Vidéo de démo
+            {{ 'HOME.HERO.DEMO_BUTTON' | translate }}
           </a>
         </div>
       </div>
@@ -31,88 +31,25 @@
   <div class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="lg:text-center">
-        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Fonctionnalités</h2>
+        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">{{ 'HOME.FEATURES.TITLE' | translate }}</h2>
         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          Une plateforme complète pour suivre les pandémies
+          {{ 'HOME.FEATURES.SUBTITLE' | translate }}
         </p>
       </div>
 
       <div class="mt-10">
         <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Feature 1 -->
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
+          <!-- Feature Items -->
+          <div *ngFor="let key of featureKeys" class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
             <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-              <i class="fas fa-chart-line text-xl"></i>
+              <i [class]="getFeatureIcon(key) + ' text-xl'"></i>
             </div>
             <div class="mt-6">
-              <h3 class="text-lg font-medium text-gray-900">Statistiques mondiales</h3>
+              <h3 class="text-lg font-medium text-gray-900">
+                {{ 'HOME.FEATURES.ITEMS.' + key + '.TITLE' | translate }}
+              </h3>
               <p class="mt-2 text-base text-gray-500">
-                Visualisez les données COVID-19 par pays avec des graphiques interactifs et des tableaux détaillés.
-              </p>
-            </div>
-          </div>
-
-          <!-- Feature 2 -->
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-              <i class="fas fa-robot text-xl"></i>
-            </div>
-            <div class="mt-6">
-              <h3 class="text-lg font-medium text-gray-900">Prédictions IA</h3>
-              <p class="mt-2 text-base text-gray-500">
-                Nos modèles d'intelligence artificielle prédisent les tendances futures avec une grande précision.
-              </p>
-            </div>
-          </div>
-
-          <!-- Feature 3 -->
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-              <i class="fas fa-map-marked-alt text-xl"></i>
-            </div>
-            <div class="mt-6">
-              <h3 class="text-lg font-medium text-gray-900">Cartographie interactive</h3>
-              <p class="mt-2 text-base text-gray-500">
-                Explorez les données géographiques avec notre carte mondiale interactive et personnalisable.
-              </p>
-            </div>
-          </div>
-
-          <!-- Feature 4 -->
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-              <i class="fas fa-bell text-xl"></i>
-            </div>
-            <div class="mt-6">
-              <h3 class="text-lg font-medium text-gray-900">Alertes personnalisées</h3>
-              <p class="mt-2 text-base text-gray-500">
-                Recevez des notifications pour les changements importants dans les zones qui vous intéressent.
-              </p>
-            </div>
-          </div>
-
-          <!-- Feature 5 -->
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-              <i class="fas fa-database text-xl"></i>
-            </div>
-            <div class="mt-6">
-              <h3 class="text-lg font-medium text-gray-900">Données historiques</h3>
-              <p class="mt-2 text-base text-gray-500">
-                Accédez à l'historique complet des données pandémiques depuis le début de la crise COVID-19.
-              </p>
-            </div>
-          </div>
-
-          <!-- Feature 6 -->
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover transition-all">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-              <i class="fas fa-file-export text-xl"></i>
-            </div>
-            <div class="mt-6">
-              <h3 class="text-lg font-medium text-gray-900">Export de données</h3>
-              <p class="mt-2 text-base text-gray-500">
-                Téléchargez les données dans différents formats (CSV, JSON, Excel) pour vos analyses.
+                {{ 'HOME.FEATURES.ITEMS.' + key + '.DESC' | translate }}
               </p>
             </div>
           </div>
@@ -126,62 +63,25 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-          <span class="block">Données COVID-19 en temps réel</span>
+          <span class="block">{{ 'HOME.STATS.TITLE' | translate }}</span>
         </h2>
         <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-          Quelques statistiques mondiales actualisées quotidiennement
+          {{ 'HOME.STATS.SUBTITLE' | translate }}
         </p>
       </div>
 
       <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- Stat 1 -->
-        <div class="bg-white p-6 rounded-lg shadow-md transition-all hover:shadow-lg">
+        <!-- Stat Items -->
+        <div *ngFor="let stat of stats" class="bg-white p-6 rounded-lg shadow-md transition-all hover:shadow-lg">
           <div class="flex items-center">
-            <div class="p-3 rounded-full bg-red-100 text-red-600">
-              <i class="fas fa-procedures text-xl"></i>
+            <div [class]="'p-3 rounded-full bg-' + stat.color + '-100 text-' + stat.color + '-600'">
+              <i [class]="stat.icon + ' text-xl'"></i>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500">Cas confirmés</p>
-              <p class="text-2xl font-semibold text-gray-900">689M+</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stat 2 -->
-        <div class="bg-white p-6 rounded-lg shadow-md transition-all hover:shadow-lg">
-          <div class="flex items-center">
-            <div class="p-3 rounded-full bg-blue-100 text-blue-600">
-              <i class="fas fa-syringe text-xl"></i>
-            </div>
-            <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500">Vaccinations</p>
-              <p class="text-2xl font-semibold text-gray-900">13.1B+</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stat 3 -->
-        <div class="bg-white p-6 rounded-lg shadow-md transition-all hover:shadow-lg">
-          <div class="flex items-center">
-            <div class="p-3 rounded-full bg-green-100 text-green-600">
-              <i class="fas fa-heartbeat text-xl"></i>
-            </div>
-            <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500">Rétablis</p>
-              <p class="text-2xl font-semibold text-gray-900">662M+</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stat 4 -->
-        <div class="bg-white p-6 rounded-lg shadow-md transition-all hover:shadow-lg">
-          <div class="flex items-center">
-            <div class="p-3 rounded-full bg-gray-100 text-gray-600">
-              <i class="fas fa-cross text-xl"></i>
-            </div>
-            <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500">Décès</p>
-              <p class="text-2xl font-semibold text-gray-900">6.88M+</p>
+              <p class="text-sm font-medium text-gray-500">
+                {{ 'HOME.STATS.' + stat.id.toUpperCase() | translate }}
+              </p>
+              <p class="text-2xl font-semibold text-gray-900">{{ stat.value }}</p>
             </div>
           </div>
         </div>
@@ -191,7 +91,7 @@
         <a
           class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-all"
           routerLink="/login">
-          Voir toutes les statistiques
+          {{ 'HOME.STATS.SEE_ALL_STATS' | translate }}
           <i class="fas fa-arrow-right ml-2"></i>
         </a>
       </div>
@@ -202,69 +102,33 @@
   <div class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="lg:text-center">
-        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Témoignages</h2>
+        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">{{ 'HOME.TESTIMONIALS.TITLE' | translate }}</h2>
         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          Ce que disent nos utilisateurs
+          {{ 'HOME.TESTIMONIALS.SUBTITLE' | translate }}
         </p>
       </div>
 
       <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Testimonial 1 -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all hover:shadow-md">
+        <!-- Testimonial Items -->
+        <div *ngFor="let key of testimonialKeys" class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all hover:shadow-md">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img alt="Dr. Sophie Martin" class="h-12 w-12 rounded-full"
-                   src="https://randomuser.me/api/portraits/women/32.jpg">
+              <img [alt]="'HOME.TESTIMONIALS.ITEMS.' + key + '.NAME' | translate" 
+                   class="h-12 w-12 rounded-full"
+                   [src]="getTestimonialImage(key)">
             </div>
             <div class="ml-4">
-              <h4 class="text-lg font-medium text-gray-900">Dr. Sophie Martin</h4>
-              <p class="text-sm text-gray-500">Épidémiologiste, INSERM</p>
+              <h4 class="text-lg font-medium text-gray-900">
+                {{ 'HOME.TESTIMONIALS.ITEMS.' + key + '.NAME' | translate }}
+              </h4>
+              <p class="text-sm text-gray-500">
+                {{ 'HOME.TESTIMONIALS.ITEMS.' + key + '.ROLE' | translate }}
+              </p>
             </div>
           </div>
           <div class="mt-4">
             <p class="text-gray-600 italic">
-              "Cette plateforme a révolutionné notre façon d'analyser les données pandémiques. Les prédictions sont
-              remarquablement précises et nous aident à anticiper les vagues épidémiques."
-            </p>
-          </div>
-        </div>
-
-        <!-- Testimonial 2 -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all hover:shadow-md">
-          <div class="flex items-center">
-            <div class="flex-shrink-0">
-              <img alt="Jean Dupont" class="h-12 w-12 rounded-full"
-                   src="https://randomuser.me/api/portraits/men/54.jpg">
-            </div>
-            <div class="ml-4">
-              <h4 class="text-lg font-medium text-gray-900">Jean Dupont</h4>
-              <p class="text-sm text-gray-500">Journaliste scientifique</p>
-            </div>
-          </div>
-          <div class="mt-4">
-            <p class="text-gray-600 italic">
-              "En tant que journaliste, j'apprécie particulièrement la clarté des visualisations et la facilité d'accès
-              aux données. C'est devenu mon outil de référence pour mes articles sur le COVID."
-            </p>
-          </div>
-        </div>
-
-        <!-- Testimonial 3 -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all hover:shadow-md">
-          <div class="flex items-center">
-            <div class="flex-shrink-0">
-              <img alt="Pierre Lambert" class="h-12 w-12 rounded-full"
-                   src="https://randomuser.me/api/portraits/men/67.jpg">
-            </div>
-            <div class="ml-4">
-              <h4 class="text-lg font-medium text-gray-900">Pierre Lambert</h4>
-              <p class="text-sm text-gray-500">Responsable santé publique</p>
-            </div>
-          </div>
-          <div class="mt-4">
-            <p class="text-gray-600 italic">
-              "Les alertes personnalisées nous permettent de réagir rapidement aux changements épidémiologiques. Un
-              outil indispensable pour notre service."
+              "{{ 'HOME.TESTIMONIALS.ITEMS.' + key + '.QUOTE' | translate }}"
             </p>
           </div>
         </div>
@@ -276,15 +140,15 @@
   <div class="bg-blue-600">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
       <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-        <span class="block">Prêt à explorer les données ?</span>
-        <span class="block text-blue-200">Créez votre compte gratuitement.</span>
+        <span class="block">{{ 'HOME.CTA.TITLE' | translate }}</span>
+        <span class="block text-blue-200">{{ 'HOME.CTA.SUBTITLE' | translate }}</span>
       </h2>
       <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
         <div class="inline-flex rounded-md shadow">
           <a
             class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 transition-all"
             routerLink="/login">
-            S'inscrire maintenant
+            {{ 'HOME.CTA.SIGN_UP' | translate }}
             <i class="fas fa-user-plus ml-2"></i>
           </a>
         </div>
@@ -293,7 +157,7 @@
             class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-700 bg-opacity-60 hover:bg-opacity-70 transition-all"
             routerLink="/contact">
             <i class="fas fa-envelope mr-2"></i>
-            Nous contacter
+            {{ 'HOME.CTA.CONTACT' | translate }}
           </a>
         </div>
       </div>
