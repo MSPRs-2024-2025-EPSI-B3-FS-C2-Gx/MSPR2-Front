@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {toast} from 'ngx-sonner';
+import {AuthService} from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ export class RegisterComponent {
   submitted = false;
 
   constructor(
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
     private translate: TranslateService
@@ -121,14 +123,19 @@ export class RegisterComponent {
     const toastId = toast.loading(this.translate.instant('REGISTER.LOADING'));
     this.loading = true;
 
-    // Simulation d'une requête d'inscription
-    // Remplacez ceci par votre logique d'inscription réelle
-    setTimeout(() => {
-      toast.success(this.translate.instant('REGISTER.SUCCESS'), { id: toastId });
-      console.log('Inscription réussie', this.registerForm.value);
-      this.loading = false;
-      // Redirection vers la page de connexion après inscription réussie
-      this.router.navigate(['/login']);
-    }, 1500);
+    this.authService.register(
+      this.registerForm.value.email,
+      this.registerForm.value.password
+    )
+      .then(() => {
+        toast.success(this.translate.instant('REGISTER.SUCCESS'), { id: toastId });
+        this.router.navigate(['/login']);
+      })
+      .catch(() => {
+        toast.error(this.translate.instant('REGISTER.ERROR.ALREADY_REGISTERED'), { id: toastId });
+      })
+      .finally(() => {
+        this.loading = false;
+      });
   }
 }
