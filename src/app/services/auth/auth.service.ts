@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 export interface User {
   id_user: number;
@@ -69,13 +69,13 @@ export class AuthService {
             reject(new Error(response.error));
             return;
           }
-          
+
           // Vérifier si c'est une réponse de succès
           if ('message' in response) {
             resolve({ message: response.message });
             return;
           }
-          
+
           // Réponse inattendue
           reject(new Error('Réponse du serveur inattendue'));
         },

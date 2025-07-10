@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
       toast.success(this.translate.instant('LOGIN.SUCCESS'), { id: toastId });
       this.router.navigate(['/client']);
     })
-    .catch((error: Error) => {
+    .catch(() => {
       toast.error(this.translate.instant('LOGIN.ERROR.INVALID_CREDENTIALS'), { id: toastId });
     })
     .finally(() => {

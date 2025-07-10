@@ -131,7 +131,7 @@ export class RegisterComponent {
         toast.success(this.translate.instant('REGISTER.SUCCESS'), { id: toastId });
         this.router.navigate(['/login']);
       })
-      .catch((error: Error) => {
+      .catch(() => {
         toast.error(this.translate.instant('REGISTER.ERROR.ALREADY_REGISTERED'), { id: toastId });
       })
       .finally(() => {
