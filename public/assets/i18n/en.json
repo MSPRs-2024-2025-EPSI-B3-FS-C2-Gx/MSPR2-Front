@@ -12,15 +12,15 @@
     "LOGOUT": "Logout",
     "LOADING": "Loading...",
     "LOADED": "Loaded",
-    "ERROR": "An error occurred",
+    "ERROR": "An error has occurred",
     "REFRESHING": "Refreshing...",
-    "REFRESH_SUCCESS": "Refreshed successfully !",
+    "REFRESH_SUCCESS": "Refresh complete!",
     "NO_AVAILABLE_FEATURE": "Feature not available."
   },
   "PROFILE": {
-    "AUTH": "Client Authenticated",
+    "AUTH": "Authenticated Client",
     "INFORMATION": "Account Information",
-    "COMPLETE_NAME": "Complete Name",
+    "COMPLETE_NAME": "Full Name",
     "ROLE": "Role",
     "SUBSCRIPTION": "Subscription",
     "ACTIVE": "Active",
@@ -28,7 +28,7 @@
   },
   "CARTOGRAPHY": {
     "TITLE": "COVID-19 Mapping",
-    "SUBTITLE": "Interactive visualization of COVID-19 spread worldwide, country by country.",
+    "SUBTITLE": "Interactive visualization of the global spread of COVID-19, country by country.",
     "BUTTONS": {
       "EXPORT": "Export",
       "REFRESH": "Refresh"
@@ -37,7 +37,7 @@
       "TITLE": "Interactive Map - Geographic Distribution",
       "CONFIRMED_CASES": "Confirmed Cases",
       "DEATHS": "Deaths",
-      "INFO_TEXT": "Hover over a country to see its current statistics based on the selected indicator. Data is automatically updated every 24 hours.",
+      "INFO_TEXT": "Hover over a country to see its current statistics according to the selected indicator. Data is updated automatically every 24h.",
       "LOADING": "Loading map..."
     },
     "LEGEND": {
@@ -46,23 +46,23 @@
       "DEATHS": "Deaths"
     },
     "TOOLTIP": {
-      "CONFIRMED_CASES": "Confirmed Cases",
+      "CONFIRMED_CASES": "Confirmed cases",
       "DEATHS": "Deaths",
       "POPULATION": "Population",
-      "CASE_RATE": "Case Rate",
-      "DEATH_RATE": "Death Rate",
+      "CASE_RATE": "Case rate",
+      "DEATH_RATE": "Death rate",
       "PERCENT_SIGN": "%"
     }
   },
   "RAW_DATA": {
     "TITLE": "Raw Data",
-    "SUBTITLE": "Access COVID-19 raw data by country.",
+    "SUBTITLE": "Access raw COVID-19 data by country.",
     "BUTTONS": {
       "EXPORT": "Export",
       "REFRESH": "Refresh"
     },
     "TABLE": {
-      "ALL_COUNTRIES": "All Countries",
+      "ALL_COUNTRIES": "All countries",
       "DATE": "Date",
       "COUNTRY": "Country",
       "CONFIRMED_CASES": "Confirmed Cases",
@@ -75,14 +75,14 @@
   },
   "AI_PREDICTIONS": {
     "TITLE": "AI Predictions",
-    "SUBTITLE": "Analysis and visualization of predicted cases by artificial intelligence, country by country.",
+    "SUBTITLE": "Analysis and visualization of AI-predicted cases, country by country.",
     "BUTTONS": {
       "EXPORT": "Export",
       "REFRESH": "Refresh"
     },
     "GRAPH": {
       "TITLE": "Prediction",
-      "LAUNCH_ANALYSIS": "Launch a new analysis"
+      "LAUNCH_ANALYSIS": "Launch new analysis"
     },
     "FORM": {
       "TITLE": "New Analysis",
@@ -92,41 +92,41 @@
       "SUBMIT": "Analyze"
     },
     "CHART": {
-      "REAL_CASES": "Real Cases",
-      "PREDICTED_CASES": "Predicted Cases"
+      "REAL_CASES": "Actual cases",
+      "PREDICTED_CASES": "Predicted cases"
     }
   },
   "LOGIN": {
-    "TITLE": "Sign in to your account",
+    "TITLE": "Log in to your account",
     "OR": "Or",
     "START_TRIAL": "start your free trial",
     "EMAIL_PLACEHOLDER": "Email address",
     "PASSWORD_PLACEHOLDER": "Password",
     "REMEMBER_ME": "Remember me",
-    "FORGOT_PASSWORD": "Forgot your password?",
-    "SUBMIT_BUTTON": "Sign in",
-    "SOCIAL_LOGIN": "Or continue with",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "SUBMIT_BUTTON": "Login",
+    "SOCIAL_LOGIN": "Or log in with",
     "SOCIAL": {
-      "GOOGLE": "Sign in with Google",
-      "FACEBOOK": "Sign in with Facebook",
-      "TWITTER": "Sign in with Twitter"
+      "GOOGLE": "Log in with Google",
+      "FACEBOOK": "Log in with Facebook",
+      "TWITTER": "Log in with Twitter"
     },
     "ERROR": {
       "NEED_EMAIL": "Email address required.",
       "NEED_PASSWORD": "Password required.",
       "INVALID_EMAIL": "Invalid email address."
     },
-    "SUCCESS": "Sign in successful!"
+    "SUCCESS": "Login successful!"
   },
   "ERROR": {
-    "TITLE": "404 - Page Not Found",
-    "MESSAGE": "Sorry, the page you're looking for doesn't exist or has been moved.",
+    "TITLE": "404 - Page not found",
+    "MESSAGE": "Sorry, the page you are looking for does not exist or has been moved.",
     "BACK_HOME": "Back to Home"
   },
   "NAVBAR": {
     "HOME": "Home",
     "SEARCH": "Search",
-    "PROFILE": "Your profile",
+    "PROFILE": "Your Profile",
     "SETTINGS": "Settings",
     "LOGOUT": "Logout",
     "NO_RESULTS": "No results found for '{{query}}'.",
@@ -145,14 +145,14 @@
   },
   "HOME": {
     "HERO": {
-      "TITLE": "Visualize Pandemic Data",
+      "TITLE": "Visualize pandemic data",
       "SUBTITLE": "Access statistics, predictions, and analysis on COVID-19 and future pandemics.",
       "EXPLORE_BUTTON": "Explore Data",
-      "DEMO_BUTTON": "Watch Demo"
+      "DEMO_BUTTON": "Demo Video"
     },
     "FEATURES": {
       "TITLE": "Features",
-      "SUBTITLE": "A comprehensive pandemic tracking platform",
+      "SUBTITLE": "A complete platform to track pandemics",
       "ITEMS": {
         "STATS": {
           "TITLE": "Global Statistics",
@@ -166,17 +166,17 @@
         },
         "MAPPING": {
           "TITLE": "Interactive Mapping",
-          "DESC": "Explore geographical data with our interactive and customizable world map.",
+          "DESC": "Explore geographic data with our customizable interactive world map.",
           "ICON": "fas fa-map-marked-alt"
         },
         "ALERTS": {
           "TITLE": "Custom Alerts",
-          "DESC": "Get notified about important changes in areas that interest you.",
+          "DESC": "Receive notifications for major changes in your selected regions.",
           "ICON": "fas fa-bell"
         },
         "HISTORY": {
           "TITLE": "Historical Data",
-          "DESC": "Access complete historical pandemic data since the beginning of the COVID-19 crisis.",
+          "DESC": "Access the full history of pandemic data since the beginning of the COVID-19 crisis.",
           "ICON": "fas fa-database"
         },
         "EXPORT": {
@@ -193,37 +193,37 @@
       "VACCINATIONS": "Vaccinations",
       "RECOVERED": "Recovered",
       "DEATHS": "Deaths",
-      "SEE_ALL_STATS": "View All Statistics"
+      "SEE_ALL_STATS": "See all statistics"
     },
     "TESTIMONIALS": {
       "TITLE": "Testimonials",
-      "SUBTITLE": "What Our Users Say",
+      "SUBTITLE": "What our users are saying",
       "ITEMS": {
         "EPIDEMIOLOGIST": {
           "NAME": "Dr. Sophie Martin",
           "ROLE": "Epidemiologist, INSERM",
-          "QUOTE": "This platform has revolutionized how we analyze pandemic data. The predictions are remarkably accurate and help us anticipate epidemic waves.",
+          "QUOTE": "This platform has revolutionized our way of analyzing pandemic data. The predictions are remarkably accurate and help us anticipate epidemic waves.",
           "IMAGE": "women/32"
         },
         "JOURNALIST": {
           "NAME": "Jean Dupont",
           "ROLE": "Science Journalist",
-          "QUOTE": "As a journalist, I particularly appreciate the clarity of the visualizations and the ease of access to data. It has become my go-to tool for my COVID-related articles.",
+          "QUOTE": "As a journalist, I especially appreciate the clarity of the visualizations and easy access to data. It has become my go-to tool for COVID reporting.",
           "IMAGE": "men/54"
         },
         "HEALTH_OFFICER": {
           "NAME": "Pierre Lambert",
           "ROLE": "Public Health Officer",
-          "QUOTE": "Custom alerts allow us to react quickly to epidemiological changes. An essential tool for our service.",
+          "QUOTE": "Custom alerts allow us to respond quickly to epidemiological changes. An essential tool for our service.",
           "IMAGE": "men/67"
         }
       }
     },
     "CTA": {
       "TITLE": "Ready to explore the data?",
-      "SUBTITLE": "Create your free account.",
-      "SIGN_UP": "Sign Up Now",
-      "CONTACT": "Contact Us"
+      "SUBTITLE": "Create your account for free.",
+      "SIGN_UP": "Sign up now",
+      "CONTACT": "Contact us"
     }
   },
   "FOOTER": {
@@ -250,7 +250,7 @@
   },
   "DASHBOARD": {
     "TITLE": "COVID-19 Dashboard",
-    "SUBTITLE": "Global tracking of the COVID-19 pandemic through updated data and interactive visualizations.",
+    "SUBTITLE": "Global monitoring of the COVID-19 pandemic through updated data and interactive visualizations.",
     "TOP_COUNTRIES": {
       "TABLE_CAPTION": "Table of countries with the most cases and deaths",
       "SELECT_METRIC": "Select a metric to display"
@@ -264,14 +264,27 @@
       "TOTAL_DEATHS": "Total Deaths",
       "TOTAL_VACCINATIONS": "Total Vaccinations"
     },
-    "TOP_5": {
-      "TITLE": "Top 5 Countries by {{metric}}",
-      "CASES": "cases",
-      "DEATHS": "deaths",
-      "COUNTRY": "Country",
-      "COUNT": "Count",
-      "SHOW_DEATHS": "Show Deaths",
-      "SHOW_CASES": "Show Cases",
+    "CHARTS": {
+      "CASES_TITLE": "COVID-19 Case Evolution",
+      "VACCINATIONS_TITLE": "Vaccination Progress",
+      "TIME_RANGES": {
+        "LABEL": "Display Period",
+        "LAST_7_DAYS": "Last 7 days",
+        "LAST_30_DAYS": "Last 30 days",
+        "LAST_90_DAYS": "Last 90 days",
+        "THIS_YEAR": "This year"
+      },
+      "VIEW_OPTIONS": {
+        "LABEL": "View Mode",
+        "BY_COUNTRY": "By Country",
+        "BY_CONTINENT": "By Continent",
+        "BY_VACCINE_TYPE": "By Vaccine Type"
+      }
+    },
+    "MAP": {
+      "TITLE": "Geographic Distribution",
+      "CONFIRMED_CASES": "Confirmed Cases",
+      "DEATHS": "Deaths",
       "INTERACTIVE_MAP": "Interactive COVID-19 Data Map",
       "CLICK_TO_VIEW": "(Click to view)"
     },
@@ -282,6 +295,15 @@
       "COUNTRY": "Country",
       "CASES": "Cases",
       "DEATHS_COUNT": "Deaths"
+    },
+    "TOP_5": {
+      "TITLE": "Top 5 countries by {{metric}}",
+      "CASES": "cases",
+      "DEATHS": "deaths",
+      "COUNTRY": "Country",
+      "COUNT": "Count",
+      "SHOW_DEATHS": "Show Deaths",
+      "SHOW_CASES": "Show Cases"
     }
   }
 }
