@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { toast } from 'ngx-sonner';
-import { AuthService } from '../../../services/auth/auth.service';
-import { Router, RouterLink } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {toast} from 'ngx-sonner';
+import {AuthService} from '../../../services/auth/auth.service';
+import {Router, RouterLink} from '@angular/router';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {NgClass} from '@angular/common';
 
 @Component({
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
       // Faire défiler jusqu'au premier champ invalide
       const invalidControl = document.querySelector('.ng-invalid');
       if (invalidControl) {
-        invalidControl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        invalidControl.scrollIntoView({behavior: 'smooth', block: 'center'});
       }
       return;
     }
@@ -79,15 +79,24 @@ export class LoginComponent implements OnInit {
       this.loginForm.value.email,
       this.loginForm.value.password
     )
-    .then(() => {
-      toast.success(this.translate.instant('LOGIN.SUCCESS'), { id: toastId });
-      this.router.navigate(['/client']);
-    })
-    .catch(() => {
-      toast.error(this.translate.instant('LOGIN.ERROR.INVALID_CREDENTIALS'), { id: toastId });
-    })
-    .finally(() => {
-      this.loading = false;
-    });
+      .then(() => {
+        toast.success(this.translate.instant('LOGIN.SUCCESS'), {id: toastId});
+
+        // Redirection basée sur le rôle
+        const role = this.authService.getRole();
+        if (role === 'DE') {
+          this.router.navigate(['/client/predictions']);
+        } else {
+          this.router.navigate(['/client']);
+        }
+      })
+      .catch((error) => {
+        console.error('Login error:', error);
+        const errorMessage = error?.message || this.translate.instant('LOGIN.ERROR.INVALID_CREDENTIALS');
+        toast.error(errorMessage, {id: toastId});
+      })
+      .finally(() => {
+        this.loading = false;
+      });
   }
 }

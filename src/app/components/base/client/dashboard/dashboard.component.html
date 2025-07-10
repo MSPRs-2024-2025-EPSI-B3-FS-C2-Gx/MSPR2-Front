@@ -34,16 +34,16 @@
                 <i class="fas fa-procedures text-red-600 text-xl"></i>
               </div>
               <div class="ml-5 w-0 flex-1">
-              <dl>
-                <dt class="text-sm font-medium text-gray-500 truncate" translate>
-                  DASHBOARD.STATS.TOTAL_CASES
-                </dt>
-                <dd class="flex items-baseline">
-                  <div class="text-2xl font-semibold text-gray-900">
-                    {{ formatNumber(totalCases) }}
-                  </div>
-                </dd>
-              </dl>
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate" translate>
+                    DASHBOARD.STATS.TOTAL_CASES
+                  </dt>
+                  <dd class="flex items-baseline">
+                    <div class="text-2xl font-semibold text-gray-900">
+                      {{ formatNumber(totalCases) }}
+                    </div>
+                  </dd>
+                </dl>
               </div>
             </div>
           </div>
@@ -57,16 +57,16 @@
                 <i class="fas fa-syringe text-blue-600 text-xl"></i>
               </div>
               <div class="ml-5 w-0 flex-1">
-              <dl>
-                <dt class="text-sm font-medium text-gray-500 truncate" translate>
-                  DASHBOARD.STATS.TOTAL_VACCINATIONS
-                </dt>
-                <dd class="flex items-baseline">
-                  <div class="text-2xl font-semibold text-gray-900">
-                    {{ formatNumber(totalVaccinations) }}
-                  </div>
-                </dd>
-              </dl>
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate" translate>
+                    DASHBOARD.STATS.TOTAL_VACCINATIONS
+                  </dt>
+                  <dd class="flex items-baseline">
+                    <div class="text-2xl font-semibold text-gray-900">
+                      {{ formatNumber(totalVaccinations) }}
+                    </div>
+                  </dd>
+                </dl>
               </div>
             </div>
           </div>
@@ -80,16 +80,16 @@
                 <i class="fas fa-cross text-gray-600 text-xl"></i>
               </div>
               <div class="ml-5 w-0 flex-1">
-              <dl>
-                <dt class="text-sm font-medium text-gray-500 truncate" translate>
-                  DASHBOARD.STATS.TOTAL_DEATHS
-                </dt>
-                <dd class="flex items-baseline">
-                  <div class="text-2xl font-semibold text-gray-900">
-                    {{ formatNumber(totalDeaths) }}
-                  </div>
-                </dd>
-              </dl>
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate" translate>
+                    DASHBOARD.STATS.TOTAL_DEATHS
+                  </dt>
+                  <dd class="flex items-baseline">
+                    <div class="text-2xl font-semibold text-gray-900">
+                      {{ formatNumber(totalDeaths) }}
+                    </div>
+                  </dd>
+                </dl>
               </div>
             </div>
           </div>
@@ -103,10 +103,11 @@
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-medium text-gray-900" translate>DASHBOARD.CHARTS.CASES_TITLE</h2>
             <div class="relative hidden">
-              <label for="timeRangeSelect" class="sr-only">{{ 'DASHBOARD.CHARTS.TIME_RANGES.LABEL' | translate }}</label>
+              <label class="sr-only"
+                     for="timeRangeSelect">{{ 'DASHBOARD.CHARTS.TIME_RANGES.LABEL' | translate }}</label>
               <select
-                id="timeRangeSelect"
-                class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                id="timeRangeSelect">
                 <option>{{ 'DASHBOARD.CHARTS.TIME_RANGES.LAST_7_DAYS' | translate }}</option>
                 <option>{{ 'DASHBOARD.CHARTS.TIME_RANGES.LAST_30_DAYS' | translate }}</option>
                 <option selected>{{ 'DASHBOARD.CHARTS.TIME_RANGES.LAST_90_DAYS' | translate }}</option>
@@ -127,10 +128,11 @@
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-medium text-gray-900" translate>DASHBOARD.CHARTS.VACCINATIONS_TITLE</h2>
             <div class="relative hidden">
-              <label for="viewOptionSelect" class="sr-only">{{ 'DASHBOARD.CHARTS.VIEW_OPTIONS.LABEL' | translate }}</label>
+              <label class="sr-only"
+                     for="viewOptionSelect">{{ 'DASHBOARD.CHARTS.VIEW_OPTIONS.LABEL' | translate }}</label>
               <select
-                id="viewOptionSelect"
-                class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                id="viewOptionSelect">
                 <option>{{ 'DASHBOARD.CHARTS.VIEW_OPTIONS.BY_COUNTRY' | translate }}</option>
                 <option selected>{{ 'DASHBOARD.CHARTS.VIEW_OPTIONS.BY_CONTINENT' | translate }}</option>
                 <option>{{ 'DASHBOARD.CHARTS.VIEW_OPTIONS.BY_VACCINE_TYPE' | translate }}</option>
@@ -177,11 +179,12 @@
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-medium text-gray-900" translate>DASHBOARD.TOP_COUNTRIES.TITLE</h2>
             <div class="relative">
-              <label for="leaderMetricSelect" class="sr-only">{{ 'DASHBOARD.TOP_COUNTRIES.SELECT_METRIC' | translate }}</label>
+              <label class="sr-only"
+                     for="leaderMetricSelect">{{ 'DASHBOARD.TOP_COUNTRIES.SELECT_METRIC' | translate }}</label>
               <select
-                id="leaderMetricSelect"
                 (change)="onLeaderMetricChange($event)"
-                class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                id="leaderMetricSelect">
                 <option value="cases">{{ 'DASHBOARD.TOP_COUNTRIES.CONFIRMED_CASES' | translate }}</option>
                 <option selected value="deaths">{{ 'DASHBOARD.TOP_COUNTRIES.DEATHS' | translate }}</option>
               </select>
@@ -191,26 +194,30 @@
             </div>
           </div>
           <div class="overflow-hidden">
-            <table class="min-w-full divide-y divide-gray-200" role="grid" [attr.aria-label]="'DASHBOARD.TOP_COUNTRIES.TABLE_CAPTION' | translate">
+            <table [attr.aria-label]="'DASHBOARD.TOP_COUNTRIES.TABLE_CAPTION' | translate" class="min-w-full divide-y divide-gray-200"
+                   role="grid">
               <caption class="sr-only">{{ 'DASHBOARD.TOP_COUNTRIES.TABLE_CAPTION' | translate }}</caption>
               <thead class="bg-gray-50">
               <tr>
-                <th id="country-header" scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="country-header"
+                    scope="col">
                   {{ 'DASHBOARD.TOP_COUNTRIES.COUNTRY' | translate }}
                 </th>
-                <th id="value-header" scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="value-header"
+                    scope="col">
                   {{ (selectedMetric === 'cases' ? 'DASHBOARD.TOP_COUNTRIES.CASES' : 'DASHBOARD.TOP_COUNTRIES.DEATHS_COUNT') | translate }}
                 </th>
               </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-              <tr *ngFor="let country of (selectedMetric === 'cases' ? top5Cases : top5Deaths); let i = index" role="row">
-                <th id="country-{{i}}" scope="row" class="px-3 py-3 whitespace-nowrap" headers="country-header">
+              <tr *ngFor="let country of (selectedMetric === 'cases' ? top5Cases : top5Deaths); let i = index"
+                  role="row">
+                <th class="px-3 py-3 whitespace-nowrap" headers="country-header" id="country-{{i}}" scope="row">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-5 w-5">
                       <img
-                        [src]="'https://flagcdn.com/w20/' + this.utilService.getCountryCode(country.country_name) + '.png'"
                         [alt]="'Drapeau de ' + country.country_name"
+                        [src]="'https://flagcdn.com/w20/' + this.utilService.getCountryCode(country.country_name) + '.png'"
                         class="h-5 w-5 rounded-full">
                     </div>
                     <div class="ml-2">

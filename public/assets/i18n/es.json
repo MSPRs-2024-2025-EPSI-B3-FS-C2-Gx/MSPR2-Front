@@ -343,5 +343,11 @@
       "SHOW_DEATHS": "Mostrar fallecidos",
       "SHOW_CASES": "Mostrar casos"
     }
+  },
+  "UNAUTHORIZED": {
+    "TITLE": "Acceso Denegado",
+    "MESSAGE": "No tienes permiso para acceder a esta página.",
+    "GO_BACK": "Volver",
+    "GO_HOME": "Panel de control"
   }
 }

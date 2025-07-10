@@ -31,7 +31,8 @@
   <div class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="lg:text-center">
-        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">{{ 'HOME.FEATURES.TITLE' | translate }}</h2>
+        <h2
+          class="text-base text-blue-600 font-semibold tracking-wide uppercase">{{ 'HOME.FEATURES.TITLE' | translate }}</h2>
         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           {{ 'HOME.FEATURES.SUBTITLE' | translate }}
         </p>
@@ -102,7 +103,8 @@
   <div class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="lg:text-center">
-        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">{{ 'HOME.TESTIMONIALS.TITLE' | translate }}</h2>
+        <h2
+          class="text-base text-blue-600 font-semibold tracking-wide uppercase">{{ 'HOME.TESTIMONIALS.TITLE' | translate }}</h2>
         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           {{ 'HOME.TESTIMONIALS.SUBTITLE' | translate }}
         </p>
@@ -110,12 +112,13 @@
 
       <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- Testimonial Items -->
-        <div *ngFor="let key of testimonialKeys" class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all hover:shadow-md">
+        <div *ngFor="let key of testimonialKeys"
+             class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all hover:shadow-md">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img [alt]="'HOME.TESTIMONIALS.ITEMS.' + key + '.NAME' | translate" 
-                   class="h-12 w-12 rounded-full"
-                   [src]="getTestimonialImage(key)">
+              <img [alt]="'HOME.TESTIMONIALS.ITEMS.' + key + '.NAME' | translate"
+                   [src]="getTestimonialImage(key)"
+                   class="h-12 w-12 rounded-full">
             </div>
             <div class="ml-4">
               <h3 class="text-lg font-medium text-gray-900">

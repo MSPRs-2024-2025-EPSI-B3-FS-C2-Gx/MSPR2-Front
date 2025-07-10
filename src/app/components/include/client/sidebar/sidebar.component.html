@@ -3,8 +3,8 @@
     <nav class="px-4 py-4">
       <div class="space-y-1">
         <a
-          *ngIf="authService.getRole() !== 'DE'"
           #rla="routerLinkActive"
+          *ngIf="authService.getRole() !== 'DE'"
           [routerLinkActiveOptions]="{ exact: true }"
           class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
           routerLink="/client"
@@ -17,8 +17,8 @@
           {{ 'SIDEBAR.DASHBOARD' | translate }}
         </a>
         <a
-          *ngIf="authService.getRole() !== 'DE'"
           #rlaCarto="routerLinkActive"
+          *ngIf="authService.getRole() !== 'DE'"
           [routerLinkActiveOptions]="{ exact: true }"
           class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
           routerLink="/client/cartography"
@@ -32,8 +32,8 @@
         </a>
 
         <a
-          *ngIf="authService.getRole() !== 'DE'"
           #rlaData="routerLinkActive"
+          *ngIf="authService.getRole() !== 'DE'"
           [routerLinkActiveOptions]="{ exact: true }"
           class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
           routerLink="/client/data"

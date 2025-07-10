@@ -6,7 +6,8 @@ import {SidebarService} from '../../../services/sidebar/sidebar.service';
 import {SearchService} from '../../../services/search/search.service';
 import {FormsModule} from '@angular/forms';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {LanguageOption, TranslationService} from '../../../services/translation/translation.service';
+import {TranslationService} from '../../../services/translation/translation.service';
+import {LanguageOption} from '../../../models/lang.model';
 
 @Component({
   selector: 'app-navbar',
@@ -45,11 +46,6 @@ export class NavbarComponent {
       this.currentLanguage = this.translationService.getCurrentLanguage();
       this.currentFlag = this.translationService.getCurrentFlag();
     });
-  }
-
-  private updateLanguages(): void {
-    this.languages = this.translationService.getLanguages();
-    console.log('Langues disponibles mises à jour:', this.languages);
   }
 
   onSearch(): void {
@@ -127,5 +123,10 @@ export class NavbarComponent {
     if (!clickedInside) {
       this.clientDropdownOpen = false;
     }
+  }
+
+  private updateLanguages(): void {
+    this.languages = this.translationService.getLanguages();
+    console.log('Langues disponibles mises à jour:', this.languages);
   }
 }

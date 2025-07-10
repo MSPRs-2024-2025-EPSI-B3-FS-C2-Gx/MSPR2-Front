@@ -343,5 +343,11 @@
       "CASES": "Fälle",
       "DEATHS_COUNT": "Todesfälle"
     }
+  },
+  "UNAUTHORIZED": {
+    "TITLE": "Zugriff verweigert",
+    "MESSAGE": "Sie haben keine Berechtigung, auf diese Seite zuzugreifen.",
+    "GO_BACK": "Zurück",
+    "GO_HOME": "Zum Dashboard"
   }
 }

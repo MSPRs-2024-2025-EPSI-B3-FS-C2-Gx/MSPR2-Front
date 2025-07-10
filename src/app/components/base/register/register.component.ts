@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Router, RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {toast} from 'ngx-sonner';
 import {AuthService} from '../../../services/auth/auth.service';
 
@@ -35,6 +35,11 @@ export class RegisterComponent {
     });
   }
 
+  // Getter pour un accès facile aux champs du formulaire
+  get f() {
+    return this.registerForm.controls;
+  }
+
   // Vérifie que les mots de passe correspondent
   passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password');
@@ -46,11 +51,11 @@ export class RegisterComponent {
     const confirmPasswordValue = confirmPassword.value;
 
     if (passwordValue !== confirmPasswordValue) {
-      confirmPassword.setErrors({ passwordMismatch: true });
-      return { passwordMismatch: true };
+      confirmPassword.setErrors({passwordMismatch: true});
+      return {passwordMismatch: true};
     } else {
       if (confirmPassword.hasError('passwordMismatch')) {
-        const errors = { ...confirmPassword.errors };
+        const errors = {...confirmPassword.errors};
         delete errors['passwordMismatch'];
         confirmPassword.setErrors(Object.keys(errors).length > 0 ? errors : null);
       }
@@ -69,7 +74,7 @@ export class RegisterComponent {
     } else if (control.hasError('email')) {
       return this.translate.instant('VALIDATION.INVALID_EMAIL');
     } else if (control.hasError('minlength')) {
-      return this.translate.instant('VALIDATION.MIN_LENGTH', { min: control.getError('minlength').requiredLength });
+      return this.translate.instant('VALIDATION.MIN_LENGTH', {min: control.getError('minlength').requiredLength});
     } else if (control.hasError('passwordMismatch')) {
       return this.translate.instant('VALIDATION.PASSWORD_MISMATCH');
     } else if (control.hasError('pattern')) {
@@ -78,9 +83,6 @@ export class RegisterComponent {
 
     return '';
   }
-
-  // Getter pour un accès facile aux champs du formulaire
-  get f() { return this.registerForm.controls; }
 
   // Soumission du formulaire
   onSubmit() {
@@ -97,7 +99,7 @@ export class RegisterComponent {
       // Trouver le premier champ invalide et faire défiler jusqu'à lui
       const invalidControl = document.querySelector('.ng-invalid');
       if (invalidControl) {
-        invalidControl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        invalidControl.scrollIntoView({behavior: 'smooth', block: 'center'});
       }
 
       // Afficher un message d'erreur général
@@ -128,11 +130,11 @@ export class RegisterComponent {
       this.registerForm.value.password
     )
       .then(() => {
-        toast.success(this.translate.instant('REGISTER.SUCCESS'), { id: toastId });
+        toast.success(this.translate.instant('REGISTER.SUCCESS'), {id: toastId});
         this.router.navigate(['/login']);
       })
       .catch(() => {
-        toast.error(this.translate.instant('REGISTER.ERROR.ALREADY_REGISTERED'), { id: toastId });
+        toast.error(this.translate.instant('REGISTER.ERROR.ALREADY_REGISTERED'), {id: toastId});
       })
       .finally(() => {
         this.loading = false;

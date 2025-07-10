@@ -12,5 +12,6 @@ import {AuthService} from '../../../../services/auth/auth.service';
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent {
-  constructor(public sbService: SidebarService, public authService: AuthService) {}
+  constructor(public sbService: SidebarService, public authService: AuthService) {
+  }
 }

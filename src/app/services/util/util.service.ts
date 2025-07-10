@@ -68,26 +68,26 @@ export class UtilService {
     let x = 0;
     let y = 0;
     let signedArea = 0;
-    
+
     // Le polygone doit être fermé (premier point = dernier point)
     const n = polygon.length - 1;
-    
+
     for (let i = 0; i < n; i++) {
       const x0 = polygon[i][0];
       const y0 = polygon[i][1];
       const x1 = polygon[i + 1][0];
       const y1 = polygon[i + 1][1];
-      
+
       const a = x0 * y1 - x1 * y0;
       signedArea += a;
       x += (x0 + x1) * a;
       y += (y0 + y1) * a;
     }
-    
+
     signedArea *= 0.5;
     x /= (6 * signedArea);
     y /= (6 * signedArea);
-    
+
     // Retourne [lat, lng]
     return [y, x];
   }
