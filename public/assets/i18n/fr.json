@@ -124,6 +124,7 @@
     "BACK_HOME": "Retour à l'accueil"
   },
   "NAVBAR": {
+    "HOME": "Accueil",
     "SEARCH": "Rechercher",
     "PROFILE": "Votre profil",
     "SETTINGS": "Paramètres",
@@ -245,11 +246,15 @@
     "PRIVACY": "Confidentialité",
     "TERMS": "Conditions",
     "LICENSES": "Licences",
-    "COPYRIGHT": "© 2025 PandemicTracker. Tous droits réservés."
+    "COPYRIGHT": " 2025 PandemicTracker. Tous droits réservés."
   },
   "DASHBOARD": {
     "TITLE": "Tableau de bord COVID-19",
     "SUBTITLE": "Suivi global de la pandémie de COVID-19 à travers des données actualisées et des visualisations interactives.",
+    "TOP_COUNTRIES": {
+      "TABLE_CAPTION": "Tableau des pays avec le plus de cas et de décès",
+      "SELECT_METRIC": "Sélectionner une métrique à afficher"
+    },
     "BUTTONS": {
       "EXPORT": "Exporter",
       "REFRESH": "Actualiser"
@@ -263,12 +268,14 @@
       "CASES_TITLE": "Évolution des cas COVID-19",
       "VACCINATIONS_TITLE": "Progression des vaccinations",
       "TIME_RANGES": {
+        "LABEL": "Période à afficher",
         "LAST_7_DAYS": "7 derniers jours",
         "LAST_30_DAYS": "30 derniers jours",
         "LAST_90_DAYS": "90 derniers jours",
         "THIS_YEAR": "Cette année"
       },
       "VIEW_OPTIONS": {
+        "LABEL": "Mode d'affichage",
         "BY_COUNTRY": "Par pays",
         "BY_CONTINENT": "Par continent",
         "BY_VACCINE_TYPE": "Par type de vaccin"

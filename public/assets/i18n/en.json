@@ -124,6 +124,7 @@
     "BACK_HOME": "Back to Home"
   },
   "NAVBAR": {
+    "HOME": "Home",
     "SEARCH": "Search",
     "PROFILE": "Your profile",
     "SETTINGS": "Settings",
@@ -250,6 +251,10 @@
   "DASHBOARD": {
     "TITLE": "COVID-19 Dashboard",
     "SUBTITLE": "Global tracking of the COVID-19 pandemic through updated data and interactive visualizations.",
+    "TOP_COUNTRIES": {
+      "TABLE_CAPTION": "Table of countries with the most cases and deaths",
+      "SELECT_METRIC": "Select a metric to display"
+    },
     "BUTTONS": {
       "EXPORT": "Export",
       "REFRESH": "Refresh"
@@ -267,26 +272,6 @@
       "COUNT": "Count",
       "SHOW_DEATHS": "Show Deaths",
       "SHOW_CASES": "Show Cases"
-    },
-    "CHARTS": {
-      "CASES_TITLE": "COVID-19 Cases Evolution",
-      "VACCINATIONS_TITLE": "Vaccinations Progress",
-      "TIME_RANGES": {
-        "LAST_7_DAYS": "Last 7 days",
-        "LAST_30_DAYS": "Last 30 days",
-        "LAST_90_DAYS": "Last 90 days",
-        "THIS_YEAR": "This year"
-      },
-      "VIEW_OPTIONS": {
-        "BY_COUNTRY": "By country",
-        "BY_CONTINENT": "By continent",
-        "BY_VACCINE_TYPE": "By vaccine type"
-      }
-    },
-    "MAP": {
-      "TITLE": "Geographical Distribution",
-      "CONFIRMED_CASES": "Confirmed Cases",
-      "DEATHS": "Deaths",
       "INTERACTIVE_MAP": "Interactive COVID-19 Data Map",
       "CLICK_TO_VIEW": "(Click to view)"
     },
