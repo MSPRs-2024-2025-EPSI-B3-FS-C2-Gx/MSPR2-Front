@@ -1,0 +1,14 @@
+{
+  "TITLE": "Willkommen in unserer Anwendung",
+  "LANGUAGE": {
+    "ENGLISH": "Englisch",
+    "FRENCH": "Französisch",
+    "GERMAN": "Deutsch"
+  },
+  "COMMON": {
+    "WELCOME": "Willkommen",
+    "SETTINGS": "Einstellungen",
+    "PROFILE": "Profil",
+    "LOGOUT": "Abmelden"
+  }
+}

@@ -7,19 +7,19 @@
       <!-- Page header -->
       <div class="flex justify-between items-center mb-6">
         <div>
-          <h1 class="text-2xl font-bold text-gray-900">Tableau de bord COVID-19</h1>
-          <p class="mt-1 text-sm text-gray-500 hidden md:block">Suivi global de la pandémie de COVID-19 à travers des données actualisées et des visualisations interactives.</p>
+          <h1 class="text-2xl font-bold text-gray-900" translate>DASHBOARD.TITLE</h1>
+          <p class="mt-1 text-sm text-gray-500 hidden md:block">{{ 'DASHBOARD.SUBTITLE' | translate }}</p>
         </div>
         <div class="flex space-x-3">
           <button (click)="dataService.export()"
                   class="inline-flex cursor-pointer items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
             <i class="fas fa-download mr-2 text-gray-500"></i>
-            Exporter
+            {{ 'DASHBOARD.BUTTONS.EXPORT' | translate }}
           </button>
           <button (click)="dataService.refresh()"
                   class="inline-flex cursor-pointer items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
             <i class="fas fa-sync-alt mr-2"></i>
-            Actualiser
+            {{ 'DASHBOARD.BUTTONS.REFRESH' | translate }}
           </button>
         </div>
       </div>
@@ -34,8 +34,8 @@
                 <i class="fas fa-procedures text-red-600 text-xl"></i>
               </div>
               <div class="ml-5 w-0 flex-1">
-                <dt class="text-sm font-medium text-gray-500 truncate">
-                  Nombre total de cas
+                <dt class="text-sm font-medium text-gray-500 truncate" translate>
+                  DASHBOARD.STATS.TOTAL_CASES
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
@@ -55,8 +55,8 @@
                 <i class="fas fa-syringe text-blue-600 text-xl"></i>
               </div>
               <div class="ml-5 w-0 flex-1">
-                <dt class="text-sm font-medium text-gray-500 truncate">
-                  Vaccinations
+                <dt class="text-sm font-medium text-gray-500 truncate" translate>
+                  DASHBOARD.STATS.TOTAL_VACCINATIONS
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
@@ -76,8 +76,8 @@
                 <i class="fas fa-cross text-gray-600 text-xl"></i>
               </div>
               <div class="ml-5 w-0 flex-1">
-                <dt class="text-sm font-medium text-gray-500 truncate">
-                  Décès
+                <dt class="text-sm font-medium text-gray-500 truncate" translate>
+                  DASHBOARD.STATS.TOTAL_DEATHS
                 </dt>
                 <dd class="flex items-baseline">
                   <div class="text-2xl font-semibold text-gray-900">
@@ -95,14 +95,14 @@
         <!-- Cases chart -->
         <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-medium text-gray-900">Évolution des cas COVID-19</h2>
+            <h2 class="text-lg font-medium text-gray-900" [translate]="'DASHBOARD.CHARTS.CASES_TITLE'"></h2>
             <div class="relative hidden">
               <select
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
-                <option>7 derniers jours</option>
-                <option>30 derniers jours</option>
-                <option selected>90 derniers jours</option>
-                <option>Cette année</option>
+                <option>{{ 'DASHBOARD.CHARTS.TIME_RANGES.LAST_7_DAYS' | translate }}</option>
+                <option>{{ 'DASHBOARD.CHARTS.TIME_RANGES.LAST_30_DAYS' | translate }}</option>
+                <option selected>{{ 'DASHBOARD.CHARTS.TIME_RANGES.LAST_90_DAYS' | translate }}</option>
+                <option>{{ 'DASHBOARD.CHARTS.TIME_RANGES.THIS_YEAR' | translate }}</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <i class="fas fa-chevron-down text-xs"></i>
@@ -117,13 +117,13 @@
         <!-- Vaccination chart -->
         <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-medium text-gray-900">Progression des vaccinations</h2>
+            <h2 class="text-lg font-medium text-gray-900" [translate]="'DASHBOARD.CHARTS.VACCINATIONS_TITLE'"></h2>
             <div class="relative hidden">
               <select
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
-                <option>Par pays</option>
-                <option selected>Par continent</option>
-                <option>Par type de vaccin</option>
+                <option>{{ 'DASHBOARD.CHARTS.VIEW_OPTIONS.BY_COUNTRY' | translate }}</option>
+                <option selected>{{ 'DASHBOARD.CHARTS.VIEW_OPTIONS.BY_CONTINENT' | translate }}</option>
+                <option>{{ 'DASHBOARD.CHARTS.VIEW_OPTIONS.BY_VACCINE_TYPE' | translate }}</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <i class="fas fa-chevron-down text-xs"></i>
@@ -141,23 +141,23 @@
         <!-- World map -->
         <div class="bg-white shadow rounded-lg p-6 card-hover transition-all lg:col-span-2">
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-medium text-gray-900">Répartition géographique</h2>
+            <h2 class="text-lg font-medium text-gray-900" [translate]="'DASHBOARD.MAP.TITLE'"></h2>
             <div class="flex space-x-2">
               <button class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-md transition-all">
-                Cas confirmés
+                {{ 'DASHBOARD.MAP.CONFIRMED_CASES' | translate }}
               </button>
               <button
                 class="px-3 py-1 cursor-pointer bg-gray-100 text-gray-700 text-xs font-medium rounded-md transition-all"
                 routerLink="/client/cartography">
-                Décès
+                {{ 'DASHBOARD.MAP.DEATHS' | translate }}
               </button>
             </div>
           </div>
           <div class="map-container cursor-pointer" routerLink="/client/cartography">
             <div class="map-placeholder">
               <i class="fas fa-globe-americas text-4xl mb-2"></i>
-              <p>Carte interactive des données COVID-19</p>
-              <p class="text-sm mt-1">(Cliquez pour voir)</p>
+              <p>{{ 'DASHBOARD.MAP.INTERACTIVE_MAP' | translate }}</p>
+              <p class="text-sm mt-1">{{ 'DASHBOARD.MAP.CLICK_TO_VIEW' | translate }}</p>
             </div>
           </div>
         </div>
@@ -165,13 +165,13 @@
         <!-- Top countries -->
         <div class="bg-white shadow rounded-lg p-6 card-hover transition-all">
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-medium text-gray-900">Pays les plus touchés</h2>
+            <h2 class="text-lg font-medium text-gray-900" [translate]="'DASHBOARD.TOP_COUNTRIES.TITLE'"></h2>
             <div class="relative">
               <select
                 (change)="onLeaderMetricChange($event)"
                 class="appearance-none bg-white border border-gray-300 rounded-md pl-3 pr-8 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
-                <option value="cases">Cas confirmés</option>
-                <option selected value="deaths">Décès</option>
+                <option value="cases">{{ 'DASHBOARD.TOP_COUNTRIES.CONFIRMED_CASES' | translate }}</option>
+                <option selected value="deaths">{{ 'DASHBOARD.TOP_COUNTRIES.DEATHS' | translate }}</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <i class="fas fa-chevron-down text-xs"></i>
@@ -183,10 +183,10 @@
               <thead class="bg-gray-50">
               <tr>
                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
-                  Pays
+                  {{ 'DASHBOARD.TOP_COUNTRIES.COUNTRY' | translate }}
                 </th>
                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
-                  {{ selectedMetric === 'cases' ? 'Cas confirmés' : 'Décès' }}
+                  {{ (selectedMetric === 'cases' ? 'DASHBOARD.TOP_COUNTRIES.CASES' : 'DASHBOARD.TOP_COUNTRIES.DEATHS_COUNT') | translate }}
                 </th>
               </tr>
               </thead>

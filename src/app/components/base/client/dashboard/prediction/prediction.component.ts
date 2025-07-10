@@ -6,6 +6,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {toast} from 'ngx-sonner';
 import { forkJoin } from 'rxjs';
 import { Chart, registerables } from 'chart.js';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 Chart.register(...registerables);
 
@@ -15,7 +16,8 @@ Chart.register(...registerables);
     SidebarComponent,
     FormsModule,
     NgIf,
-    NgForOf
+    NgForOf,
+    TranslateModule
   ],
   templateUrl: './prediction.component.html'
 })
@@ -28,7 +30,7 @@ export class PredictionComponent implements OnInit {
   predictionData: any[] = [];
   realData: any[] = [];
 
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService, private translate: TranslateService) {
   }
 
   ngOnInit() {
@@ -55,12 +57,12 @@ export class PredictionComponent implements OnInit {
 
     const selected = this.countries.find((c: any) => c.country_name === this.selectedCountry);
     if (!selected) {
-      toast.error('Pays sélectionné invalide.');
+      toast.error(this.translate.instant('COMMON.ERROR'));
       return;
     }
 
     const countryCode: string = selected.country_short_code;
-    const toastId = toast.loading('Lancement de la prédiction...');
+    const toastId = toast.loading(this.translate.instant('COMMON.LOADING'));
     this.closeModal();
 
     await new Promise<void>((resolve) => setTimeout(resolve, 1000));
@@ -75,10 +77,10 @@ export class PredictionComponent implements OnInit {
 
         setTimeout(() => this.renderChart(), 0);
 
-        toast.success('Prédiction effectuée avec succès.', { id: toastId });
+        toast.success(this.translate.instant('COMMON.LOADED'), {id: toastId});
       },
       error: () => {
-        toast.error('Erreur lors de la prédiction.', { id: toastId });
+        toast.error(this.translate.instant('COMMON.ERROR'), {id: toastId});
       },
       complete: () => {
         this.selectedCountry = '';
@@ -119,7 +121,7 @@ export class PredictionComponent implements OnInit {
         labels: allDates,
         datasets: [
           {
-            label: 'Cas réels',
+            label: this.translate.instant('AI_PREDICTIONS.CHART.REAL_CASES'),
             data: realCases,
             borderColor: '#3B82F6',
             backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -127,7 +129,7 @@ export class PredictionComponent implements OnInit {
             spanGaps: true
           },
           {
-            label: 'Cas prédits',
+            label: this.translate.instant('AI_PREDICTIONS.CHART.PREDICTED_CASES'),
             data: predictedCases,
             borderColor: '#F97316',
             backgroundColor: 'rgba(249, 115, 22, 0.1)',

@@ -75,7 +75,7 @@
   </div>
 </nav>
 
-<div *ngIf="authService.isLoggedIn" class="flex-1 overflow-auto">
+<div *ngIf="authService.isLoggedIn" class="flex-1 ">
   <div class="bg-white shadow-sm">
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
@@ -98,9 +98,10 @@
               (input)="onSearch()"
               [(ngModel)]="searchQuery"
               class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
-              placeholder="Rechercher..."
+              placeholder="{{ 'NAVBAR.SEARCH' | translate }}..."
               type="search"
             >
+
 
             <div *ngIf="showResults && searchResults.length > 0"
                  class="absolute z-[9999] mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto max-h-60"
@@ -126,12 +127,44 @@
             <div *ngIf="showResults && searchQuery.length > 2 && searchResults.length === 0"
                  class="absolute z-[9999] mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base ring-1 ring-black ring-opacity-5"
                  style="position: fixed; width: inherit; max-width: inherit;">
-              <div class="px-4 py-2 text-sm text-gray-700">Aucun résultat trouvé pour "{{ searchQuery }}"</div>
+              <div class="px-4 py-2 text-sm text-gray-700">
+                {{ 'NAVBAR.NO_RESULTS' | translate: {query: searchQuery} }}
+              </div>
             </div>
           </div>
         </div>
 
         <div class="flex items-center">
+
+          <div class="relative ml-4">
+            <!-- Bouton principal -->
+            <button
+              (click)="toggleLanguageDropdown($event)"
+              class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <i class="fas fa-language mr-2 text-blue-500"></i>
+              {{ currentLanguage.toUpperCase() }}
+              <i class="fas fa-chevron-down ml-2 text-xs text-gray-500"></i>
+            </button>
+
+            <!-- Menu déroulant -->
+            <div
+              *ngIf="languageDropdownOpen"
+              class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-[9999]"
+            >
+              <ul class="py-1">
+                <li
+                  *ngFor="let lang of languages"
+                  (click)="changeLanguage(lang.code, $event)"
+                  class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                  [ngClass]="{ 'bg-gray-100 font-semibold': currentLanguage === lang.code }"
+                >
+                  <span class="mr-2">{{ lang.flag }}</span>
+                  <span>{{ lang.code }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
 
           <div class="ml-4 relative">
             <button
@@ -159,11 +192,17 @@
               tabindex="-1"
             >
               <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                 routerLink="/client/profile" tabindex="-1">Votre profil</a>
+                 routerLink="/client/profile" tabindex="-1">
+                {{ 'NAVBAR.PROFILE' | translate }}
+              </a>
               <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                 routerLink="/client/settings" tabindex="-1">Paramètres</a>
+                 routerLink="/client/settings" tabindex="-1">
+                {{ 'NAVBAR.SETTINGS' | translate }}
+              </a>
               <a (click)="authService.logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#"
-                 role="menuitem" tabindex="-1">Déconnexion</a>
+                 role="menuitem" tabindex="-1">
+                {{ 'NAVBAR.LOGOUT' | translate }}
+              </a>
             </div>
           </div>
         </div>
@@ -171,3 +210,4 @@
     </div>
   </div>
 </div>
+
