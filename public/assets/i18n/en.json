@@ -12,7 +12,19 @@
     "LOGOUT": "Logout",
     "LOADING": "Loading...",
     "LOADED": "Loaded",
-    "ERROR": "An error occurred"
+    "ERROR": "An error occurred",
+    "REFRESHING": "Refreshing...",
+    "REFRESH_SUCCESS": "Refreshed successfully !",
+    "NO_AVAILABLE_FEATURE": "Feature not available."
+  },
+  "PROFILE": {
+    "AUTH": "Client Authenticated",
+    "INFORMATION": "Account Information",
+    "COMPLETE_NAME": "Complete Name",
+    "ROLE": "Role",
+    "SUBSCRIPTION": "Subscription",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive"
   },
   "CARTOGRAPHY": {
     "TITLE": "COVID-19 Mapping",
@@ -40,6 +52,48 @@
       "CASE_RATE": "Case Rate",
       "DEATH_RATE": "Death Rate",
       "PERCENT_SIGN": "%"
+    }
+  },
+  "RAW_DATA": {
+    "TITLE": "Raw Data",
+    "SUBTITLE": "Access COVID-19 raw data by country.",
+    "BUTTONS": {
+      "EXPORT": "Export",
+      "REFRESH": "Refresh"
+    },
+    "TABLE": {
+      "ALL_COUNTRIES": "All Countries",
+      "DATE": "Date",
+      "COUNTRY": "Country",
+      "CONFIRMED_CASES": "Confirmed Cases",
+      "DEATHS": "Deaths",
+      "VACCINATIONS": "Vaccinations",
+      "PAGE_SIZE": "Results per page",
+      "PAGE_PREVIOUS": "Previous",
+      "PAGE_NEXT": "Next"
+    }
+  },
+  "AI_PREDICTIONS": {
+    "TITLE": "AI Predictions",
+    "SUBTITLE": "Analysis and visualization of predicted cases by artificial intelligence, country by country.",
+    "BUTTONS": {
+      "EXPORT": "Export",
+      "REFRESH": "Refresh"
+    },
+    "GRAPH": {
+      "TITLE": "Prediction",
+      "LAUNCH_ANALYSIS": "Launch a new analysis"
+    },
+    "FORM": {
+      "TITLE": "New Analysis",
+      "COUNTRY": "Country",
+      "START_DATE": "Start Date",
+      "CANCEL": "Cancel",
+      "SUBMIT": "Analyze"
+    },
+    "CHART": {
+      "REAL_CASES": "Real Cases",
+      "PREDICTED_CASES": "Predicted Cases"
     }
   },
   "NAVBAR": {

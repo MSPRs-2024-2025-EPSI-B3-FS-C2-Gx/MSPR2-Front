@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {toast} from 'ngx-sonner';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class DataService {
   API_URL: string = 'https://api-mspr-2-kldok.gaetandev.fr/api';
   isRefreshing = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private translate: TranslateService) {
   }
 
   refresh(): void {
@@ -18,17 +19,17 @@ export class DataService {
       return;
     }
     this.isRefreshing = true;
-    const lastToast = toast.loading('Actualisation...');
+    const lastToast = toast.loading(this.translate.instant('COMMON.REFRESHING'));
     setTimeout(() => {
       this.isRefreshing = false;
-      toast.success('Actualisation effectuée !', {
+      toast.success(this.translate.instant('COMMON.REFRESH_SUCCESS'), {
         id: lastToast
       });
     }, 1000);
   }
 
   export(): void {
-    toast.error('Fonctionnalité non disponible.');
+    toast.error(this.translate.instant('COMMON.NO_AVAILABLE_FEATURE'));
   }
 
   getTotalCases(): Observable<number> {

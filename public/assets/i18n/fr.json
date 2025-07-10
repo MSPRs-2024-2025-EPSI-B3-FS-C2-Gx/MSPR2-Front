@@ -12,7 +12,19 @@
     "LOGOUT": "Déconnexion",
     "LOADING": "Chargement...",
     "LOADED": "Chargé",
-    "ERROR": "Une erreur s'est produite"
+    "ERROR": "Une erreur s'est produite",
+    "REFRESHING": "Actualisation...",
+    "REFRESH_SUCCESS": "Actualisation effectuée !",
+    "NO_AVAILABLE_FEATURE": "Fonctionnalité non disponible."
+  },
+  "PROFILE": {
+    "AUTH": "Client Authentifié",
+    "INFORMATION": "Informations du compte",
+    "COMPLETE_NAME": "Nom complet",
+    "ROLE": "Rôle",
+    "SUBSCRIPTION": "Abonnement",
+    "ACTIVE": "Actif",
+    "INACTIVE": "Inactif"
   },
   "CARTOGRAPHY": {
     "TITLE": "Cartographie COVID-19",
@@ -40,6 +52,48 @@
       "CASE_RATE": "Taux de cas",
       "DEATH_RATE": "Taux de décès",
       "PERCENT_SIGN": "%"
+    }
+  },
+  "RAW_DATA": {
+    "TITLE": "Données brutes",
+    "SUBTITLE": "Accédez aux données brutes COVID-19 par pays.",
+    "BUTTONS": {
+      "EXPORT": "Exporter",
+      "REFRESH": "Actualiser"
+    },
+    "TABLE": {
+      "ALL_COUNTRIES": "Tous les pays",
+      "DATE": "Date",
+      "COUNTRY": "Pays",
+      "CONFIRMED_CASES": "Cas confirmés",
+      "DEATHS": "Décès",
+      "VACCINATIONS": "Vaccinations",
+      "PAGE_SIZE": "Résultats par page",
+      "PAGE_PREVIOUS": "Précédent",
+      "PAGE_NEXT": "Suivant"
+    }
+  },
+  "AI_PREDICTIONS": {
+    "TITLE": "Prédictions IA",
+    "SUBTITLE": "Analyse et visualisation des cas prédits par l'intelligence artificielle, pays par pays.",
+    "BUTTONS": {
+      "EXPORT": "Exporter",
+      "REFRESH": "Actualiser"
+    },
+    "GRAPH": {
+      "TITLE": "Prédiction",
+      "LAUNCH_ANALYSIS": "Lancer une nouvelle analyse"
+    },
+    "FORM": {
+      "TITLE": "Nouvelle analyse",
+      "COUNTRY": "Pays",
+      "START_DATE": "Date de démarrage",
+      "CANCEL": "Annuler",
+      "SUBMIT": "Analyser"
+    },
+    "CHART": {
+      "REAL_CASES": "Cas réels",
+      "PREDICTED_CASES": "Cas prédits"
     }
   },
   "NAVBAR": {

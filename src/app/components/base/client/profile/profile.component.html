@@ -10,28 +10,28 @@
       />
       <div>
         <h2 class="text-2xl font-bold text-gray-900">Jean Dupont</h2>
-        <p class="text-gray-500 text-sm">Client Authentifié</p>
+        <p class="text-gray-500 text-sm" translate>PROFILE.AUTH</p>
       </div>
     </div>
 
     <div class="mt-6">
-      <h3 class="text-lg font-semibold text-gray-700 mb-2">Informations du compte</h3>
+      <h3 class="text-lg font-semibold text-gray-700 mb-2" translate="">PROFILE.INFORMATION</h3>
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <span class="text-gray-600">Email :</span>
           <span class="text-gray-800 font-medium">{{  getEmail() }}</span>
         </div>
         <div class="flex items-center justify-between">
-          <span class="text-gray-600">Nom complet :</span>
+          <span class="text-gray-600">{{ 'PROFILE.COMPLETE_NAME' | translate }} :</span>
           <span class="text-gray-800 font-medium">Jean Dupont</span>
         </div>
         <div class="flex items-center justify-between">
-          <span class="text-gray-600">Rôle :</span>
+          <span class="text-gray-600">{{ 'PROFILE.ROLE' | translate }} :</span>
           <span class="text-blue-600 font-semibold">Client</span>
         </div>
         <div class="flex items-center justify-between">
-          <span class="text-gray-600">Abonnement :</span>
-          <span class="text-green-600 font-medium">Actif</span>
+          <span class="text-gray-600">{{ 'PROFILE.SUBSCRIPTION' | translate }} :</span>
+          <span class="text-green-600 font-medium" translate>PROFILE.ACTIVE</span>
         </div>
       </div>
     </div>
