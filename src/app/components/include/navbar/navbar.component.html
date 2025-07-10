@@ -61,7 +61,7 @@
             </ul>
           </div>
         </div>
-        <a class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
+        <a class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-sm font-medium transition-all"
            routerLink="/login" translate>
           NAVBAR.NO_AUTH.FREE_TRIAL
         </a>
@@ -101,7 +101,7 @@
 
       <div class="mt-4 pl-3 pr-4 py-2">
         <a
-          class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
           routerLink="/login"
           translate
         >
@@ -110,6 +110,7 @@
       </div>
     </div>
   </div>
+
 </nav>
 
 <div *ngIf="authService.isLoggedIn" class="flex-1 ">
@@ -117,8 +118,9 @@
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex items-center">
-          <a class="flex-shrink-0 flex items-center" routerLink="/client">
-            <i class="fas fa-virus text-blue-500 text-2xl mr-2"></i>
+          <a class="flex-shrink-0 flex items-center" routerLink="/client" [attr.aria-label]="'NAVBAR.HOME' | translate">
+            <i class="fas fa-virus text-blue-500 text-2xl mr-2" aria-hidden="true"></i>
+            <span class="sr-only">{{ 'NAVBAR.HOME' | translate }}</span>
           </a>
 
           <button (click)="sbService.toggleMobileMenu()"

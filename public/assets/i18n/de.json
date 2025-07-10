@@ -124,6 +124,7 @@
     "BACK_HOME": "Zurück zur Startseite"
   },
   "NAVBAR": {
+    "HOME": "Startseite",
     "SEARCH": "Suche",
     "PROFILE": "Dein Profil",
     "SETTINGS": "Einstellungen",
@@ -245,11 +246,15 @@
     "PRIVACY": "Datenschutz",
     "TERMS": "Nutzungsbedingungen",
     "LICENSES": "Lizenzen",
-    "COPYRIGHT": "© 2025 PandemicTracker. Alle Rechte vorbehalten."
+    "COPYRIGHT": " 2025 PandemicTracker. Alle Rechte vorbehalten."
   },
   "DASHBOARD": {
-    "TITLE": "COVID-19 Dashboard",
-    "SUBTITLE": "Globale Verfolgung der COVID-19-Pandemie durch aktuelle Daten und interaktive Visualisierungen.",
+    "TITLE": "COVID-19-Dashboard",
+    "SUBTITLE": "Globale Verfolgung der COVID-19-Pandemie durch aktualisierte Daten und interaktive Visualisierungen.",
+    "TOP_COUNTRIES": {
+      "TABLE_CAPTION": "Tabelle der Länder mit den meisten Fällen und Todesfällen",
+      "SELECT_METRIC": "Metrik zur Anzeige auswählen"
+    },
     "BUTTONS": {
       "EXPORT": "Exportieren",
       "REFRESH": "Aktualisieren"
@@ -272,12 +277,14 @@
       "CASES_TITLE": "Entwicklung der COVID-19-Fälle",
       "VACCINATIONS_TITLE": "Impfverlauf",
       "TIME_RANGES": {
+        "LABEL": "Anzuzeigender Zeitraum",
         "LAST_7_DAYS": "Letzte 7 Tage",
         "LAST_30_DAYS": "Letzte 30 Tage",
         "LAST_90_DAYS": "Letzte 90 Tage",
         "THIS_YEAR": "Dieses Jahr"
       },
       "VIEW_OPTIONS": {
+        "LABEL": "Anzeigemodus",
         "BY_COUNTRY": "Nach Land",
         "BY_CONTINENT": "Nach Kontinent",
         "BY_VACCINE_TYPE": "Nach Impfstofftyp"
