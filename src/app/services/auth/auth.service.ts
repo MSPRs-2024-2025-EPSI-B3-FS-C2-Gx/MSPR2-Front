@@ -45,6 +45,7 @@ export class AuthService {
           const authResponse = response as AuthResponse;
           localStorage.setItem('token', authResponse.token);
           localStorage.setItem('email', authResponse.user.email);
+          localStorage.setItem('role', authResponse.user.role.toString());
           this.isLoggedInSubject.next(true);
           resolve(authResponse);
         },
@@ -93,14 +94,24 @@ export class AuthService {
     });
   }
 
+  getRole(): string {
+    const roleId = localStorage.getItem('role');
+
+    switch (roleId) {
+      case '1':
+        return 'EN';
+      case '2':
+        return 'FR';
+      case '3':
+        return 'DE';
+      default:
+        return 'EN';
+    }
+  }
+
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     this.isLoggedInSubject.next(false);
-  }
-
-  getCurrentUser(): User | null {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
   }
 }

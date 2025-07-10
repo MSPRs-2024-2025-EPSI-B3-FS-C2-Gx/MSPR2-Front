@@ -9,11 +9,12 @@ import {SettingsComponent} from './settings/settings.component';
 import {CartographyComponent} from './dashboard/cartography/cartography.component';
 import {DataComponent} from './dashboard/data/data.component';
 import {PredictionComponent} from './dashboard/prediction/prediction.component';
+import {RoleGuard} from '../../../guards/role.guard';
 
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
     component: DashboardComponent,
   },
   {
@@ -28,12 +29,12 @@ const routes: Routes = [
   },
   {
     path: 'cartography',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
     component: CartographyComponent,
   },
   {
     path: 'data',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
     component: DataComponent,
   },
   {

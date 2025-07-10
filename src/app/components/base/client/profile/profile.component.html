@@ -27,7 +27,7 @@
         </div>
         <div class="flex items-center justify-between">
           <span class="text-gray-600">{{ 'PROFILE.ROLE' | translate }} :</span>
-          <span class="text-blue-600 font-semibold">Client</span>
+          <span class="text-blue-600 font-semibold">{{ this.authService.getRole() }}</span>
         </div>
         <div class="flex items-center justify-between">
           <span class="text-gray-600">{{ 'PROFILE.SUBSCRIPTION' | translate }} :</span>
