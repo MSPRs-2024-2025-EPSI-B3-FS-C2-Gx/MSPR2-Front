@@ -269,7 +269,8 @@
     },
     "ERROR": {
       "INVALID_FORM": "Bitte korrigieren Sie die Fehler im Formular.",
-      "FORM_SUBMISSION": "Beim Senden des Formulars ist ein Fehler aufgetreten."
+      "FORM_SUBMISSION": "Beim Senden des Formulars ist ein Fehler aufgetreten.",
+      "ALREADY_REGISTERED": "Diese E-Mail-Adresse ist bereits registriert."
     },
     "SUCCESS": "Registrierung erfolgreich!",
     "LOADING": "Wird verarbeitet..."

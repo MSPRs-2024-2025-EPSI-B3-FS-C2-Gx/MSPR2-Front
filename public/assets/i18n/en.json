@@ -269,7 +269,8 @@
     },
     "ERROR": {
       "INVALID_FORM": "Please correct the errors in the form.",
-      "FORM_SUBMISSION": "An error occurred while submitting the form."
+      "FORM_SUBMISSION": "An error occurred while submitting the form.",
+      "ALREADY_REGISTERED": "This email address is already registered."
     },
     "SUCCESS": "Registration successful!",
     "LOADING": "Processing..."

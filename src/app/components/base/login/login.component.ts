@@ -75,10 +75,18 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     const toastId = toast.loading(this.translate.instant('LOGIN.LOADING'));
 
-
-    this.authService.login(this.loginForm.value.email).then(() => {
-      toast.success(this.translate.instant('LOGIN.SUCCESS'), {id: toastId});
+    this.authService.login(
+      this.loginForm.value.email,
+      this.loginForm.value.password
+    )
+    .then(() => {
+      toast.success(this.translate.instant('LOGIN.SUCCESS'), { id: toastId });
       this.router.navigate(['/client']);
+    })
+    .catch((error: Error) => {
+      toast.error(this.translate.instant('LOGIN.ERROR.INVALID_CREDENTIALS'), { id: toastId });
+    })
+    .finally(() => {
       this.loading = false;
     });
   }

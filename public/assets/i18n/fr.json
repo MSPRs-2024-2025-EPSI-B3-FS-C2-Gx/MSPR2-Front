@@ -269,7 +269,8 @@
     },
     "ERROR": {
       "INVALID_FORM": "Veuillez corriger les erreurs dans le formulaire.",
-      "FORM_SUBMISSION": "Une erreur est survenue lors de l'envoi du formulaire."
+      "FORM_SUBMISSION": "Une erreur est survenue lors de l'envoi du formulaire.",
+      "ALREADY_REGISTERED": "Cette adresse email est deja enregistree."
     },
     "SUCCESS": "Inscription réussie !",
     "LOADING": "Traitement en cours..."
