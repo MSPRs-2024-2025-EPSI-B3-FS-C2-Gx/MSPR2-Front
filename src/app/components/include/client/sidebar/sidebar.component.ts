@@ -3,6 +3,7 @@ import {NgClass, NgIf} from '@angular/common';
 import {SidebarService} from '../../../../services/sidebar/sidebar.service';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
+import {AuthService} from '../../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,5 +12,5 @@ import {TranslateModule} from '@ngx-translate/core';
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent {
-  constructor(public sbService: SidebarService) {}
+  constructor(public sbService: SidebarService, public authService: AuthService) {}
 }

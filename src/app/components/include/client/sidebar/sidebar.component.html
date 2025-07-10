@@ -3,6 +3,7 @@
     <nav class="px-4 py-4">
       <div class="space-y-1">
         <a
+          *ngIf="authService.getRole() !== 'DE'"
           #rla="routerLinkActive"
           [routerLinkActiveOptions]="{ exact: true }"
           class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
@@ -16,6 +17,7 @@
           {{ 'SIDEBAR.DASHBOARD' | translate }}
         </a>
         <a
+          *ngIf="authService.getRole() !== 'DE'"
           #rlaCarto="routerLinkActive"
           [routerLinkActiveOptions]="{ exact: true }"
           class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
@@ -30,6 +32,7 @@
         </a>
 
         <a
+          *ngIf="authService.getRole() !== 'DE'"
           #rlaData="routerLinkActive"
           [routerLinkActiveOptions]="{ exact: true }"
           class="group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all"
