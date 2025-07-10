@@ -61,7 +61,7 @@
             </ul>
           </div>
         </div>
-        <a class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
+        <a class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-sm font-medium transition-all"
            routerLink="/login" translate>
           NAVBAR.NO_AUTH.FREE_TRIAL
         </a>
@@ -101,7 +101,7 @@
 
       <div class="mt-4 pl-3 pr-4 py-2">
         <a
-          class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
           routerLink="/login"
           translate
         >
@@ -110,6 +110,7 @@
       </div>
     </div>
   </div>
+
 </nav>
 
 <div *ngIf="authService.isLoggedIn" class="flex-1 ">
