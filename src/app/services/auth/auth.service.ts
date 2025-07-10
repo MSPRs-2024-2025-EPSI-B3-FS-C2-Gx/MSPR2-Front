@@ -1,18 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject} from 'rxjs';
+import {Role} from '../../models/role.model';
+import {RoleService} from '../role/role.service';
+import {AuthResponse} from '../../models/auth.model';
 
-export interface User {
-  id_user: number;
-  email: string;
-  role: number;
-}
-
-export interface AuthResponse {
-  message: string;
-  token: string;
-  user: User;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +14,10 @@ export class AuthService {
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
   private apiUrl = 'https://api-mspr-2-kldok.gaetandev.fr';
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private roleService: RoleService
+  ) {
     this.isLoggedInSubject.next(localStorage.getItem('token') !== null);
   }
 
@@ -34,7 +29,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.http.post<AuthResponse | { error: string }>(
         `${this.apiUrl}/api/login`,
-        { email, password }
+        {email, password}
       ).subscribe({
         next: (response) => {
           if ('error' in response) {
@@ -45,7 +40,11 @@ export class AuthService {
           const authResponse = response as AuthResponse;
           localStorage.setItem('token', authResponse.token);
           localStorage.setItem('email', authResponse.user.email);
-          localStorage.setItem('role', authResponse.user.role.toString());
+
+          // Convertir le rôle numérique en valeur d'énumération
+          const roleValue = Object.values(Role)[authResponse.user.role - 1];
+          this.roleService.setRole(roleValue);
+
           this.isLoggedInSubject.next(true);
           resolve(authResponse);
         },
@@ -57,12 +56,12 @@ export class AuthService {
     });
   }
 
-  register(email: string, password: string, role: number = 1): Promise<{ message: string }> {
+  register(email: string, password: string, roleId: number = 1): Promise<{ message: string }> {
     return new Promise((resolve, reject) => {
       // Envoyer la requête avec le format attendu
       this.http.post<{ message: string } | { error: string }>(
         `${this.apiUrl}/api/register`,
-        { email, password, role }
+        {email, password, role: roleId}
       ).subscribe({
         next: (response) => {
           // Vérifier si c'est une réponse d'erreur
@@ -73,7 +72,11 @@ export class AuthService {
 
           // Vérifier si c'est une réponse de succès
           if ('message' in response) {
-            resolve({ message: response.message });
+            // Définir le rôle après une inscription réussie
+            const roleValue = Object.values(Role)[roleId - 1];
+            this.roleService.setRole(roleValue);
+            this.isLoggedInSubject.next(true);
+            resolve({message: response.message});
             return;
           }
 
@@ -94,24 +97,14 @@ export class AuthService {
     });
   }
 
-  getRole(): string {
-    const roleId = localStorage.getItem('role');
-
-    switch (roleId) {
-      case '1':
-        return 'EN';
-      case '2':
-        return 'FR';
-      case '3':
-        return 'DE';
-      default:
-        return 'EN';
-    }
+  getRole(): Role | null {
+    return this.roleService.getRole();
   }
 
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
+    this.roleService.clearRole();
     this.isLoggedInSubject.next(false);
   }
 }

@@ -343,5 +343,11 @@
       "SHOW_DEATHS": "Mostra decessi",
       "SHOW_CASES": "Mostra casi"
     }
+  },
+  "UNAUTHORIZED": {
+    "TITLE": "Accesso Negato",
+    "MESSAGE": "Non hai il permesso di accedere a questa pagina.",
+    "GO_BACK": "Indietro",
+    "GO_HOME": "Pannello di controllo"
   }
 }

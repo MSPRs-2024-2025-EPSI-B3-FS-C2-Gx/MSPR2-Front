@@ -62,13 +62,13 @@ describe('SearchService', () => {
 
   describe('navigateToResult', () => {
     it('should navigate to the route of the result', () => {
-      const testResult = { route: '/test-route', title: 'Test', keywords: '' };
+      const testResult = {route: '/test-route', title: 'Test', keywords: ''};
       service.navigateToResult(testResult);
       expect(routerSpy).toHaveBeenCalledWith(testResult.route);
     });
 
     it('should handle empty result', () => {
-      const testResult = { route: '', title: '', keywords: '' };
+      const testResult = {route: '', title: '', keywords: ''};
       service.navigateToResult(testResult);
       expect(routerSpy).toHaveBeenCalledWith('');
     });

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {TranslateModule} from '@ngx-translate/core';
+import {CommonModule} from '@angular/common';
 
 type FeatureKey = 'STATS' | 'AI' | 'MAPPING' | 'ALERTS' | 'HISTORY' | 'EXPORT';
 type TestimonialKey = 'EPIDEMIOLOGIST' | 'JOURNALIST' | 'HEALTH_OFFICER';
@@ -25,10 +25,10 @@ export class HomeComponent implements OnInit {
 
   // Données pour les statistiques
   stats = [
-    { id: 'confirmed', value: '689M+', icon: 'fas fa-procedures', color: 'red' },
-    { id: 'vaccinations', value: '13.1B+', icon: 'fas fa-syringe', color: 'blue' },
-    { id: 'recovered', value: '662M+', icon: 'fas fa-heartbeat', color: 'green' },
-    { id: 'deaths', value: '6.88M+', icon: 'fas fa-cross', color: 'gray' }
+    {id: 'confirmed', value: '689M+', icon: 'fas fa-procedures', color: 'red'},
+    {id: 'vaccinations', value: '13.1B+', icon: 'fas fa-syringe', color: 'blue'},
+    {id: 'recovered', value: '662M+', icon: 'fas fa-heartbeat', color: 'green'},
+    {id: 'deaths', value: '6.88M+', icon: 'fas fa-cross', color: 'gray'}
   ];
 
   ngOnInit() {

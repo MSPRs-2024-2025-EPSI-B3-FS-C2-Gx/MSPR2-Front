@@ -343,5 +343,11 @@
       "SHOW_DEATHS": "Show Deaths",
       "SHOW_CASES": "Show Cases"
     }
+  },
+  "UNAUTHORIZED": {
+    "TITLE": "Access Denied",
+    "MESSAGE": "You don't have permission to access this page.",
+    "GO_BACK": "Go Back",
+    "GO_HOME": "Go to Dashboard"
   }
 }

@@ -1,25 +1,19 @@
-import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-
-export interface LanguageOption {
-  code: string;
-  name: string;
-  flag: string;
-}
+import {Injectable} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {LanguageOption} from '../../models/lang.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  private readonly STORAGE_KEY = 'user_language';
-
   public languages: LanguageOption[] = [
-    { code: 'en', name: 'LANGUAGE.ENGLISH', flag: '🇺🇸' },
-    { code: 'fr', name: 'LANGUAGE.FRENCH', flag: '🇫🇷' },
-    { code: 'de', name: 'LANGUAGE.GERMAN', flag: '🇩🇪' },
-    { code: 'it', name: 'LANGUAGE.ITALIAN', flag: '🇮🇹' },
-    { code: 'es', name: 'LANGUAGE.SPANISH', flag: '🇪🇸' },
+    {code: 'en', name: 'LANGUAGE.ENGLISH', flag: '🇺🇸'},
+    {code: 'fr', name: 'LANGUAGE.FRENCH', flag: '🇫🇷'},
+    {code: 'de', name: 'LANGUAGE.GERMAN', flag: '🇩🇪'},
+    {code: 'it', name: 'LANGUAGE.ITALIAN', flag: '🇮🇹'},
+    {code: 'es', name: 'LANGUAGE.SPANISH', flag: '🇪🇸'},
   ];
+  private readonly STORAGE_KEY = 'user_language';
 
   constructor(private translate: TranslateService) {
     // Set the default language

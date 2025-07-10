@@ -45,14 +45,14 @@
           >
             <ul class="py-1">
               <li
-                *ngFor="let lang of languages"
-                tabindex="0"
-                role="button"
                 (click)="changeLanguage(lang.code, $event)"
                 (keydown.enter)="changeLanguage(lang.code, $event)"
                 (keydown.space)="changeLanguage(lang.code, $event)"
-                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                *ngFor="let lang of languages"
                 [ngClass]="{ 'bg-gray-100 font-semibold': currentLanguage === lang.code }"
+                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                role="button"
+                tabindex="0"
               >
                 <span class="mr-2">{{ lang.flag }}</span>
                 <span>{{ lang.name }}</span>
@@ -61,8 +61,9 @@
             </ul>
           </div>
         </div>
-        <a class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-sm font-medium transition-all"
-           routerLink="/login" translate>
+        <a
+          class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-sm font-medium transition-all"
+          routerLink="/login" translate>
           NAVBAR.NO_AUTH.FREE_TRIAL
         </a>
       </div>
@@ -126,14 +127,14 @@
           >
             <ul class="py-1">
               <li
-                *ngFor="let lang of languages"
-                tabindex="0"
-                role="button"
                 (click)="changeLanguage(lang.code, $event)"
                 (keydown.enter)="changeLanguage(lang.code, $event)"
                 (keydown.space)="changeLanguage(lang.code, $event)"
-                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                *ngFor="let lang of languages"
                 [ngClass]="{ 'bg-gray-100 font-semibold': currentLanguage === lang.code }"
+                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                role="button"
+                tabindex="0"
               >
                 <span class="mr-2">{{ lang.flag }}</span>
                 <span>{{ lang.name }}</span>
@@ -152,8 +153,8 @@
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex items-center">
-          <a class="flex-shrink-0 flex items-center" routerLink="/client" [attr.aria-label]="'NAVBAR.HOME' | translate">
-            <i class="fas fa-virus text-blue-500 text-2xl mr-2" aria-hidden="true"></i>
+          <a [attr.aria-label]="'NAVBAR.HOME' | translate" class="flex-shrink-0 flex items-center" routerLink="/client">
+            <i aria-hidden="true" class="fas fa-virus text-blue-500 text-2xl mr-2"></i>
             <span class="sr-only">{{ 'NAVBAR.HOME' | translate }}</span>
           </a>
 
@@ -181,14 +182,14 @@
                  style="position: fixed; width: inherit; max-width: inherit;">
               <ul>
                 <li
-                  role="option"
-                  tabindex="0"
-                  [attr.aria-selected]="searchQuery === result"
                   (click)="selectResult(result)"
                   (keydown.enter)="selectResult(result)"
                   (keydown.space)="selectResult(result)"
                   *ngFor="let result of searchResults"
+                  [attr.aria-selected]="searchQuery === result"
                   class="cursor-pointer select-none relative py-2 pl-3 pr-9 hover:bg-gray-100"
+                  role="option"
+                  tabindex="0"
                 >
                   <div class="flex items-center">
                     <span class="font-normal block truncate">{{ result.title }}</span>
@@ -227,14 +228,14 @@
             >
               <ul class="py-1">
                 <li
-                  *ngFor="let lang of languages"
-                  tabindex="0"
-                  role="button"
                   (click)="changeLanguage(lang.code, $event)"
                   (keydown.enter)="changeLanguage(lang.code, $event)"
                   (keydown.space)="changeLanguage(lang.code, $event)"
-                  class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                  *ngFor="let lang of languages"
                   [ngClass]="{ 'bg-gray-100 font-semibold': currentLanguage === lang.code }"
+                  class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                  role="button"
+                  tabindex="0"
                 >
                   <span class="mr-2">{{ lang.flag }}</span>
                   <span>{{ lang.name }}</span>
@@ -277,8 +278,9 @@
                  routerLink="/client/settings" tabindex="-1">
                 {{ 'NAVBAR.SETTINGS' | translate }}
               </a>
-              <a (click)="authService.logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#"
-                 role="menuitem" tabindex="-1">
+              <a (click)="authService.logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                 role="menuitem"
+                 routerLink="/" tabindex="-1">
                 {{ 'NAVBAR.LOGOUT' | translate }}
               </a>
             </div>

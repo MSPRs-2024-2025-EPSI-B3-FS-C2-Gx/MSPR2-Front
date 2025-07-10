@@ -52,38 +52,40 @@
     <h2 class="text-lg font-semibold mb-4">{{ 'AI_PREDICTIONS.FORM.TITLE' | translate }}</h2>
 
     <form (ngSubmit)="launchAnalysis()">
-      <label for="countrySelect" class="block mb-2 text-sm font-medium text-gray-700">{{ 'AI_PREDICTIONS.FORM.COUNTRY' | translate }}</label>
+      <label class="block mb-2 text-sm font-medium text-gray-700"
+             for="countrySelect">{{ 'AI_PREDICTIONS.FORM.COUNTRY' | translate }}</label>
       <select
-        id="countrySelect"
         [(ngModel)]="selectedCountry"
+        class="w-full border border-gray-300 rounded-md p-2 mb-4 focus:ring-blue-500 focus:border-blue-500"
+        id="countrySelect"
         name="country"
         required
-        class="w-full border border-gray-300 rounded-md p-2 mb-4 focus:ring-blue-500 focus:border-blue-500"
       >
         <option *ngFor="let c of countries" [value]="c.country_name">{{ c.country_name }}</option>
       </select>
 
-      <label for="startDate" class="block mb-2 text-sm font-medium text-gray-700">{{ 'AI_PREDICTIONS.FORM.START_DATE' | translate }}</label>
+      <label class="block mb-2 text-sm font-medium text-gray-700"
+             for="startDate">{{ 'AI_PREDICTIONS.FORM.START_DATE' | translate }}</label>
       <input
-        id="startDate"
         [(ngModel)]="startDate"
+        class="w-full border border-gray-300 rounded-md p-2 mb-4 focus:ring-blue-500 focus:border-blue-500"
+        id="startDate"
         name="startDate"
         required
         type="date"
-        class="w-full border border-gray-300 rounded-md p-2 mb-4 focus:ring-blue-500 focus:border-blue-500"
       />
 
       <div class="flex justify-end space-x-2">
         <button
-          type="button"
           (click)="closeModal()"
           class="px-4 py-2 text-sm bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+          type="button"
         >
           {{ 'AI_PREDICTIONS.FORM.CANCEL' | translate }}
         </button>
         <button
-          type="submit"
           class="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          type="submit"
         >
           {{ 'AI_PREDICTIONS.FORM.SUBMIT' | translate }}
         </button>

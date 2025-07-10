@@ -4,8 +4,8 @@ import {DataService} from '../../../../../services/data/data.service';
 import {FormsModule} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
 import {toast} from 'ngx-sonner';
-import { forkJoin } from 'rxjs';
-import { Chart, registerables } from 'chart.js';
+import {forkJoin} from 'rxjs';
+import {Chart, registerables} from 'chart.js';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 Chart.register(...registerables);
@@ -71,7 +71,7 @@ export class PredictionComponent implements OnInit {
       prediction: this.dataService.getPredictedData(this.selectedCountry, this.startDate),
       realData: this.dataService.getAllBruteDataByCountry(countryCode)
     }).subscribe({
-      next: ({ prediction, realData }) => {
+      next: ({prediction, realData}) => {
         this.predictionData = prediction;
         this.realData = realData;
 
