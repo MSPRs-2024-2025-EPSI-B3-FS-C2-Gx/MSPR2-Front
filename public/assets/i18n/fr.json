@@ -116,7 +116,12 @@
       "NEED_PASSWORD": "Mot de passe requis.",
       "INVALID_EMAIL": "Adresse email invalide."
     },
-    "SUCCESS": "Connexion reussie !",
+    "SUCCESS": "Connexion reussie !"
+  },
+  "ERROR": {
+    "TITLE": "404 - Page introuvable",
+    "MESSAGE": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+    "BACK_HOME": "Retour à l'accueil"
   },
   "NAVBAR": {
     "SEARCH": "Rechercher",

@@ -118,6 +118,11 @@
     },
     "SUCCESS": "Anmeldung erfolgreich!"
   },
+  "ERROR": {
+    "TITLE": "404 - Seite nicht gefunden",
+    "MESSAGE": "Entschuldigung, die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "BACK_HOME": "Zurück zur Startseite"
+  },
   "NAVBAR": {
     "SEARCH": "Suche",
     "PROFILE": "Dein Profil",

@@ -118,6 +118,11 @@
     },
     "SUCCESS": "Sign in successful!"
   },
+  "ERROR": {
+    "TITLE": "404 - Page Not Found",
+    "MESSAGE": "Sorry, the page you're looking for doesn't exist or has been moved.",
+    "BACK_HOME": "Back to Home"
+  },
   "NAVBAR": {
     "SEARCH": "Search",
     "PROFILE": "Your profile",
