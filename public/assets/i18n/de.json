@@ -100,23 +100,24 @@
     "TITLE": "Melden Sie sich bei Ihrem Konto an",
     "OR": "Oder",
     "START_TRIAL": "starten Sie Ihre kostenlose Testversion",
+    "NO_ACCOUNT": "Noch kein Konto?",
+    "SIGN_UP": "Registrieren",
     "EMAIL_PLACEHOLDER": "E-Mail-Adresse",
     "PASSWORD_PLACEHOLDER": "Passwort",
     "REMEMBER_ME": "Angemeldet bleiben",
     "FORGOT_PASSWORD": "Passwort vergessen?",
     "SUBMIT_BUTTON": "Anmelden",
     "SOCIAL_LOGIN": "Oder fahren Sie fort mit",
-    "SOCIAL": {
-      "GOOGLE": "Mit Google anmelden",
-      "FACEBOOK": "Mit Facebook anmelden",
-      "TWITTER": "Mit Twitter anmelden"
-    },
+    "GOOGLE": "Mit Google anmelden",
+    "FACEBOOK": "Mit Facebook anmelden",
+    "TWITTER": "Mit Twitter anmelden",
     "ERROR": {
-      "NEED_EMAIL": "E-Mail-Adresse erforderlich.",
-      "NEED_PASSWORD": "Passwort erforderlich.",
-      "INVALID_EMAIL": "Ungültige E-Mail-Adresse."
+      "INVALID_CREDENTIALS": "Falsche E-Mail oder falsches Passwort.",
+      "ACCOUNT_LOCKED": "Ihr Konto ist gesperrt. Bitte versuchen Sie es später noch einmal.",
+      "ACCOUNT_DISABLED": "Ihr Konto ist deaktiviert. Bitte kontaktieren Sie den Administrator."
     },
-    "SUCCESS": "Anmeldung erfolgreich!"
+    "SUCCESS": "Anmeldung erfolgreich!",
+    "LOADING": "Anmeldung läuft..."
   },
   "ERROR": {
     "TITLE": "404 - Seite nicht gefunden",
@@ -133,6 +134,7 @@
     "NO_AUTH": {
       "HOME": "Startseite",
       "LOGIN": "Anmeldung",
+      "REGISTER": "Registrieren",
       "FREE_TRIAL": "Gratisprobe"
     }
   },
@@ -247,6 +249,39 @@
     "TERMS": "Nutzungsbedingungen",
     "LICENSES": "Lizenzen",
     "COPYRIGHT": " 2025 PandemicTracker. Alle Rechte vorbehalten."
+  },
+  "REGISTER": {
+    "TITLE": "Konto erstellen",
+    "OR": "Bereits ein Konto?",
+    "SIGN_IN": "Hier anmelden",
+    "FULL_NAME": "Vollständiger Name",
+    "EMAIL_PLACEHOLDER": "E-Mail-Adresse",
+    "PASSWORD_PLACEHOLDER": "Passwort",
+    "CONFIRM_PASSWORD": "Passwort bestätigen",
+    "I_AGREE_TO": "Ich stimme den",
+    "TERMS": "Nutzungsbedingungen zu",
+    "SUBMIT_BUTTON": "Registrieren",
+    "SOCIAL_SIGNUP": "Oder registrieren Sie sich mit",
+    "SOCIAL": {
+      "GOOGLE": "Mit Google registrieren",
+      "FACEBOOK": "Mit Facebook registrieren",
+      "TWITTER": "Mit Twitter registrieren"
+    },
+    "ERROR": {
+      "INVALID_FORM": "Bitte korrigieren Sie die Fehler im Formular.",
+      "FORM_SUBMISSION": "Beim Senden des Formulars ist ein Fehler aufgetreten."
+    },
+    "SUCCESS": "Registrierung erfolgreich!",
+    "LOADING": "Wird verarbeitet..."
+  },
+  "VALIDATION": {
+    "REQUIRED": "Dieses Feld ist erforderlich.",
+    "INVALID_EMAIL": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "MIN_LENGTH": "Muss mindestens {{min}} Zeichen lang sein.",
+    "PASSWORD_MISMATCH": "Die Passwörter stimmen nicht überein.",
+    "INVALID_PATTERN": "Ungültiges Format.",
+    "TERMS_REQUIRED": "Sie müssen die Nutzungsbedingungen akzeptieren.",
+    "FORM_INVALID": "Bitte überprüfen Sie das Formular auf Fehler."
   },
   "DASHBOARD": {
     "TITLE": "COVID-19-Dashboard",

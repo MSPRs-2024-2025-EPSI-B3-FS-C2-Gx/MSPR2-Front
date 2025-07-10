@@ -1,0 +1,180 @@
+<div class="min-h-screen flex items-center justify-center login-bg  py-12 px-4 sm:px-6 lg:px-8" id="register-page">
+  <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-lg shadow-xl">
+    <div>
+      <div class="flex justify-center">
+        <i class="fas fa-user-plus text-blue-500 text-4xl"></i>
+      </div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900" translate>
+        REGISTER.TITLE
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        {{ 'REGISTER.OR' | translate }}
+        <a class="font-medium text-blue-600 hover:text-blue-500 transition-all" [routerLink]="['/login']">
+          {{ 'REGISTER.SIGN_IN' | translate }}
+        </a>
+      </p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="mt-8 space-y-6">
+      <div class="rounded-md space-y-4">
+        <!-- Nom complet -->
+        <div>
+          <label class="sr-only" for="full-name">Nom complet</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-user text-gray-400"></i>
+            </div>
+            <input autocomplete="name"
+                   class="pl-10 block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm input-focus"
+                   [ngClass]="{'border-red-500': f['fullName'].invalid && (f['fullName'].dirty || f['fullName'].touched || submitted)}"
+                   formControlName="fullName" id="full-name"
+                   [placeholder]="'REGISTER.FULL_NAME' | translate"
+                   required
+                   type="text">
+          </div>
+          <div class="text-red-500 text-xs mt-1">
+            {{ getErrorMessage('fullName') }}
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="sr-only" for="email-address">Adresse email</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-envelope text-gray-400"></i>
+            </div>
+            <input autocomplete="email"
+                   class="pl-10 block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm input-focus"
+                   [ngClass]="{'border-red-500': f['email'].invalid && (f['email'].dirty || f['email'].touched || submitted)}"
+                   formControlName="email" id="email-address"
+                   [placeholder]="'REGISTER.EMAIL_PLACEHOLDER' | translate"
+                   required
+                   type="email">
+          </div>
+          <div class="text-red-500 text-xs mt-1">
+            {{ getErrorMessage('email') }}
+          </div>
+        </div>
+
+        <!-- Mot de passe -->
+        <div>
+          <label class="sr-only" for="password">Mot de passe</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            <input autocomplete="new-password"
+                   class="pl-10 block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm input-focus"
+                   [ngClass]="{'border-red-500': f['password'].invalid && (f['password'].dirty || f['password'].touched || submitted)}"
+                   formControlName="password" id="password"
+                   [placeholder]="'REGISTER.PASSWORD_PLACEHOLDER' | translate"
+                   required
+                   type="password">
+          </div>
+          <div class="text-red-500 text-xs mt-1">
+            {{ getErrorMessage('password') }}
+          </div>
+        </div>
+
+        <!-- Confirmation du mot de passe -->
+        <div>
+          <label class="sr-only" for="confirm-password">Confirmer le mot de passe</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            <input autocomplete="new-password"
+                   class="pl-10 block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm input-focus"
+                   [ngClass]="{'border-red-500': (f['confirmPassword'].invalid || registerForm.hasError('passwordMismatch')) && (f['confirmPassword'].dirty || f['confirmPassword'].touched || submitted)}"
+                   formControlName="confirmPassword" id="confirm-password"
+                   [placeholder]="'REGISTER.CONFIRM_PASSWORD' | translate"
+                   required
+                   type="password">
+          </div>
+          <div class="text-red-500 text-xs mt-1">
+            {{ getErrorMessage('confirmPassword') }}
+            {{ registerForm.hasError('passwordMismatch') ? (getErrorMessage('confirmPassword') || '') : '' }}
+          </div>
+        </div>
+
+        <!-- Conditions d'utilisation -->
+        <div class="flex items-start">
+          <div class="flex items-center h-5">
+            <input class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                   formControlName="terms"
+                   id="terms"
+                   required
+                   type="checkbox">
+          </div>
+          <div class="ml-3 text-sm">
+            <div class="flex flex-col">
+              <div>
+                <label for="terms" class="font-medium text-gray-700">
+                  {{ 'REGISTER.I_AGREE_TO' | translate }}
+                  <a href="#" class="text-blue-600 hover:text-blue-500">{{ 'REGISTER.TERMS' | translate }}</a>
+                </label>
+              </div>
+              <div *ngIf="f['terms'].invalid && (f['terms'].dirty || f['terms'].touched || submitted)" class="text-red-500 text-xs mt-1">
+                {{ getErrorMessage('terms') }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button
+          [disabled]="loading"
+          class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          type="submit"
+        >
+          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+            <i class="fas fa-user-plus text-blue-300 group-hover:text-blue-200"></i>
+          </span>
+          {{ 'REGISTER.SUBMIT_BUTTON' | translate }}
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-6">
+      <div class="relative">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 bg-white text-gray-500">
+            {{ 'REGISTER.SOCIAL_SIGNUP' | translate }}
+          </span>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-3 gap-3">
+        <div>
+          <a
+            class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all"
+            href="#"
+            [attr.aria-label]="'REGISTER.SOCIAL.GOOGLE' | translate">
+            <i class="fab fa-google text-blue-500" [attr.title]="'REGISTER.SOCIAL.GOOGLE' | translate"></i>
+          </a>
+        </div>
+        <div>
+          <a
+            class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all"
+            href="#"
+            [attr.aria-label]="'REGISTER.SOCIAL.FACEBOOK' | translate">
+            <i class="fab fa-facebook-f text-blue-500" [attr.title]="'REGISTER.SOCIAL.FACEBOOK' | translate"></i>
+          </a>
+        </div>
+        <div>
+          <a
+            class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all"
+            href="#"
+            [attr.aria-label]="'REGISTER.SOCIAL.TWITTER' | translate">
+            <i class="fab fa-twitter text-blue-500" [attr.title]="'REGISTER.SOCIAL.TWITTER' | translate"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

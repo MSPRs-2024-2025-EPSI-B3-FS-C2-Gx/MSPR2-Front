@@ -100,23 +100,24 @@
     "TITLE": "Connectez-vous à votre compte",
     "OR": "Ou",
     "START_TRIAL": "commencez votre essai gratuit",
+    "NO_ACCOUNT": "Pas encore de compte ?",
+    "SIGN_UP": "S'inscrire",
     "EMAIL_PLACEHOLDER": "Adresse email",
     "PASSWORD_PLACEHOLDER": "Mot de passe",
     "REMEMBER_ME": "Se souvenir de moi",
     "FORGOT_PASSWORD": "Mot de passe oublié ?",
-    "SUBMIT_BUTTON": "Connexion",
+    "SUBMIT_BUTTON": "Se connecter",
     "SOCIAL_LOGIN": "Ou connectez-vous avec",
-    "SOCIAL": {
-      "GOOGLE": "Se connecter avec Google",
-      "FACEBOOK": "Se connecter avec Facebook",
-      "TWITTER": "Se connecter avec Twitter"
-    },
+    "GOOGLE": "Se connecter avec Google",
+    "FACEBOOK": "Se connecter avec Facebook",
+    "TWITTER": "Se connecter avec Twitter",
     "ERROR": {
-      "NEED_EMAIL": "Adresse email requise.",
-      "NEED_PASSWORD": "Mot de passe requis.",
-      "INVALID_EMAIL": "Adresse email invalide."
+      "INVALID_CREDENTIALS": "Email ou mot de passe incorrect.",
+      "ACCOUNT_LOCKED": "Votre compte est verrouillé. Veuillez réessayer plus tard.",
+      "ACCOUNT_DISABLED": "Votre compte est désactivé. Veuillez contacter l'administrateur."
     },
-    "SUCCESS": "Connexion reussie !"
+    "SUCCESS": "Connexion réussie !",
+    "LOADING": "Connexion en cours..."
   },
   "ERROR": {
     "TITLE": "404 - Page introuvable",
@@ -133,6 +134,7 @@
     "NO_AUTH": {
       "HOME": "Accueil",
       "LOGIN": "Connexion",
+      "REGISTER": "Inscription",
       "FREE_TRIAL": "Essai gratuit"
     }
   },
@@ -247,6 +249,39 @@
     "TERMS": "Conditions",
     "LICENSES": "Licences",
     "COPYRIGHT": " 2025 PandemicTracker. Tous droits réservés."
+  },
+  "REGISTER": {
+    "TITLE": "Créer un compte",
+    "OR": "Vous avez déjà un compte ?",
+    "SIGN_IN": "Connectez-vous ici",
+    "FULL_NAME": "Nom complet",
+    "EMAIL_PLACEHOLDER": "Adresse email",
+    "PASSWORD_PLACEHOLDER": "Mot de passe",
+    "CONFIRM_PASSWORD": "Confirmer le mot de passe",
+    "I_AGREE_TO": "J'accepte les",
+    "TERMS": "conditions d'utilisation",
+    "SUBMIT_BUTTON": "S'inscrire",
+    "SOCIAL_SIGNUP": "Ou inscrivez-vous avec",
+    "SOCIAL": {
+      "GOOGLE": "S'inscrire avec Google",
+      "FACEBOOK": "S'inscrire avec Facebook",
+      "TWITTER": "S'inscrire avec Twitter"
+    },
+    "ERROR": {
+      "INVALID_FORM": "Veuillez corriger les erreurs dans le formulaire.",
+      "FORM_SUBMISSION": "Une erreur est survenue lors de l'envoi du formulaire."
+    },
+    "SUCCESS": "Inscription réussie !",
+    "LOADING": "Traitement en cours..."
+  },
+  "VALIDATION": {
+    "REQUIRED": "Ce champ est requis.",
+    "INVALID_EMAIL": "Veuillez entrer une adresse email valide.",
+    "MIN_LENGTH": "Doit contenir au moins {{min}} caractères.",
+    "PASSWORD_MISMATCH": "Les mots de passe ne correspondent pas.",
+    "INVALID_PATTERN": "Format invalide.",
+    "TERMS_REQUIRED": "Vous devez accepter les conditions d'utilisation.",
+    "FORM_INVALID": "Veuillez vérifier les champs du formulaire."
   },
   "DASHBOARD": {
     "TITLE": "Tableau de bord COVID-19",

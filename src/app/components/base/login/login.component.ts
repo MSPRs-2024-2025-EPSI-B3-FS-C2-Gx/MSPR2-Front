@@ -1,15 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {toast} from 'ngx-sonner';
-import {AuthService} from '../../../services/auth/auth.service';
-import {Router} from '@angular/router';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { toast } from 'ngx-sonner';
+import { AuthService } from '../../../services/auth/auth.service';
+import { Router, RouterLink } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-login',
   imports: [
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    RouterLink,
+    NgClass
   ],
   standalone: true,
   templateUrl: './login.component.html'
@@ -17,6 +20,7 @@ import {TranslateModule, TranslateService} from '@ngx-translate/core';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loading = false;
+  submitted = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private translate: TranslateService) {
   }
@@ -35,38 +39,47 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // Récupère le message d'erreur pour un champ
+  getErrorMessage(controlName: string): string {
+    const control = this.loginForm.get(controlName);
+
+    if (!control || !control.errors || !this.submitted) return '';
+
+    if (control.hasError('required')) {
+      return this.translate.instant('VALIDATION.REQUIRED');
+    } else if (control.hasError('email')) {
+      return this.translate.instant('VALIDATION.INVALID_EMAIL');
+    }
+
+    return '';
+  }
+
   onSubmit(): void {
+    this.submitted = true;
+
+    // Marquer tous les champs comme touchés pour afficher les erreurs
+    Object.keys(this.loginForm.controls).forEach(key => {
+      const control = this.loginForm.get(key);
+      control?.markAsTouched();
+    });
+
     if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-
-      // Affiche une toast pour chaque champ invalide
-      const controls = this.loginForm.controls;
-
-      if (controls['email'].errors) {
-        if (controls['email'].errors['required']) {
-          toast.error(this.translate.instant('LOGIN.ERROR.NEED_EMAIL'));
-        } else if (controls['email'].errors['email']) {
-          toast.error(this.translate.instant('LOGIN.ERROR.INVALID_EMAIL'));
-        }
+      // Faire défiler jusqu'au premier champ invalide
+      const invalidControl = document.querySelector('.ng-invalid');
+      if (invalidControl) {
+        invalidControl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-
-      if (controls['password'].errors) {
-        toast.error(this.translate.instant('LOGIN.ERROR.NEED_PASSWORD'));
-      }
-
       return;
     }
 
     this.loading = true;
+    const toastId = toast.loading(this.translate.instant('LOGIN.LOADING'));
 
-    // Simule un appel API
-    setTimeout(() => {
+
+    this.authService.login(this.loginForm.value.email).then(() => {
+      toast.success(this.translate.instant('LOGIN.SUCCESS'), {id: toastId});
+      this.router.navigate(['/client']);
       this.loading = false;
-
-      this.authService.login(this.loginForm.value.email).then(() => {
-        toast.success(this.translate.instant('LOGIN.SUCCESS'));
-        this.router.navigate(['/client']);
-      });
-    }, 1000);
+    });
   }
 }
