@@ -97,8 +97,6 @@ export class AuthService {
   getRole(): string {
     const roleId = localStorage.getItem('role');
 
-    return 'DE';
-
     switch (roleId) {
       case '1':
         return 'EN';
