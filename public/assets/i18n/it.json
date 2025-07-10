@@ -1,0 +1,347 @@
+{
+  "TITLE": "Benvenuto nella nostra applicazione",
+  "LANGUAGE": {
+    "ENGLISH": "Inglese",
+    "FRENCH": "Francese",
+    "GERMAN": "Tedesco",
+    "ITALIAN": "Italiano",
+    "SPANISH": "Spagnolo"
+  },
+  "COMMON": {
+    "WELCOME": "Benvenuto",
+    "SETTINGS": "Impostazioni",
+    "PROFILE": "Profilo",
+    "LOGOUT": "Disconnetti",
+    "LOADING": "Caricamento...",
+    "LOADED": "Caricato",
+    "ERROR": "Si è verificato un errore",
+    "REFRESHING": "Aggiornamento...",
+    "REFRESH_SUCCESS": "Aggiornamento effettuato!",
+    "NO_AVAILABLE_FEATURE": "Funzionalità non disponibile."
+  },
+  "PROFILE": {
+    "AUTH": "Cliente Autenticato",
+    "INFORMATION": "Informazioni account",
+    "COMPLETE_NAME": "Nome completo",
+    "ROLE": "Ruolo",
+    "SUBSCRIPTION": "Abbonamento",
+    "ACTIVE": "Attivo",
+    "INACTIVE": "Inattivo"
+  },
+  "CARTOGRAPHY": {
+    "TITLE": "Cartografia COVID-19",
+    "SUBTITLE": "Visualizzazione interattiva della diffusione del COVID-19 a livello globale, paese per paese.",
+    "BUTTONS": {
+      "EXPORT": "Esporta",
+      "REFRESH": "Aggiorna"
+    },
+    "INTERACTIVE_MAP": {
+      "TITLE": "Mappa interattiva - Distribuzione geografica",
+      "CONFIRMED_CASES": "Casi confermati",
+      "DEATHS": "Decessi",
+      "INFO_TEXT": "Passa il mouse su un paese per vedere le statistiche attuali in base all'indicatore selezionato. I dati vengono aggiornati automaticamente ogni 24 ore.",
+      "LOADING": "Caricamento mappa..."
+    },
+    "LEGEND": {
+      "TITLE": "Legenda",
+      "CASES": "Casi",
+      "DEATHS": "Decessi"
+    },
+    "TOOLTIP": {
+      "CONFIRMED_CASES": "Casi confermati",
+      "DEATHS": "Decessi",
+      "POPULATION": "Popolazione",
+      "CASE_RATE": "Tasso di casi",
+      "DEATH_RATE": "Tasso di mortalità",
+      "PERCENT_SIGN": "%"
+    }
+  },
+  "RAW_DATA": {
+    "TITLE": "Dati grezzi",
+    "SUBTITLE": "Accedi ai dati grezzi COVID-19 per paese.",
+    "BUTTONS": {
+      "EXPORT": "Esporta",
+      "REFRESH": "Aggiorna"
+    },
+    "TABLE": {
+      "ALL_COUNTRIES": "Tutti i paesi",
+      "DATE": "Data",
+      "COUNTRY": "Paese",
+      "CONFIRMED_CASES": "Casi confermati",
+      "DEATHS": "Decessi",
+      "VACCINATIONS": "Vaccinazioni",
+      "PAGE_SIZE": "Risultati per pagina",
+      "PAGE_PREVIOUS": "Precedente",
+      "PAGE_NEXT": "Successivo"
+    }
+  },
+  "AI_PREDICTIONS": {
+    "TITLE": "Previsioni IA",
+    "SUBTITLE": "Analisi e visualizzazione dei casi previsti dall'intelligenza artificiale, paese per paese.",
+    "BUTTONS": {
+      "EXPORT": "Esporta",
+      "REFRESH": "Aggiorna"
+    },
+    "GRAPH": {
+      "TITLE": "Previsione",
+      "LAUNCH_ANALYSIS": "Avvia una nuova analisi"
+    },
+    "FORM": {
+      "TITLE": "Nuova analisi",
+      "COUNTRY": "Paese",
+      "START_DATE": "Data di inizio",
+      "CANCEL": "Annulla",
+      "SUBMIT": "Analizza"
+    },
+    "CHART": {
+      "REAL_CASES": "Casi reali",
+      "PREDICTED_CASES": "Casi previsti"
+    }
+  },
+  "LOGIN": {
+    "TITLE": "Accedi al tuo account",
+    "OR": "Oppure",
+    "START_TRIAL": "inizia la tua prova gratuita",
+    "NO_ACCOUNT": "Non hai ancora un account?",
+    "SIGN_UP": "Registrati",
+    "EMAIL_PLACEHOLDER": "Indirizzo email",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "REMEMBER_ME": "Ricordami",
+    "FORGOT_PASSWORD": "Password dimenticata?",
+    "SUBMIT_BUTTON": "Accedi",
+    "SOCIAL_LOGIN": "Oppure accedi con",
+    "GOOGLE": "Accedi con Google",
+    "FACEBOOK": "Accedi con Facebook",
+    "TWITTER": "Accedi con Twitter",
+    "ERROR": {
+      "INVALID_CREDENTIALS": "Email o password non corretta.",
+      "ACCOUNT_LOCKED": "Il tuo account è bloccato. Riprova più tardi.",
+      "ACCOUNT_DISABLED": "Il tuo account è disabilitato. Contatta l'amministratore."
+    },
+    "SUCCESS": "Accesso riuscito!",
+    "LOADING": "Accesso in corso..."
+  },
+  "ERROR": {
+    "TITLE": "404 - Pagina non trovata",
+    "MESSAGE": "Spiacenti, la pagina che stai cercando non esiste o è stata spostata.",
+    "BACK_HOME": "Torna alla home"
+  },
+  "NAVBAR": {
+    "HOME": "Home",
+    "SEARCH": "Cerca",
+    "PROFILE": "Il tuo profilo",
+    "SETTINGS": "Impostazioni",
+    "LOGOUT": "Disconnetti",
+    "NO_RESULTS": "Nessun risultato trovato per '{{query}}'.",
+    "NO_AUTH": {
+      "HOME": "Home",
+      "LOGIN": "Accesso",
+      "REGISTER": "Registrazione",
+      "FREE_TRIAL": "Prova gratuita"
+    }
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "Dashboard",
+    "MAPPING": "Cartografia",
+    "RAW_DATA": "Dati grezzi",
+    "AI_PREDICTIONS": "Previsioni IA",
+    "APP_TITLE": "PandemicTracker"
+  },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Visualizza i dati pandemici",
+      "SUBTITLE": "Accedi a statistiche, previsioni e analisi sul COVID-19 e future pandemie.",
+      "EXPLORE_BUTTON": "Esplora i dati",
+      "DEMO_BUTTON": "Video demo"
+    },
+    "FEATURES": {
+      "TITLE": "Funzionalità",
+      "SUBTITLE": "Una piattaforma completa per monitorare le pandemie",
+      "ITEMS": {
+        "STATS": {
+          "TITLE": "Statistiche globali",
+          "DESC": "Visualizza i dati COVID-19 per paese con grafici interattivi e tabelle dettagliate.",
+          "ICON": "fas fa-chart-line"
+        },
+        "AI": {
+          "TITLE": "Previsioni IA",
+          "DESC": "I nostri modelli di intelligenza artificiale prevedono le tendenze future con grande precisione.",
+          "ICON": "fas fa-robot"
+        },
+        "MAPPING": {
+          "TITLE": "Cartografia interattiva",
+          "DESC": "Esplora i dati geografici con la nostra mappa mondiale interattiva e personalizzabile.",
+          "ICON": "fas fa-map-marked-alt"
+        },
+        "ALERTS": {
+          "TITLE": "Avvisi personalizzati",
+          "DESC": "Ricevi notifiche per cambiamenti importanti nelle aree che ti interessano.",
+          "ICON": "fas fa-bell"
+        },
+        "HISTORY": {
+          "TITLE": "Dati storici",
+          "DESC": "Accedi all'archivio completo dei dati pandemici dall'inizio della crisi COVID-19.",
+          "ICON": "fas fa-database"
+        },
+        "EXPORT": {
+          "TITLE": "Esporta dati",
+          "DESC": "Scarica i dati in diversi formati (CSV, JSON, Excel) per le tue analisi.",
+          "ICON": "fas fa-file-export"
+        }
+      }
+    },
+    "STATS": {
+      "TITLE": "Dati COVID-19 in tempo reale",
+      "SUBTITLE": "Alcune statistiche globali aggiornate quotidianamente",
+      "CONFIRMED": "Casi confermati",
+      "VACCINATIONS": "Vaccinazioni",
+      "RECOVERED": "Guariti",
+      "DEATHS": "Decessi",
+      "SEE_ALL_STATS": "Vedi tutte le statistiche"
+    },
+    "TESTIMONIALS": {
+      "TITLE": "Testimonianze",
+      "SUBTITLE": "Cosa dicono i nostri utenti",
+      "ITEMS": {
+        "EPIDEMIOLOGIST": {
+          "NAME": "Dr. Sophie Martin",
+          "ROLE": "Epidemiologa, INSERM",
+          "QUOTE": "Questa piattaforma ha rivoluzionato il nostro modo di analizzare i dati pandemici. Le previsioni sono straordinariamente precise e ci aiutano ad anticipare le ondate epidemiche.",
+          "IMAGE": "women/32"
+        },
+        "JOURNALIST": {
+          "NAME": "Jean Dupont",
+          "ROLE": "Giornalista scientifico",
+          "QUOTE": "Come giornalista, apprezzo particolarmente la chiarezza delle visualizzazioni e la facilità di accesso ai dati. È diventato il mio strumento di riferimento per gli articoli sul COVID.",
+          "IMAGE": "men/54"
+        },
+        "HEALTH_OFFICER": {
+          "NAME": "Pierre Lambert",
+          "ROLE": "Responsabile salute pubblica",
+          "QUOTE": "Gli avvisi personalizzati ci permettono di reagire rapidamente ai cambiamenti epidemiologici. Uno strumento indispensabile per il nostro servizio.",
+          "IMAGE": "men/67"
+        }
+      }
+    },
+    "CTA": {
+      "TITLE": "Pronto a esplorare i dati?",
+      "SUBTITLE": "Crea il tuo account gratuitamente.",
+      "SIGN_UP": "Registrati ora",
+      "CONTACT": "Contattaci"
+    }
+  },
+  "FOOTER": {
+    "SOLUTIONS": "Soluzioni",
+    "ANALYTICS": "Analisi",
+    "PREDICTIONS": "Previsioni",
+    "MONITORING": "Monitoraggio",
+    "ALERTS": "Avvisi",
+    "SUPPORT": "Supporto",
+    "DOCUMENTATION": "Documentazione",
+    "GUIDES": "Guide",
+    "API": "API",
+    "FORUM": "Forum",
+    "COMPANY": "Azienda",
+    "ABOUT": "Chi siamo",
+    "BLOG": "Blog",
+    "CAREERS": "Carriere",
+    "PRESS": "Stampa",
+    "LEGAL": "Legale",
+    "PRIVACY": "Privacy",
+    "TERMS": "Termini",
+    "LICENSES": "Licenze",
+    "COPYRIGHT": " 2025 PandemicTracker. Tutti i diritti riservati."
+  },
+  "REGISTER": {
+    "TITLE": "Crea un account",
+    "OR": "Hai già un account?",
+    "SIGN_IN": "Accedi qui",
+    "FULL_NAME": "Nome completo",
+    "EMAIL_PLACEHOLDER": "Indirizzo email",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "CONFIRM_PASSWORD": "Conferma password",
+    "I_AGREE_TO": "Accetto i",
+    "TERMS": "termini di servizio",
+    "SUBMIT_BUTTON": "Registrati",
+    "SOCIAL_SIGNUP": "Oppure registrati con",
+    "SOCIAL": {
+      "GOOGLE": "Registrati con Google",
+      "FACEBOOK": "Registrati con Facebook",
+      "TWITTER": "Registrati con Twitter"
+    },
+    "ERROR": {
+      "INVALID_FORM": "Correggi gli errori nel modulo.",
+      "FORM_SUBMISSION": "Si è verificato un errore durante l'invio del modulo.",
+      "ALREADY_REGISTERED": "Questo indirizzo email è già registrato."
+    },
+    "SUCCESS": "Registrazione completata!",
+    "LOADING": "Elaborazione in corso..."
+  },
+  "VALIDATION": {
+    "REQUIRED": "Questo campo è obbligatorio.",
+    "INVALID_EMAIL": "Inserisci un indirizzo email valido.",
+    "MIN_LENGTH": "Deve contenere almeno {{min}} caratteri.",
+    "PASSWORD_MISMATCH": "Le password non corrispondono.",
+    "INVALID_PATTERN": "Formato non valido.",
+    "TERMS_REQUIRED": "Devi accettare i termini di servizio.",
+    "FORM_INVALID": "Verifica i campi del modulo."
+  },
+  "DASHBOARD": {
+    "TITLE": "Dashboard COVID-19",
+    "SUBTITLE": "Monitoraggio globale della pandemia COVID-19 attraverso dati aggiornati e visualizzazioni interattive.",
+    "TOP_COUNTRIES": {
+      "TABLE_CAPTION": "Tabella dei paesi con più casi e decessi",
+      "SELECT_METRIC": "Seleziona una metrica da visualizzare"
+    },
+    "BUTTONS": {
+      "EXPORT": "Esporta",
+      "REFRESH": "Aggiorna"
+    },
+    "STATS": {
+      "TOTAL_CASES": "Totale casi",
+      "TOTAL_DEATHS": "Totale decessi",
+      "TOTAL_VACCINATIONS": "Totale vaccinazioni"
+    },
+    "CHARTS": {
+      "CASES_TITLE": "Andamento casi COVID-19",
+      "VACCINATIONS_TITLE": "Progresso vaccinazioni",
+      "TIME_RANGES": {
+        "LABEL": "Periodo da visualizzare",
+        "LAST_7_DAYS": "Ultimi 7 giorni",
+        "LAST_30_DAYS": "Ultimi 30 giorni",
+        "LAST_90_DAYS": "Ultimi 90 giorni",
+        "THIS_YEAR": "Quest'anno"
+      },
+      "VIEW_OPTIONS": {
+        "LABEL": "Modalità visualizzazione",
+        "BY_COUNTRY": "Per paese",
+        "BY_CONTINENT": "Per continente",
+        "BY_VACCINE_TYPE": "Per tipo di vaccino"
+      }
+    },
+    "MAP": {
+      "TITLE": "Distribuzione geografica",
+      "CONFIRMED_CASES": "Casi confermati",
+      "DEATHS": "Decessi",
+      "INTERACTIVE_MAP": "Mappa interattiva dati COVID-19",
+      "CLICK_TO_VIEW": "(Clicca per vedere)"
+    },
+    "TOP_COUNTRIES": {
+      "TITLE": "Paesi più colpiti",
+      "CONFIRMED_CASES": "Casi confermati",
+      "DEATHS": "Decessi",
+      "COUNTRY": "Paese",
+      "CASES": "Casi",
+      "DEATHS_COUNT": "Decessi"
+    },
+    "TOP_5": {
+      "TITLE": "Top 5 paesi per {{metric}}",
+      "CASES": "casi",
+      "DEATHS": "decessi",
+      "COUNTRY": "Paese",
+      "COUNT": "Numero",
+      "SHOW_DEATHS": "Mostra decessi",
+      "SHOW_CASES": "Mostra casi"
+    }
+  }
+}
