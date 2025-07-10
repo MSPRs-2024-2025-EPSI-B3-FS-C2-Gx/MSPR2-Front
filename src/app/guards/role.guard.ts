@@ -7,7 +7,6 @@ export const RoleGuard = () => {
   const router = inject(Router);
 
   if (auth.getRole() === 'DE') {
-
     router.navigate(['/client/predictions']).then(() => console.log('Navigated to auth'));
     return false;
   }
